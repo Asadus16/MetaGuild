@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 .main {
   align-items: center;
   display: flex;
   justify-content: space-between;
   margin: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 95%;
 }
 
 .logo {
@@ -19,28 +24,272 @@
 }
 .buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 .button1 {
-  width: 190px;
-  height: 60px;
+  width: 230px;
+  height: 70px;
   background: none;
   color: white;
   border-radius: 15px;
   cursor: pointer;
   font-family: 'Chakra Petch', sans-serif;
+  transition: 0.5s;
+  font-size: larger;
+}
+.button1:hover {
+  letter-spacing: 0.1rem;
+  border: solid 2px purple;
 }
 .button2 {
-  width: 190px;
-  height: 60px;
+  width: 230px;
+  height: 70px;
   background: none;
   color: white;
   cursor: pointer;
   border-radius: 15px;
   font-family: 'Chakra Petch', sans-serif;
+  transition: 0.5s;
+  font-size: larger;
+}
+.button2:hover {
+  letter-spacing: 0.1rem;
+  border: solid 2px purple;
 }
 .description {
-  margin-top: 150px;
+  margin-top: 250px;
   text-align: center;
   font-family: 'Chakra Petch', sans-serif;
+}
+.panel {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  gap: 100px;
+  padding: 30px;
+  margin-top: 120px;
+}
+.cards {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  gap: 100px;
+  padding: 70px;
+
+  width: fit-content;
+}
+.card1 {
+  font-family: 'Chakra Petch', sans-serif;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+.walletLogo {
+  margin-right: 16px;
+}
+.ShieldLogo {
+  margin-right: 16px;
+}
+.GhostLogo {
+  margin-right: 16px;
+}
+.wallet {
+  height: 100px;
+}
+.card2 {
+  border-radius: 20px;
+  font-family: 'Chakra Petch', sans-serif;
+  padding: 20px;
+  background-color: #2c2c2c;
+  display: flex;
+  align-items: center;
+}
+
+.card3 {
+  border-radius: 20px;
+  font-family: 'Chakra Petch', sans-serif;
+  padding: 20px;
+  background-color: #2c2c2c;
+  display: flex;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  margin-top: 100px;
+}
+.footerText {
+  text-align: center;
+  font-family: 'Chakra Petch', sans-serif;
+}
+.animation1 {
+  width: 400px;
+  /* margin-bottom: 50px; */
+}
+.animation1Div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 300px;
+  align-items: center;
+}
+.Animation1Txt {
+  font-family: 'Chakra Petch', sans-serif;
+  /* max-width: 590px; */
+}
+.Animation1Txt h1 {
+  color: white;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.Animation1Txt li {
+  list-style: none;
+  line-height: 30px;
+  color: #bcbcbc;
+  font-size: 17px;
+}
+.Animation1List1 {
+  display: flex;
+  max-width: 600px;
+  justify-content: space-between;
+  gap: 20px;
+}
+.Animation1List2 {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  gap: 20px;
+}
+.Animation1Btn {
+  width: 140px;
+  height: 50px;
+  background: none;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Chakra Petch', sans-serif;
+  transition: 0.5s;
+  font-size: 15px;
+  /* margin-top: 20px; */
+  align-items: center;
+}
+.Animation1Btn:hover {
+  letter-spacing: 0.1rem;
+  border: solid 2px purple;
+}
+.Animation1Btn1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.animation2Div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 300px;
+  align-items: center;
+}
+.Animation2Txt {
+  color: white;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.Animation2List1 {
+  display: flex;
+  max-width: 600px;
+  gap: 20px;
+}
+.Animation2List2 {
+  display: flex;
+  max-width: 600px;
+  gap: 20px;
+}
+.animation2 {
+  width: 540px;
+}
+.Animation2Txt {
+  font-family: 'Chakra Petch', sans-serif;
+  /* max-width: 590px; */
+}
+.Animation2Txt h1 {
+  color: white;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.Animation2Txt li {
+  list-style: none;
+  line-height: 30px;
+  color: #bcbcbc;
+  font-size: 17px;
+}
+.Animation2Btn1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.animation3 {
+  width: 400px;
+  /* margin-bottom: 50px; */
+}
+.animation3Div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 300px;
+  align-items: center;
+}
+.Animation3Txt {
+  font-family: 'Chakra Petch', sans-serif;
+  /* max-width: 590px; */
+}
+.Animation3Txt h1 {
+  color: white;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.Animation3Txt li {
+  list-style: none;
+  line-height: 30px;
+  color: #bcbcbc;
+  font-size: 17px;
+}
+.Animation3List1 {
+  display: flex;
+  max-width: 600px;
+  gap: 20px;
+}
+.Animation3List2 {
+  display: flex;
+  max-width: 600px;
+  gap: 20px;
+}
+.Animation3Btn {
+  width: 140px;
+  height: 50px;
+  background: none;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Chakra Petch', sans-serif;
+  transition: 0.5s;
+  font-size: 15px;
+  /* margin-top: 20px; */
+  align-items: center;
+}
+.Animation3Btn:hover {
+  letter-spacing: 0.1rem;
+  border: solid 2px purple;
+}
+.Animation3Btn1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.MainAnimaContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+.MainAnimation {
+  width: 600px;
 }
