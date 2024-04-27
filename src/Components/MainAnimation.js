@@ -1,4 +1,4 @@
-import Animation from './json_animations/MainAnim.json';
+import Animation from '../json_animations/MainAnim.json';
 import Lottie from 'lottie-react';
 
 export default function MainAnimation() {

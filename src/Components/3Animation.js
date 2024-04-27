@@ -1,7 +1,8 @@
 import Lottie from 'lottie-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faRectangleList } from '@fortawesome/free-solid-svg-icons';
-import Animation from './json_animations/3Animation.json';
+import Animation from '../json_animations/3Animation.json';
+import { Link } from 'react-router-dom';
 
 export default function Animation3() {
   return (
@@ -29,9 +30,9 @@ export default function Animation3() {
           <li>All your tasks in your task board.</li>
         </div>
         <div className="Animation3Btn1">
-          <a href="#">
+          <Link to="/explore">
             <button className="Animation3Btn">Explore DAOs</button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

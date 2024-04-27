@@ -1,7 +1,8 @@
 import Lottie from 'lottie-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWallet, faDatabase } from '@fortawesome/free-solid-svg-icons';
-import Animation from './json_animations/2Animation.json';
+import Animation from '../json_animations/2Animation.json';
+import { Link } from 'react-router-dom';
 
 export default function Animation2() {
   return (
@@ -26,9 +27,9 @@ export default function Animation2() {
           <li>Tasks you complete are stored on-chain.</li>
         </div>
         <div className="Animation1Btn1">
-          <a href="#">
+          <Link to="/explore">
             <button className="Animation1Btn">Explore DAOs</button>
-          </a>
+          </Link>
         </div>
       </div>
       <div>

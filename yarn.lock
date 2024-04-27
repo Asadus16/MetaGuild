@@ -2514,7 +2514,7 @@
   dependencies:
     eslint-scope "5.1.1"
 
-"@noble/curves@^1.2.0":
+"@noble/curves@^1.4.0", "@noble/curves@1.4.0":
   version "1.4.0"
   resolved "https://registry.npmjs.org/@noble/curves/-/curves-1.4.0.tgz"
   integrity sha512-p+4cb332SFCrReJkCYe8Xzm0OWi4Jji5jVdIZRL/PmacmDkFNw6MrrV+gGpiPxLHbV+zKFRywUWbaseT+tZRXg==
@@ -2542,37 +2542,25 @@
   dependencies:
     "@noble/hashes" "1.3.3"
 
-"@noble/curves@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@noble/curves/-/curves-1.4.0.tgz"
-  integrity sha512-p+4cb332SFCrReJkCYe8Xzm0OWi4Jji5jVdIZRL/PmacmDkFNw6MrrV+gGpiPxLHbV+zKFRywUWbaseT+tZRXg==
-  dependencies:
-    "@noble/hashes" "1.4.0"
-
-"@noble/hashes@^1.3.3", "@noble/hashes@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.4.0.tgz"
-  integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
+"@noble/hashes@^1.3.3", "@noble/hashes@~1.3.2", "@noble/hashes@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.3.tgz"
+  integrity sha512-V7/fPHgl+jsVPXqqeOzT8egNj2iBIVt+ECeMMG8TdcnTikP3oaBtUVqpT/gYCR68aEBJSF+XbYUxStjbFMqIIA==
 
 "@noble/hashes@^1.4.0":
   version "1.4.0"
   resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.4.0.tgz"
   integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
 
-"@noble/hashes@~1.3.0":
-  version "1.3.3"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.3.tgz"
-  integrity sha512-V7/fPHgl+jsVPXqqeOzT8egNj2iBIVt+ECeMMG8TdcnTikP3oaBtUVqpT/gYCR68aEBJSF+XbYUxStjbFMqIIA==
-
-"@noble/hashes@~1.3.2", "@noble/hashes@1.3.3":
-  version "1.3.3"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.3.tgz"
-  integrity sha512-V7/fPHgl+jsVPXqqeOzT8egNj2iBIVt+ECeMMG8TdcnTikP3oaBtUVqpT/gYCR68aEBJSF+XbYUxStjbFMqIIA==
-
-"@noble/hashes@1.3.2":
+"@noble/hashes@~1.3.0", "@noble/hashes@1.3.2":
   version "1.3.2"
   resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.2.tgz"
   integrity sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==
+
+"@noble/hashes@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.4.0.tgz"
+  integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3034,6 +3022,11 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@remix-run/router@1.15.3":
+  version "1.15.3"
+  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.15.3.tgz"
+  integrity sha512-Oy8rmScVrVxWZVOpEF57ovlnhpZ8CCPlnIIumVcV9nFdiSIrus99+Lw78ekXyGvVDlIsFJbSfmSovJUhCWYV3w==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.npmjs.org/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz"
@@ -3207,12 +3200,12 @@
     buffer "~6.0.3"
 
 "@solana/web3.js@^1.70.1":
-  version "1.91.6"
-  resolved "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.91.6.tgz"
-  integrity sha512-dm20nN6HQvXToo+kM51nxHdtaa2wMSRdeK37p+WIWESfeiVHqV8XbV4XnWupq6ngt5vIckhGFG7ZnTBxUgLzDA==
+  version "1.91.7"
+  resolved "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.91.7.tgz"
+  integrity sha512-HqljZKDwk6Z4TajKRGhGLlRsbGK4S8EY27DA7v1z6yakewiUY3J7ZKDZRxcqz2MYV/ZXRrJ6wnnpiHFkPdv0WA==
   dependencies:
     "@babel/runtime" "^7.23.4"
-    "@noble/curves" "^1.2.0"
+    "@noble/curves" "^1.4.0"
     "@noble/hashes" "^1.3.3"
     "@solana/buffer-layout" "^4.0.1"
     agentkeepalive "^4.5.0"
@@ -3554,22 +3547,22 @@
   resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-14.5.2.tgz"
   integrity sha512-YAh82Wh4TIrxYLmfGcixwD18oIjyC1pFQC2Y01F2lzV2HTMiYrI0nze0FD0ocB//CKS/7jIUgae+adPqxK5yCQ==
 
-"@thirdweb-dev/auth@4.1.62":
-  version "4.1.62"
-  resolved "https://registry.npmjs.org/@thirdweb-dev/auth/-/auth-4.1.62.tgz"
-  integrity sha512-XuN1zMJbh6iV8WttLtd0l254vE7MvIDIkZiOUXLb2D97d1DQvwlnRdRDUOFmjEdaUrSys2O4V0ElPevsK0FuGQ==
+"@thirdweb-dev/auth@4.1.64":
+  version "4.1.64"
+  resolved "https://registry.npmjs.org/@thirdweb-dev/auth/-/auth-4.1.64.tgz"
+  integrity sha512-vjqEVmavqoZhBFOouSEW119w/E6ThMzmMEpGhdcOD3IyaGKNpc/cCckhRBcv3geVbzeyryiKvTjK4RNiAGDBIQ==
   dependencies:
     "@fastify/cookie" "^9.3.1"
-    "@thirdweb-dev/wallets" "2.5.4"
+    "@thirdweb-dev/wallets" "2.5.6"
     cookie "^0.6.0"
     fastify-type-provider-zod "^1.1.9"
     uuid "^9.0.1"
     zod "^3.22.4"
 
-"@thirdweb-dev/chains@0.1.95":
-  version "0.1.95"
-  resolved "https://registry.npmjs.org/@thirdweb-dev/chains/-/chains-0.1.95.tgz"
-  integrity sha512-aWa5RVM3fEu5+cQzOr51wF1Xd9UKCaKWcpOFwx6aOWI/7Fdr8ftyfZFdh6MSbbQB3H+k/Tzb5ueOLsnW8qwF+A==
+"@thirdweb-dev/chains@0.1.97":
+  version "0.1.97"
+  resolved "https://registry.npmjs.org/@thirdweb-dev/chains/-/chains-0.1.97.tgz"
+  integrity sha512-aDUEtkJu7ZsV2KKO9rECX1NAYOz4kpdk8LwEhbyqTEnHNw94YebUQBj4V08SzPJd3r9RoTu0C4TvNPRdZ1oDXQ==
 
 "@thirdweb-dev/contracts-js@1.3.21":
   version "1.3.21"
@@ -3622,25 +3615,25 @@
   dependencies:
     ethers "^5.7.2"
 
-"@thirdweb-dev/react-core@4.6.3":
-  version "4.6.3"
-  resolved "https://registry.npmjs.org/@thirdweb-dev/react-core/-/react-core-4.6.3.tgz"
-  integrity sha512-Fb+2KxthSGvmQa6nLHAqaYtxqDEQqdQjaUmPqGJQMvXAdtJqKqW6kpmejYwh+iKzUAfipixrr/8mDl+myb6ZBA==
+"@thirdweb-dev/react-core@4.6.5":
+  version "4.6.5"
+  resolved "https://registry.npmjs.org/@thirdweb-dev/react-core/-/react-core-4.6.5.tgz"
+  integrity sha512-M7rzWgbgVN0D4qwi0jjTI3ao6sWwCwg3rhYAoc0Ga0Z0Z7hPnTKTBHySGvG7JHwSZtJD584viIfOK7zCRvMG3w==
   dependencies:
     "@tanstack/react-query" "^4.36.1"
-    "@thirdweb-dev/auth" "4.1.62"
-    "@thirdweb-dev/chains" "0.1.95"
+    "@thirdweb-dev/auth" "4.1.64"
+    "@thirdweb-dev/chains" "0.1.97"
     "@thirdweb-dev/generated-abis" "^0.0.1"
-    "@thirdweb-dev/sdk" "4.0.64"
+    "@thirdweb-dev/sdk" "4.0.66"
     "@thirdweb-dev/storage" "2.0.14"
-    "@thirdweb-dev/wallets" "2.5.4"
+    "@thirdweb-dev/wallets" "2.5.6"
     mime "3.0.0"
     tiny-invariant "^1.3.3"
 
 "@thirdweb-dev/react@^4":
-  version "4.6.3"
-  resolved "https://registry.npmjs.org/@thirdweb-dev/react/-/react-4.6.3.tgz"
-  integrity sha512-1lnr6Je5Mrt96MC4Um5RUsayLmQN4j4fG1kmBRXCdwnPbcTftssfFbxcjY0kquhn+vVfIMW1te0Gqr8sbExNqA==
+  version "4.6.5"
+  resolved "https://registry.npmjs.org/@thirdweb-dev/react/-/react-4.6.5.tgz"
+  integrity sha512-pSWPPXHxyZRSvE0yLMKn2pEgHIKyjkPo46Bb+fi12KYraSonXdKxAUA12whv43JE6n4LxYqfvsgOgsyhL/mdHQ==
   dependencies:
     "@emotion/css" "11.10.5"
     "@emotion/react" "^11.11.4"
@@ -3655,11 +3648,11 @@
     "@radix-ui/react-tabs" "^1.0.4"
     "@radix-ui/react-tooltip" "^1.0.7"
     "@tanstack/react-query" "^4.36.1"
-    "@thirdweb-dev/chains" "0.1.95"
+    "@thirdweb-dev/chains" "0.1.97"
     "@thirdweb-dev/payments" "1.0.4"
-    "@thirdweb-dev/react-core" "4.6.3"
-    "@thirdweb-dev/sdk" "4.0.64"
-    "@thirdweb-dev/wallets" "2.5.4"
+    "@thirdweb-dev/react-core" "4.6.5"
+    "@thirdweb-dev/sdk" "4.0.66"
+    "@thirdweb-dev/wallets" "2.5.6"
     buffer "^6.0.3"
     copy-to-clipboard "^3.3.3"
     detect-browser "^5.3.0"
@@ -3667,13 +3660,13 @@
     qrcode "^1.5.3"
     tiny-invariant "^1.3.3"
 
-"@thirdweb-dev/sdk@^4", "@thirdweb-dev/sdk@4.0.64":
-  version "4.0.64"
-  resolved "https://registry.npmjs.org/@thirdweb-dev/sdk/-/sdk-4.0.64.tgz"
-  integrity sha512-fz425DSBsJLp1ViSvzAD5WaRAQ1UFu54y5fLs1M2xvVfEDDG2Q9xsNrR0qRQ7WfcOXGSEXFFhUDo4+2wBySwTA==
+"@thirdweb-dev/sdk@^4", "@thirdweb-dev/sdk@4.0.66":
+  version "4.0.66"
+  resolved "https://registry.npmjs.org/@thirdweb-dev/sdk/-/sdk-4.0.66.tgz"
+  integrity sha512-gonwqZOjbomtMjv14fQJdXeVs4isAn0AsTwL6t+xYhVF948AAeYoQnUrWB1SDC6NtHtis6PRcoSOof4FOeCUMQ==
   dependencies:
     "@eth-optimism/sdk" "3.3.0"
-    "@thirdweb-dev/chains" "0.1.95"
+    "@thirdweb-dev/chains" "0.1.97"
     "@thirdweb-dev/contracts-js" "1.3.21"
     "@thirdweb-dev/crypto" "0.2.5"
     "@thirdweb-dev/generated-abis" "0.0.1"
@@ -3685,7 +3678,7 @@
     buffer "^6.0.3"
     eventemitter3 "^5.0.1"
     fast-deep-equal "^3.1.3"
-    thirdweb "5.7.0"
+    thirdweb "5.9.0"
     tiny-invariant "^1.3.3"
     tweetnacl "^1.0.3"
     uuid "^9.0.1"
@@ -3702,10 +3695,10 @@
     form-data "^4.0.0"
     uuid "^9.0.1"
 
-"@thirdweb-dev/wallets@2.5.4":
-  version "2.5.4"
-  resolved "https://registry.npmjs.org/@thirdweb-dev/wallets/-/wallets-2.5.4.tgz"
-  integrity sha512-sHotHR3emrdO8zGvhlWIPOd9qjss9x2EuzWW3lw+n2+D6qitGbqK1i7789+SBgFb1n0m0YSfiZwl9OBnNc9Wdg==
+"@thirdweb-dev/wallets@2.5.6":
+  version "2.5.6"
+  resolved "https://registry.npmjs.org/@thirdweb-dev/wallets/-/wallets-2.5.6.tgz"
+  integrity sha512-3alYySejYlIfpu1pCPLeKC5VfxO8TyBcUWnb4auCcBjvOnH7xwWIauvQk1ZymZa/nxW7RIsw9QVWU98GeIlzaw==
   dependencies:
     "@account-abstraction/contracts" "^0.5.0"
     "@blocto/sdk" "0.5.5"
@@ -3720,10 +3713,10 @@
     "@safe-global/safe-core-sdk" "^3.3.5"
     "@safe-global/safe-ethers-adapters" "0.1.0-alpha.17"
     "@safe-global/safe-ethers-lib" "^1.9.4"
-    "@thirdweb-dev/chains" "0.1.95"
+    "@thirdweb-dev/chains" "0.1.97"
     "@thirdweb-dev/contracts-js" "1.3.21"
     "@thirdweb-dev/crypto" "0.2.5"
-    "@thirdweb-dev/sdk" "4.0.64"
+    "@thirdweb-dev/sdk" "4.0.66"
     "@walletconnect/core" "^2.12.1"
     "@walletconnect/ethereum-provider" "2.12.1"
     "@walletconnect/jsonrpc-utils" "^1.0.8"
@@ -4488,12 +4481,11 @@
     "@walletconnect/modal-ui" "2.6.2"
 
 "@walletconnect/relay-api@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.npmjs.org/@walletconnect/relay-api/-/relay-api-1.0.9.tgz"
-  integrity sha512-Q3+rylJOqRkO1D9Su0DPE3mmznbAalYapJ9qmzDgK28mYF9alcP3UwG/og5V7l7CFOqzCLi7B8BvcBUrpDj0Rg==
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/@walletconnect/relay-api/-/relay-api-1.0.10.tgz"
+  integrity sha512-tqrdd4zU9VBNqUaXXQASaexklv6A54yEyQQEXYOCr+Jz8Ket0dmPBDyg19LVSNUN2cipAghQc45/KVmfFJ0cYw==
   dependencies:
     "@walletconnect/jsonrpc-types" "^1.0.2"
-    tslib "1.14.1"
 
 "@walletconnect/relay-auth@^1.0.4":
   version "1.0.4"
@@ -5539,32 +5531,37 @@ bluebird@^3.7.2:
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
-bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.0, bn.js@^4.11.6, bn.js@^4.11.8, bn.js@^4.11.9:
+bn.js@^4.0.0:
   version "4.12.0"
   resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
   integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
-bn.js@^5.0.0:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/bn.js/-/bn.js-5.2.1.tgz"
-  integrity sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==
+bn.js@^4.1.0:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
-bn.js@^5.1.1:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/bn.js/-/bn.js-5.2.1.tgz"
-  integrity sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==
+bn.js@^4.11.0, bn.js@^4.11.8:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
-bn.js@^5.1.2:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/bn.js/-/bn.js-5.2.1.tgz"
-  integrity sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==
+bn.js@^4.11.6:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
-bn.js@^5.2.0:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/bn.js/-/bn.js-5.2.1.tgz"
-  integrity sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==
+bn.js@^4.11.8:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
-bn.js@^5.2.1:
+bn.js@^4.11.9:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
+
+bn.js@^5.0.0, bn.js@^5.1.1, bn.js@^5.1.2, bn.js@^5.2.0, bn.js@^5.2.1, bn.js@5.2.1:
   version "5.2.1"
   resolved "https://registry.npmjs.org/bn.js/-/bn.js-5.2.1.tgz"
   integrity sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==
@@ -5573,11 +5570,6 @@ bn.js@4.11.6:
   version "4.11.6"
   resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.11.6.tgz"
   integrity sha512-XWwnNNFCuuSQ0m3r3C4LE3EiORltHd9M05pq6FOlVeiophzRbMo50Sbz1ehl8K3Z+jw9+vmgnXefY1hz8X+2wA==
-
-bn.js@5.2.1:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/bn.js/-/bn.js-5.2.1.tgz"
-  integrity sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==
 
 body-parser@1.20.2:
   version "1.20.2"
@@ -7767,14 +7759,7 @@ eth-query@^2.1.2:
     json-rpc-random-id "^1.0.0"
     xtend "^4.0.1"
 
-eth-rpc-errors@^4.0.2:
-  version "4.0.3"
-  resolved "https://registry.npmjs.org/eth-rpc-errors/-/eth-rpc-errors-4.0.3.tgz"
-  integrity sha512-Z3ymjopaoft7JDoxZcEb3pwdGh7yiYMhOwm2doUt6ASXlMavpNlK6Cre0+IMl2VSGyEU9rkiperQhp5iRxn5Pg==
-  dependencies:
-    fast-safe-stringify "^2.0.6"
-
-eth-rpc-errors@4.0.2:
+eth-rpc-errors@^4.0.2, eth-rpc-errors@4.0.2:
   version "4.0.2"
   resolved "https://registry.npmjs.org/eth-rpc-errors/-/eth-rpc-errors-4.0.2.tgz"
   integrity sha512-n+Re6Gu8XGyfFy1it0AwbD1x0MUzspQs0D5UiPs1fFPCr6WAwZM+vbIhXheBFrpgosqN9bs5PqlB4Q61U/QytQ==
@@ -9128,9 +9113,9 @@ ipaddr.js@1.9.1:
   integrity sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
 
 iron-webcrypto@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/iron-webcrypto/-/iron-webcrypto-1.1.0.tgz"
-  integrity sha512-5vgYsCakNlaQub1orZK5QmNYhwYtcllTkZBp5sfIaCqY93Cf6l+v2rtE+E4TMbcfjxDMCdrO8wmp7+ZvhDECLA==
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/iron-webcrypto/-/iron-webcrypto-1.1.1.tgz"
+  integrity sha512-5xGwQUWHQSy039rFr+5q/zOmj7GP0Ypzvo34Ep+61bPIhaLduEDp/PvLGlU3awD2mzWUR0weN2vJ1mILydFPEg==
 
 is-arguments@^1.0.4, is-arguments@^1.1.1:
   version "1.1.1"
@@ -12505,6 +12490,21 @@ react-remove-scroll@2.5.5:
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
 
+react-router-dom@^6.22.3:
+  version "6.22.3"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.22.3.tgz"
+  integrity sha512-7ZILI7HjcE+p31oQvwbokjk6OA/bnFxrhJ19n82Ex9Ph8fNAq+Hm/7KchpMGlTgWhUxRHMMCut+vEtNpWpowKw==
+  dependencies:
+    "@remix-run/router" "1.15.3"
+    react-router "6.22.3"
+
+react-router@6.22.3:
+  version "6.22.3"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-6.22.3.tgz"
+  integrity sha512-dr2eb3Mj5zK2YISHK++foM9w4eBnO23eKnZEDs7c880P6oKbrjz/Svg9+nxqtHQK+oMW4OtjZca0RqPglXxguQ==
+  dependencies:
+    "@remix-run/router" "1.15.3"
+
 react-scripts@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
@@ -12596,20 +12596,7 @@ readable-stream@^2.0.1:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@^2.0.2:
-  version "2.3.8"
-  resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz"
-  integrity sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==
-  dependencies:
-    core-util-is "~1.0.0"
-    inherits "~2.0.3"
-    isarray "~1.0.0"
-    process-nextick-args "~2.0.0"
-    safe-buffer "~5.1.1"
-    string_decoder "~1.1.1"
-    util-deprecate "~1.0.1"
-
-readable-stream@^2.3.3:
+readable-stream@^2.0.2, readable-stream@^2.3.3:
   version "2.3.8"
   resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz"
   integrity sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==
@@ -13511,19 +13498,19 @@ strict-uri-encode@^2.0.0:
   resolved "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz"
   integrity sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==
 
-string_decoder@^1.0.0, string_decoder@^1.1.1:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz"
-  integrity sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==
-  dependencies:
-    safe-buffer "~5.2.0"
-
-string_decoder@~1.1.1:
+string_decoder@^1.0.0, string_decoder@~1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz"
   integrity sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==
   dependencies:
     safe-buffer "~5.1.0"
+
+string_decoder@^1.1.1:
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz"
+  integrity sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==
+  dependencies:
+    safe-buffer "~5.2.0"
 
 string-length@^4.0.1:
   version "4.0.2"
@@ -13946,10 +13933,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-thirdweb@5.7.0:
-  version "5.7.0"
-  resolved "https://registry.npmjs.org/thirdweb/-/thirdweb-5.7.0.tgz"
-  integrity sha512-Eeubr2eZpM+1CGA+tYrbLq1F/bs26PYcfOUx0wVjQKQlKRJssJpDNGJWxJwC/yeP9AWxbzxStaNFAYsypiodQg==
+thirdweb@5.9.0:
+  version "5.9.0"
+  resolved "https://registry.npmjs.org/thirdweb/-/thirdweb-5.9.0.tgz"
+  integrity sha512-ZscZd+DbLKGBQbfxAIVKQNByDs3ez03lo6gmJ6s8eAqoh1Mi8MyiFTkk+HmcmARe7DF2ZouqeOC/u64EUfepwA==
   dependencies:
     "@coinbase/wallet-sdk" "3.7.2"
     "@emotion/react" "11.11.4"
