@@ -1,0 +1,12 @@
+.boards {
+  display: flex;
+  width: fit-content;
+  height: 100vh;
+  padding: 20px 15px 10px 15px;
+  gap: 25px;
+  /* max-width: 100%; */
+}
+
+.boards_newboard {
+  width: 330px;
+}

@@ -17,6 +17,7 @@ export default function Home() {
       <Navbar />
       <div className="description">
         <h1>A platform where every Contributor gets a Chance!</h1>
+        <br />
         <p>
           Create bounties for contributors, let contributors build their<br></br> web3 profile and pay with your own DAO token.
         </p>
@@ -26,10 +27,10 @@ export default function Home() {
       </div>
       <div className="buttons">
         <Link to="/create">
-          <button className="button1">Create DAO</button>
+          <button className="create_button">Create DAO</button>
         </Link>
         <Link to="/explore">
-          <button className="button2">Explore DAOs</button>
+          <button className="explore_button">Explore DAOs</button>
         </Link>
       </div>
       <Animation1 />
