@@ -4,7 +4,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 30px;
+  margin: 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,10 @@
 }
 
 .logo {
-  width: 280px;
+  width: 200px;
+}
+.connect{
+  width:180px;
 }
 .animation {
   width: 650px;
@@ -293,3 +296,118 @@
 .MainAnimation {
   width: 600px;
 }
+
+
+
+.txtContainer {
+  margin-top: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.topTxt {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.topTxt h1 {
+  margin-left: 10px; 
+  margin: 0;
+}
+
+.topTxt p {
+  margin: 0; 
+}
+
+
+.search-container {
+  position: relative;
+  text-align: center;
+  margin-left: 8px;
+  border-style: none;
+}
+
+.search-container input {
+  width: 52%;
+  padding: 10px;
+  border-radius: 10px; 
+}
+
+.search-container input:hover {
+  border-color: red; 
+}
+.edit-icon {
+  position: relative;
+  right: 25px;
+  top: 50%;
+  cursor: pointer;
+  color: red;
+}
+
+.edit-icon:hover {
+  color: blue;
+}
+
+
+
+
+
+
+.dao-card {
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  width: 52%;
+  height: 6rem;
+  margin: 0 auto;
+  margin-top: 20px; 
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #aa80ff;
+  background-color: black; 
+}
+
+.dao-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+.dao-info {
+  flex: 1; 
+  margin-left: 20px;
+}
+
+.dao-info h3 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.dao-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.member-count {
+  display: flex;
+}
+
+.member-count span {
+  font-size: 10px;
+  margin-top: 12px;
+}
+
+.member-count p {
+  font-size: 10px;
+  color: #ccc;
+  margin-top: 12px;
+  padding-left: 4px;
+}
+
+
+
