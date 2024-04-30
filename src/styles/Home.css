@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-around;
 }
-.button1 {
+.create_button {
   width: 230px;
   height: 70px;
   background: none;
@@ -40,11 +40,11 @@
   transition: 0.5s;
   font-size: larger;
 }
-.button1:hover {
+.create_button:hover {
   letter-spacing: 0.1rem;
   border: solid 2px purple;
 }
-.button2 {
+.explore_button {
   width: 230px;
   height: 70px;
   background: none;
@@ -55,7 +55,7 @@
   transition: 0.5s;
   font-size: larger;
 }
-.button2:hover {
+.explore_button:hover {
   letter-spacing: 0.1rem;
   border: solid 2px purple;
 }
@@ -63,6 +63,10 @@
   margin-top: 250px;
   text-align: center;
   font-family: 'Chakra Petch', sans-serif;
+  color: white;
+}
+.description h1 {
+  color: #a11dff;
 }
 .panel {
   display: flex;

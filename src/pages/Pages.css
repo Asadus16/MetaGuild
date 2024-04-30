@@ -1,0 +1,8 @@
+.Overview_page {
+  display: flex;
+}
+.page_content {
+  flex: 1;
+  margin-top: 50px;
+  margin-left: 60px;
+}
