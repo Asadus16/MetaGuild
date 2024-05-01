@@ -1,8 +1,17 @@
 .Overview_page {
   display: flex;
+  margin-top: 100px;
 }
 .page_content {
   flex: 1;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-left: 60px;
+  overflow-x: auto;
+}
+.overview_sidebar {
+  position: fixed;
+  width: 200px;
+}
+.topTxt h1 {
+  color: #a11dff;
 }

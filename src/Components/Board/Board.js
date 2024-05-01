@@ -36,7 +36,7 @@ export default function Board({ board, removeBoard, addCard, removeCard, dragEnt
         <Editable
           displayClass="boards_cards_add"
           defaultValue="New Task"
-          text="Add Card"
+          text="Add Task"
           placeholder="Enter Card title"
           onSubmit={(value) => addCard(value, id)}
         />

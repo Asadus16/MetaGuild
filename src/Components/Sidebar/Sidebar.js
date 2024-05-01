@@ -15,15 +15,21 @@ export default function Sidebar() {
     <>
       <div className="overview_page">
         <div className="tabs">
-          <Link to="/overview">
+          <Link to="/#">
             <button className="button1">Overview</button>
           </Link>
 
-          <button className="button2">Leaderboard</button>
+          <Link to="/#">
+            <button className="button2">Leaderboard</button>
+          </Link>
 
-          <button className="button3">Tasks Board</button>
+          <Link to="/#">
+            <button className="button3">Tasks Board</button>
+          </Link>
 
-          <button className="button4">Spaces</button>
+          <Link to="#">
+            <button className="button4">Spaces</button>
+          </Link>
 
           <footer className="footer">
             <h1>
@@ -35,7 +41,6 @@ export default function Sidebar() {
             </div>
           </footer>
         </div>
-        <div className="components_area"></div>
       </div>
     </>
   );

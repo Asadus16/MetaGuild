@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <main className="main">
       <a href="#">
-        <img src={logo} className="logo" />
+        <img src={logo} className="meta_logo" />
       </a>
       <ConnectWallet className="connect" />
     </main>

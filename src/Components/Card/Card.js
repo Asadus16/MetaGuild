@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { CheckSquare, Clock, MoreHorizontal, X } from 'react-feather';
-import Dropdown from '../Dropdown/Dropdown';
+import React from 'react';
+import { CheckSquare, Clock, X } from 'react-feather';
 import Labels from '../Labels/Labels';
 import './Card.css';
 import Cardinfo from './Cardinfo/Cardinfo';
 
 export default function Card({ card, removeCard, dragEnded, dragEntered, boardId, updateCard }) {
   const { id, title, labels, date } = card;
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = React.useState(false);
 
   return (
     <>
@@ -22,13 +20,8 @@ export default function Card({ card, removeCard, dragEnded, dragEntered, boardId
             ))}
           </div>
 
-          <div className="card_more">
-            {showDropdown ? <X onClick={(e) => setShowDropdown(false)} /> : <MoreHorizontal onClick={(e) => setShowDropdown(true)} />}
-            {showDropdown && (
-              <Dropdown classes="card_dropdown">
-                <p onClick={(e) => removeCard(id, boardId)}>Delete Card</p>
-              </Dropdown>
-            )}
+          <div className="card_delete">
+            <X onClick={(e) => removeCard(id, boardId)} />
           </div>
         </div>
 

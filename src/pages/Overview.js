@@ -1,6 +1,7 @@
 import NavBar from '../Components/Navbar';
 import './Pages.css';
 import Sidebar from '../Components/Sidebar/Sidebar';
+import Boards from '../Components/BoardContainer/BoardContainer';
 
 export default function Overview() {
   return (
@@ -11,7 +12,7 @@ export default function Overview() {
           <Sidebar />
         </>
         <div className="page_content">
-          <h1>Overview page</h1>
+          <Boards />
         </div>
       </div>
     </>
