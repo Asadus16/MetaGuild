@@ -15,7 +15,8 @@ export default function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/create" element={<Create />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/overview" element={<Overview />} />
+          <Route path="/explore/overview" element={<Overview />} />
+
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

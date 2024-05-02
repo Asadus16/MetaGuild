@@ -38,7 +38,7 @@ export default function Explore() {
 
       <div className="txtContainer">
         <div className="topTxt">
-          <h1>Top DAOs (820)</h1>
+          <h1>Top DAOs ( 0 )</h1>
         </div>
         <p>Find hundreds of web3 DAOs, see their roadmap and explore open bounties and work</p>
       </div>

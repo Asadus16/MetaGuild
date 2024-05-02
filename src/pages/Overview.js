@@ -8,9 +8,9 @@ export default function Overview() {
     <>
       <NavBar />
       <div className="Overview_page">
-        <>
+        <div className="overview_sidebar">
           <Sidebar />
-        </>
+        </div>
         <div className="page_content">
           <Boards />
         </div>

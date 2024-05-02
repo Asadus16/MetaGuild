@@ -15,7 +15,7 @@ export default function Sidebar() {
     <>
       <div className="overview_page">
         <div className="tabs">
-          <Link to="/#">
+          <Link to="/explore/overview">
             <button className="button1">Overview</button>
           </Link>
 
@@ -23,7 +23,7 @@ export default function Sidebar() {
             <button className="button2">Leaderboard</button>
           </Link>
 
-          <Link to="/#">
+          <Link to="/explore/overview">
             <button className="button3">Tasks Board</button>
           </Link>
 
