@@ -61,17 +61,20 @@ export default function Boards() {
     const tempBoards = [...boards];
     const cardIndex = tempBoards[sourceBoardIndex].cards.findIndex((item) => item.id === cId);
 
-    if (cardIndex < 0) return;
+    console.log(sourceBoardIndex, targetBoardIndex, cardIndex, tempBoards);
+
+    if (cardIndex > 0) return;
 
     const tempCard = tempBoards[sourceBoardIndex].cards[cardIndex];
 
     tempBoards[sourceBoardIndex].cards.splice(cardIndex, 1);
 
-    if (!tempBoards[targetBoardIndex]) {
-      tempBoards[targetBoardIndex] = { id: target.bId, title: '', cards: [] };
+    if (targetBoardIndex === -1) {
+      const newBoard = { id: target.bId, title: '', cards: [tempCard] };
+      tempBoards.push(newBoard);
+    } else {
+      tempBoards[targetBoardIndex].cards.push(tempCard);
     }
-
-    tempBoards[targetBoardIndex].cards.push(tempCard);
 
     setBoards(tempBoards);
   };

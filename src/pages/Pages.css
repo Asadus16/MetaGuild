@@ -1,8 +1,51 @@
 .Overview_page {
   display: flex;
+  margin-top: 100px;
 }
 .page_content {
   flex: 1;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-left: 60px;
+  overflow-x: auto;
+}
+.overview_sidebar {
+  /* position: fixed; */
+  width: 200px;
+}
+.topTxt h1 {
+  color: #a11dff;
+}
+.container {
+  margin-top: 170px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.container h1 {
+  color: #a11dff;
+  margin: 50px;
+  font-size: 60px;
+}
+.firstfield {
+  margin: 30px;
+}
+label {
+  display: block;
+  /* font-weight: bold; */
+}
+.field1 {
+  padding: 10px;
+  width: 30%;
+}
+.field2 {
+  padding: 10px;
+  width: 30%;
+}
+.submitBtn {
+  width: 60px;
+}
+.submitBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }

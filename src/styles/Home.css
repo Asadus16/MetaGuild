@@ -4,18 +4,31 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  margin: 40px;
   position: fixed;
   top: 0;
   left: 0;
   width: 95%;
+  z-index: 1000;
+  /* background: linear-gradient(
+    to right,
+    rgba(51, 51, 51, 0.9) 0%,
+    rgba(43, 43, 43, 0.7) 25%,
+    rgba(30, 30, 30, 0.5) 50%,
+    rgba(35, 35, 35, 0.3) 75%,
+    rgba(53, 53, 53, 0.1) 100%
+  );
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(12, 12, 12, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); */
 }
 
-.logo {
-  width: 200px;
+.meta_logo {
+  width: 300px;
+  z-index: 1000;
 }
-.connect{
-  width:150px;
+.connect {
+  width: 180px;
 }
 
 .animation {
@@ -302,14 +315,12 @@
   width: 600px;
 }
 
-
-
 .txtContainer {
   margin-top: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   font-family: 'Chakra Petch', sans-serif;
 }
 
@@ -322,7 +333,6 @@
 .txtContainer p {
   margin-top: revert; 
 }
-
 
 .search-container {
   margin-top: 20px;
@@ -350,52 +360,56 @@
   right: 25px;
   top: 50%;
   cursor: pointer;
-  color: red;
 }
 
 .edit-icon:hover {
-  color: blue;
+  color: #a11dff;
 }
 
-
-
-
-
-
 .dao-card {
-  display: flex; 
+  display: flex;
   justify-content: center;
-  align-items: center; 
-  width: 52%;
+  align-items: center;
+  width: 52%; /* Set the width to 52% */
   height: 6rem;
   margin: 0 auto;
-  margin-top: 20px; 
+  margin-top: 20px;
   padding: 15px;
   border-radius: 10px;
-  border: 1px solid #aa80ff;
-  background-color: black; 
+  border: 2px solid gray;
+  background-color: black;
+}
+
+.card-link {
+  display: flex;
+  width: 100%; /* Ensure the link takes the full width of the card */
+  text-decoration: none;
+  color: inherit; /* Inherit text color from parent */
 }
 
 .dao-logo {
   width: 80px;
   height: 80px;
-  border-radius: 50%; 
-  object-fit: cover; 
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .dao-info {
-  flex: 1; 
+  flex: 1;
   margin-left: 20px;
+  /* margin-top: 15px; */
+  align-content: center;
 }
 
 .dao-info h3 {
   margin-bottom: 5px;
   font-size: 18px;
+  color: white; /* Set the color */
 }
 
 .dao-info p {
   font-size: 14px;
-  color: #666;
+  color: rgb(207, 207, 209); /* Set the color */
 }
 
 .member-count {
@@ -405,6 +419,7 @@
 .member-count span {
   font-size: 10px;
   margin-top: 12px;
+  color: #a11dff;
 }
 
 .member-count p {
@@ -414,5 +429,6 @@
   padding-left: 4px;
 }
 
-
-
+html {
+  scroll-behavior: smooth;
+}

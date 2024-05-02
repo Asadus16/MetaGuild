@@ -62,7 +62,7 @@ export default function Navbar() {
     
     <main className="main">
       <a href="#">
-        <img src={logo} className="logo" />
+        <img src={logo} className="meta_logo" />
       </a>
       <div className="connect">
       <ConnectWallet />
