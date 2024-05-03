@@ -4,29 +4,29 @@ import { daoData } from '../Components/mockData'; // Import mock data
 import DaoCard from '../Components/DaoCard';
 
 const SearchInput = () => {
-  const [isEditing, setIsEditing] = useState(true);
-  const [searchText, setsearchText] = useState('');
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
+  const [searchText, setSearchText] = useState('');
 
   const handleChange = (event) => {
-    setsearchText(event.target.value);
+    setSearchText(event.target.value);
+  };
+
+  const clearSearchText = () => {
+    setSearchText('');
   };
 
   return (
     <div className="search-container">
-      {isEditing ? (
-        <input type="text" value={searchText} onChange={handleChange} placeholder="Search DAOs..." />
-      ) : (
-        <div onClick={handleEditClick} style={{ cursor: 'text' }}>
-          {searchText || 'Search DAOs...'} {/* Display placeholder if empty */}
-        </div>
+      <input 
+        type="text" 
+        value={searchText} 
+        onChange={handleChange} 
+        placeholder="Search DAOs..."
+      />
+      {searchText && (
+         <span className="edit-icon" onClick={clearSearchText}>
+          x
+        </span>
       )}
-      <span className="edit-icon" onClick={handleEditClick}>
-        x
-      </span>
     </div>
   );
 };
