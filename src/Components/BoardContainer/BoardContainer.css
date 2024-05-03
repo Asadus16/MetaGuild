@@ -10,3 +10,11 @@
 .boards_newboard {
   width: 330px;
 }
+
+.drop-above {
+  padding-bottom: 10px; /* Extra padding for drop above */
+}
+
+.drop-below {
+  padding-top: 10px; /* Extra padding for drop below */
+}
