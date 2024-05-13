@@ -18,7 +18,7 @@
   font-weight: 600;
   gap: 10px;
   align-items: center;
-  color: #333333;
+  color: white;
 }
 
 .cardinfo_box_body {
@@ -30,7 +30,7 @@
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.1rem;
-  border: 3px solid #333333;
+  border: 3px solid white;
   padding: 10px 21px;
   border-radius: 8px;
 }

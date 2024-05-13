@@ -50,18 +50,7 @@ button {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-h1 {
-  color: wheat;
-}
 
-/* .overview_page {
-  display: flex;
- 
-} */
-/* .components_area {
-  flex: 1;
-  overflow-x: auto;
-} */
 .footer {
   color: #e1b7fe;
   margin-top: 94px;

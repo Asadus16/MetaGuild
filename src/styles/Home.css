@@ -55,7 +55,7 @@
 }
 .create_button:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .explore_button {
   width: 230px;
@@ -70,7 +70,7 @@
 }
 .explore_button:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .description {
   margin-top: 250px;
@@ -195,7 +195,7 @@
 }
 .Animation1Btn:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .Animation1Btn1 {
   display: flex;
@@ -297,7 +297,7 @@
 }
 .Animation3Btn:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .Animation3Btn1 {
   display: flex;
@@ -429,4 +429,43 @@
 
 html {
   scroll-behavior: smooth;
+}
+.nav_profile {
+  display: flex;
+  align-items: center;
+}
+/* 
+.user_icon {
+  margin: 20px;
+  border: solid 2px white;
+  width: 100px;
+  height: 45px;
+  border-radius: 50px;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+}
+.icon_click {
+  width: 100px;
+  height: 50px;
+} */
+/* .icon {
+  border: solid 2px red;
+  width: 10px;
+} */
+.user_icon {
+  margin: 20px;
+  border: solid 2px white;
+  width: 50px; /* Increase width to expand clickable area */
+  height: 50px; /* Increase height to expand clickable area */
+  border-radius: 50%; /* Ensure the container is circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.user_icon svg {
+  width: 50%; /* Adjust size of the SVG icon */
+  height: 50%; /* Adjust size of the SVG icon */
 }

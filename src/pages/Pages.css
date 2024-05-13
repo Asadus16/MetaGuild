@@ -1,17 +1,56 @@
-.Overview_page {
+.Taskboard_page {
   display: flex;
-  margin-top: 100px;
+  margin-top: 130px;
 }
-.page_content {
+.Settings_Page {
+  display: flex;
+  margin-top: 130px;
+}
+.permissions_page {
+  display: flex;
+  margin-top: 130px;
+}
+.settingstab_page {
+  display: flex;
+}
+.settings_sidebar {
+  /* position: fixed; */
+  width: 200px;
+  border-right: 1px solid white;
+}
+.permissions_sidebar {
+  width: 200px;
+  border-right: 1px solid white;
+}
+.Taskpage_content {
   flex: 1;
   margin-top: 40px;
   margin-left: 60px;
   overflow-x: auto;
 }
+.taskBoard_sidebar {
+  /* position: fixed; */
+  width: 200px;
+  border-right: 1px solid white;
+}
+
+.Overview_page {
+  display: flex;
+  margin-top: 130px;
+}
+.overview_content {
+  flex: 1;
+  margin-top: 40px;
+  margin-left: 60px;
+  overflow-x: auto;
+  /* background: rgb(55, 55, 55); */
+}
 .overview_sidebar {
   /* position: fixed; */
   width: 200px;
+  border-right: 1px solid white;
 }
+
 .topTxt h1 {
   color: #a11dff;
 }
@@ -39,7 +78,7 @@ label {
 }
 .field2 {
   padding: 10px;
-  width: 30%;
+  width: 29%;
 }
 .submitBtn {
   width: 60px;
@@ -48,4 +87,308 @@ label {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+.titleBar {
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid white; */
+}
+.set_titlebar {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.overview_icon {
+  /* margin: 30px; */
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.svg_img {
+  width: 100px;
+  height: 100px;
+}
+.upload_icon {
+  /* width: 70px; */
+  text-align: center;
+}
+.profile_form {
+  /* flex: 1; */
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  /* text-align: center; */
+}
+.dao_field {
+  width: 600px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #a11dff;
+  text-align: center;
+}
+.user_field {
+  width: 600px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #a11dff;
+  text-align: center;
+}
+/* 
+
+.create_button:hover {
+  letter-spacing: 0.1rem;
+  border: solid 2px purple;
+} */
+
+.profile_submit {
+  width: 150px;
+  height: 40px;
+  color: white;
+  background: none;
+  border-radius: 15px;
+  transition: 0.5s;
+  font-size: larger;
+  cursor: pointer;
+  border-bottom: 1px thin #a11dff;
+}
+.profile_submit:hover {
+  letter-spacing: 0.2rem;
+  border-bottom: 2px solid #a11dff;
+}
+.image_div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  text-align: center;
+  /* align-items: center; */
+}
+/* .img_center {
+  text-align: center;
+} */
+.overview_title {
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.overview_title h1 {
+  color: white;
+  border-bottom: #a11dff 3px solid;
+}
+.project_desc {
+  margin-top: 150px;
+}
+.settings_tabs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.settings_content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 60px;
+  overflow-x: auto;
+}
+.permissions_content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 60px;
+  overflow-x: auto;
+}
+.Dao_profile {
+  flex: 1;
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+}
+
+.setting_btn1,
+.setting_btn2,
+.setting_btn3 {
+  font-size: 20px;
+  background: transparent;
+  color: white;
+  width: 170px;
+  padding: 13px;
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 2px solid #a11dff;
+}
+
+.setting_btn1:hover,
+.setting_btn2:hover,
+.setting_btn3:hover {
+  /* background-color: #a11dff; */
+  letter-spacing: 0.1rem;
+}
+.settings_panel {
+  flex: 1;
+}
+.dao_fields {
+  margin: 600px;
+}
+.ant-avatar-group {
+  margin-right: 50px;
+}
+.perm_cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin-top: 70px;
+  /* gap: 50px; */
+}
+.perm_card1 {
+  width: 800px;
+  height: 190px;
+  background: #444444;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #a11dff;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.perm_card2 {
+  width: 800px;
+  height: 190px;
+  background: #444444;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #a11dff;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.perm_card1margin {
+  margin-left: 100px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.perm_card2margin {
+  margin-left: 100px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.footer_links {
+  /* display: flex;
+  justify-content: center;
+  gap: 160px;
+  margin-top: 90px; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top: 100px;
+  /* Set background color of the footer */
+  color: white; /* Set text color */
+  padding: 20px; /* Add padding for better spacing */
+  text-align: center;
+}
+.linkedIcon {
+  margin-right: 150px;
+}
+.perm_card11 {
+  display: flex;
+}
+.perm_card22 {
+  display: flex;
+}
+.perm_card22 {
+  display: flex;
+}
+.perm_card1111 {
+  flex: 1;
+}
+.perm_card11111 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.perm_card22222 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.perm_card111111 {
+  flex: 1;
+}
+.perm_card111 {
+  width: 300px;
+}
+.chooseMember_width {
+  width: 300px;
+}
+.update1 {
+  width: 150px;
+  height: 40px;
+  color: white;
+  background: black;
+  border-radius: 15px;
+  transition: 0.5s;
+  font-size: larger;
+  cursor: pointer;
+  border-bottom: 1px thin #a11dff;
+}
+
+.update1:hover {
+  letter-spacing: 0.2rem;
+  border-bottom: 2px solid #a11dff;
+}
+.update2 {
+  width: 150px;
+  height: 40px;
+  color: white;
+  background: black;
+  border-radius: 15px;
+  transition: 0.5s;
+  font-size: larger;
+  cursor: pointer;
+  border-bottom: 1px thin #a11dff;
+}
+
+.update2:hover {
+  letter-spacing: 0.2rem;
+  border-bottom: 2px solid #a11dff;
+}
+.delete_org {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 80%;
+  align-items: center;
+  gap: 30px;
+  /* width: 20%; */
+}
+.dao_kill {
+  width: 210px;
+  height: 40px;
+  color: white;
+  background: red;
+  border-radius: 15px;
+  transition: 0.5s;
+  font-size: larger;
+  cursor: pointer;
+  border-bottom: 1px thin #a11dff;
+}
+.dao_kill:hover {
+  letter-spacing: 0.1rem;
+  border-bottom: 2px solid #a11dff;
 }

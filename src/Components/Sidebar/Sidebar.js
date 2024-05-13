@@ -15,20 +15,19 @@ export default function Sidebar() {
     <>
       <div className="overview_page">
         <div className="tabs">
+          <Link to="/home">
+            <button className="button4">Home</button>
+          </Link>
           <Link to="/explore/overview">
             <button className="button1">Overview</button>
           </Link>
 
-          <Link to="/#">
-            <button className="button2">Leaderboard</button>
-          </Link>
-
-          <Link to="/explore/overview">
+          <Link to="/explore/taskbar">
             <button className="button3">Tasks Board</button>
           </Link>
 
-          <Link to="#">
-            <button className="button4">Spaces</button>
+          <Link to="/explore/settings/profile">
+            <button className="button2">Settings</button>
           </Link>
 
           <footer className="footer">
