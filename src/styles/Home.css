@@ -30,6 +30,7 @@
 .connect {
   width: 180px;
 }
+
 .animation {
   width: 650px;
   margin-bottom: 50px;
@@ -324,33 +325,34 @@
 }
 
 .topTxt {
-  margin: 0;
   display: flex;
+  margin-left: 10px; 
   align-items: center;
 }
 
-.topTxt h1 {
-  margin-left: 10px;
-  margin: 0;
-}
-
-.topTxt p {
-  margin: 0;
+.txtContainer p {
+  margin-top: revert; 
 }
 
 .search-container {
+  margin-top: 20px;
   position: relative;
   text-align: center;
-  margin: 10px;
-  border-style: none;
-  border: none;
-  margin: 30px;
+  margin-left: 8px;
 }
 
 .search-container input {
   width: 52%;
   padding: 10px;
-  border-radius: 10px;
+}
+
+.search-container input:hover {
+  border-color:  #aa80ff; 
+}
+
+.search-container input:focus-visible {
+  border-color:  #aa80ff;
+  outline: #aa80ff;
 }
 
 .edit-icon {

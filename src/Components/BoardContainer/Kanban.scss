@@ -1,0 +1,251 @@
+$color-white: #ffffff;
+$color-white-2: #e0e0e0;
+$color-black: #000000;
+$color-black-2: #262626;
+$color-gray: rgb(202, 199, 199);
+$color-blue: #00b7eb;
+
+// ul {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .App {
+//   background-color: #282c34;
+//   width: 100%;
+//   min-height: 100vh;
+//   display: flex;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+// }
+
+// header {
+//   text-align: center;
+//   color: $color-white;
+//   font-size: 2rem;
+//   text-transform: uppercase;
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   right: 0;
+//   padding: 1rem 0;
+//   z-index: 100;
+//   background-color: rgba(#282c34, 0.9);
+// }
+
+// main {
+//   width: 100%;
+//   height: 100%;
+//   padding: 2rem;
+//   padding-top: 6rem;
+// }
+
+// ======= Kanban Board page =====
+.kanban-board {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 300px);
+  align-items: start;
+
+  @media only screen and (max-width: 985px) {
+    justify-content: center;
+    grid-column-gap: 5%;
+  }
+
+  .add-list {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: rgba($color-gray, 0.1);
+  }
+
+  .dnd-group {
+    background-color: #49505e;
+    background-color: $color-white-2;
+    border-radius: 3px;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    .lists-title {
+      text-align: left;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 3px;
+
+      h5 {
+        color: $color-black;
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 0;
+        text-transform: capitalize;
+        width: 90%;
+        border-radius: 3px;
+        padding: 0.3rem 0.5rem;
+
+        // &:hover {
+        //   background-color: $color-gray;
+        // }
+      }
+    }
+
+    // Dnd item card
+    .dnd-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 2.5rem;
+      background-color: $color-white;
+      border-radius: 3px;
+      color: $color-black;
+      text-align: left;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+      &.current {
+        background-color: $color-white-2;
+        box-shadow: none;
+
+        p {
+          display: none;
+        }
+        .icons {
+          display: none;
+        }
+      }
+
+      &:not(last-of-type) {
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin: 0;
+        font-size: 1rem;
+        word-break: break-all;
+        width: 85%;
+        padding: 0.3rem 0.5rem;
+      }
+
+      .icons {
+        display: flex;
+
+        svg {
+          cursor: pointer;
+          color: $color-black-2;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .list-footer {
+      .add-card {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+        color: $color-black;
+        cursor: pointer;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: $color-gray;
+        }
+      }
+    }
+  }
+}
+
+// ====== more option dropdown ========
+.more-option {
+  position: relative;
+
+  svg {
+    color: $color-black;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  ul {
+    z-index: 50;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: $color-white;
+    color: $color-black;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 3px;
+
+    li {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(250, 52, 52);
+
+        svg {
+          color: rgb(250, 52, 52) !important;
+        }
+      }
+
+      svg {
+        margin-left: 1rem;
+        font-size: 1rem;
+        padding-top: 0.1rem;
+      }
+    }
+  }
+}
+
+//===== All form design
+.form {
+  width: 100%;
+  margin-bottom: 0.5rem;
+
+  textarea {
+    resize: none;
+    width: 93%;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    border: 2px solid $color-blue;
+    padding: 0.5rem 0.5rem;
+  }
+
+  input {
+    width: 93%;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    border: 2px solid $color-blue;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      background-color: $color-blue;
+      color: $color-white;
+      padding: 0.5rem 0.8rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    .cancel {
+      cursor: pointer;
+      color: $color-black;
+    }
+  }
+}

@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
-import Card from '../Card/Card';
-import Editable from '../Editable/Editable';
-import './Board.css';
+import React, { useState } from "react";
+import Card from "../Card/Card";
+import Editable from "../Editable/Editable";
+import "./Board.css";
 
-export default function Board({ board, removeBoard, addCard, removeCard, dragEntered, dragEnded, updateCard }) {
+export default function Board({
+  board,
+  removeBoard,
+  addCard,
+  removeCard,
+  dragEntered,
+  dragOver,
+  dragEnded,
+  updateCard,
+  isDropTarget,
+  onDropCard,
+}) {
   const { id, title, background, cards } = board;
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -31,7 +42,18 @@ export default function Board({ board, removeBoard, addCard, removeCard, dragEnt
       </div>
       <div className="board_cards">
         {cards?.map((item) => (
-          <Card key={item.id} card={item} removeCard={removeCard} boardId={id} dragEntered={dragEntered} dragEnded={dragEnded} updateCard={updateCard} />
+          <Card
+            key={item.id}
+            card={item}
+            removeCard={removeCard}
+            boardId={id}
+            dragEntered={dragEntered}
+            dragOver={dragOver}
+            dragEnded={dragEnded}
+            updateCard={updateCard}
+            isDropTarget={isDropTarget}
+            onDropCard={onDropCard}
+          />
         ))}
         <Editable
           displayClass="boards_cards_add"

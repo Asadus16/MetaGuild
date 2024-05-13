@@ -1,18 +1,42 @@
-import React from 'react';
-import { CheckSquare, Clock, X } from 'react-feather';
-import Labels from '../Labels/Labels';
-import './Card.css';
-import Cardinfo from './Cardinfo/Cardinfo';
+import React from "react";
+import { CheckSquare, Clock, X } from "react-feather";
+import Labels from "../Labels/Labels";
+import "./Card.css";
+import Cardinfo from "./Cardinfo/Cardinfo";
 
-export default function Card({ card, removeCard, dragEnded, dragEntered, boardId, updateCard }) {
+export default function Card({
+  card,
+  removeCard,
+  dragEnded,
+  dragEntered,
+  dragOver,
+  boardId,
+  updateCard,
+  isDropTarget,
+  onDropCard,
+}) {
   const { id, title, labels, date } = card;
   const [showModal, setShowModal] = React.useState(false);
 
   return (
     <>
-      {showModal && <Cardinfo updateCard={updateCard} boardId={boardId} card={card} onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <Cardinfo
+          updateCard={updateCard}
+          boardId={boardId}
+          card={card}
+          onClose={() => setShowModal(false)}
+        />
+      )}
 
-      <div className="card" draggable onDragEnd={() => dragEnded(id, boardId)} onDragEnter={() => dragEntered(id, boardId)} onClick={() => setShowModal(true)}>
+      <div
+        className={`card ${isDropTarget ? "drop-above" : "drop-below"}`}
+        draggable
+        onDragEnd={() => dragEnded(id, boardId)}
+        onDragEnter={() => dragEntered(id, boardId)}
+        onDragOver={dragOver}
+        onClick={() => setShowModal(true)}
+      >
         <div className="card_top">
           <div className="card_labels">
             {labels?.map((item, index) => (
@@ -38,7 +62,8 @@ export default function Card({ card, removeCard, dragEnded, dragEntered, boardId
           {card?.tasks?.length > 0 && (
             <p>
               <CheckSquare />
-              {card?.tasks?.filter((item) => item.completed).length}/{card?.tasks?.length}
+              {card?.tasks?.filter((item) => item.completed).length}/
+              {card?.tasks?.length}
             </p>
           )}
         </div>

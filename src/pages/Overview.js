@@ -1,12 +1,14 @@
 import React from 'react';
-import NavBar from '../Components/Navbar';
-import './Pages.css';
-import Sidebar from '../Components/Sidebar/Sidebar';
 import Logo from '../images/uniswap.png';
 import { AntDesignOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Tooltip } from 'antd';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PublicIcon from '@mui/icons-material/Public';
+import NavBar from '../Components/Navbar';
+import './Pages.css';
+import Sidebar from '../Components/Sidebar/Sidebar';
+import Boards from '../Components/BoardContainer/BoardContainer';
+import KanbanBoard from '../Components/BoardContainer/KanbanBoard';
 
 export default function Overview() {
   return (
@@ -82,6 +84,9 @@ export default function Overview() {
               </a>
             </>
           </div>
+          {/* <div className="page_content">
+          <KanbanBoard />
+        </div> */}
         </div>
       </div>
     </>
