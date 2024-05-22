@@ -14,17 +14,20 @@ export default function Boards() {
 
   // Card Add Function
   const addCard = (title, bId) => {
+    const index = boards.findIndex((item) => item.id === bId);
+    if (index < 0) return;
+
+    const lastCardId = boards[index].cards.length > 0 ? boards[index].cards[boards[index].cards.length - 1].id : 0;
+    const newCardId = lastCardId + 1;
+
     const card = {
-      id: Math.random() * 5,
+      id: newCardId,
       title: title,
       labels: [],
       tasks: [],
       date: '',
       desc: '',
     };
-
-    const index = boards.findIndex((item) => item.id === bId);
-    if (index < 0) return;
 
     const tempBoards = [...boards];
     tempBoards[index].cards.push(card);
@@ -46,35 +49,33 @@ export default function Boards() {
 
   // Card Drag Handler
   const handleDragEnter = (cId, bId) => {
-    setTarget({
-      cId,
-      bId,
-    });
+    console.log('Drag Enter:', cId, bId);
+    setTarget((prevTarget) => ({
+      ...prevTarget,
+      bId: bId,
+    }));
   };
-
   const handleDragEnd = (cId, bId) => {
     const sourceBoardIndex = boards.findIndex((item) => item.id === bId);
-    const targetBoardIndex = boards.findIndex((item) => item.id === target.bId);
+
+    const targetBoardIndex = boards.findIndex((item) => {
+      return item.id === target.bId;
+    });
+    console.log(sourceBoardIndex, targetBoardIndex);
 
     if (sourceBoardIndex < 0 || targetBoardIndex < 0) return;
 
     const tempBoards = [...boards];
+
     const cardIndex = tempBoards[sourceBoardIndex].cards.findIndex((item) => item.id === cId);
+    console.log(cardIndex);
 
-    console.log(sourceBoardIndex, targetBoardIndex, cardIndex, tempBoards);
-
-    if (cardIndex > 0) return;
+    if (cardIndex < 0) return;
 
     const tempCard = tempBoards[sourceBoardIndex].cards[cardIndex];
 
     tempBoards[sourceBoardIndex].cards.splice(cardIndex, 1);
-
-    if (targetBoardIndex === -1) {
-      const newBoard = { id: target.bId, title: '', cards: [tempCard] };
-      tempBoards.push(newBoard);
-    } else {
-      tempBoards[targetBoardIndex].cards.push(tempCard);
-    }
+    tempBoards[targetBoardIndex].cards.unshift(tempCard);
 
     setBoards(tempBoards);
   };

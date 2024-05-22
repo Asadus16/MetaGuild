@@ -52,7 +52,7 @@
 }
 .create_button:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .explore_button {
   width: 230px;
@@ -67,7 +67,7 @@
 }
 .explore_button:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .description {
   margin-top: 250px;
@@ -193,7 +193,7 @@
 }
 .Animation1Btn:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .Animation1Btn1 {
   display: flex;
@@ -302,7 +302,7 @@
 }
 .Animation3Btn:hover {
   letter-spacing: 0.1rem;
-  border: solid 2px purple;
+  border-bottom: solid 3px #a11dff;
 }
 .Animation3Btn1 {
   display: flex;

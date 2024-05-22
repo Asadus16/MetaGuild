@@ -46,7 +46,7 @@ export default function Home() {
         <div className="cards">
           <div className="card1">
             <div className="walletLogo">
-              <FontAwesomeIcon icon={faWallet} size="3x" color="purple" />
+              <FontAwesomeIcon icon={faWallet} size="3x" color="#a11dff" />
             </div>
             <div className="TextCard1">
               <h2>Pay with your wallet</h2>
@@ -55,7 +55,7 @@ export default function Home() {
           </div>
           <div className="card2">
             <div className="ShieldLogo">
-              <FontAwesomeIcon icon={faShieldHalved} size="3x" color="purple" />
+              <FontAwesomeIcon icon={faShieldHalved} size="3x" color="#a11dff" />
             </div>
             <div className="TextCard2">
               <h2>Data Integrity</h2>
@@ -64,7 +64,7 @@ export default function Home() {
           </div>
           <div className="card3">
             <div className="GhostLogo">
-              <FontAwesomeIcon icon={faGhost} size="3x" color="purple" />
+              <FontAwesomeIcon icon={faGhost} size="3x" color="#a11dff" />
             </div>
             <div className="TextCard3">
               <h2>Stay Annonymous</h2>

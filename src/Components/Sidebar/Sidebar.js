@@ -21,9 +21,13 @@ export default function Sidebar() {
         </div>
         {/* Sidebar Content */}
         <div className="tabs">
+          <Link to="/home">
+            <button className="button4">Home</button>
+          </Link>
           <Link to="/explore/overview">
             <button className="button1">Overview</button>
           </Link>
+<<<<<<< HEAD
           <Link to="/#">
             <button className="button2">Leaderboard</button>
           </Link>
@@ -32,6 +36,15 @@ export default function Sidebar() {
           </Link>
           <Link to="#">
             <button className="button4">Spaces</button>
+=======
+
+          <Link to="/explore/taskbar">
+            <button className="button3">Tasks Board</button>
+          </Link>
+
+          <Link to="/explore/settings/profile">
+            <button className="button2">Settings</button>
+>>>>>>> 7f9f54bb9b7612555eae2875842778e2355e04b7
           </Link>
           {/* Footer */}
           <footer className="footer">
