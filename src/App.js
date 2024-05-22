@@ -5,11 +5,13 @@ import Explore from './pages/ExploreDAO';
 import NoPage from './pages/NoPage';
 import './App.css';
 import Overview from './pages/Overview';
+import ScrollToTop from './Components/ScrollToTop';
 
 export default function App() {
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />

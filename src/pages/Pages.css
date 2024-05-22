@@ -8,10 +8,9 @@
   margin-left: 60px;
   overflow-x: auto;
 }
-.overview_sidebar {
-  /* position: fixed; */
-  width: 200px;
-}
+/* .overview_sidebar {
+  
+} */
 .topTxt h1 {
   color: #a11dff;
 }

@@ -32,7 +32,7 @@ export default function Animation2() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="animation2Container">
         <Lottie animationData={Animation} className="animation2" />
       </div>
     </div>
