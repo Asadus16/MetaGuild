@@ -29,6 +29,8 @@
     "https-browserify": "latest",
     "lottie-react": "^2.4.0",
     "react": "^18.2",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2",
     "react-feather": "^2.0.10",
     "react-icons": "^5.2.0",

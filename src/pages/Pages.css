@@ -298,7 +298,7 @@ label {
   left: 0;
   bottom: 0;
   width: 100%;
-  margin-top: 100px;
+  position: fixed;
   /* Set background color of the footer */
   color: white; /* Set text color */
   padding: 20px; /* Add padding for better spacing */

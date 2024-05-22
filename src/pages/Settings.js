@@ -28,6 +28,8 @@ export default function DaoSettings() {
     Website: '',
   });
 
+
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
