@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../Sidebar/Sidebar.css';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../Sidebar/Sidebar.css";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -14,7 +12,11 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className={`overview_page ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+      <div
+        className={`overview_page ${
+          isSidebarOpen ? "sidebar-open" : "sidebar-closed"
+        }`}
+      >
         {/* Hamburger Menu */}
         <div className="hamburger-menu" onClick={toggleSidebar}>
           <MenuRoundedIcon />
@@ -27,7 +29,6 @@ export default function Sidebar() {
           <Link to="/explore/overview">
             <button className="button1">Overview</button>
           </Link>
-<<<<<<< HEAD
           <Link to="/#">
             <button className="button2">Leaderboard</button>
           </Link>
@@ -36,7 +37,7 @@ export default function Sidebar() {
           </Link>
           <Link to="#">
             <button className="button4">Spaces</button>
-=======
+          </Link>
 
           <Link to="/explore/taskbar">
             <button className="button3">Tasks Board</button>
@@ -44,7 +45,6 @@ export default function Sidebar() {
 
           <Link to="/explore/settings/profile">
             <button className="button2">Settings</button>
->>>>>>> 7f9f54bb9b7612555eae2875842778e2355e04b7
           </Link>
           {/* Footer */}
           <footer className="footer">
