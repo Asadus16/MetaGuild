@@ -29,15 +29,6 @@ export default function Sidebar() {
           <Link to="/explore/overview">
             <button className="button1">Overview</button>
           </Link>
-          <Link to="/#">
-            <button className="button2">Leaderboard</button>
-          </Link>
-          <Link to="/explore/overview">
-            <button className="button3">Tasks Board</button>
-          </Link>
-          <Link to="#">
-            <button className="button4">Spaces</button>
-          </Link>
 
           <Link to="/explore/taskbar">
             <button className="button3">Tasks Board</button>
