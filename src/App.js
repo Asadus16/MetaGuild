@@ -10,7 +10,7 @@ import DaoSettings from './pages/Settings';
 import SettingPerm from './pages/SettingsPermissions';
 import Manage from './pages/SettingsManage';
 import UserProfile from './pages/UserProfile';
-
+import ScrollToTop from './Components/ScrollToTop';
 export default function App() {
   return (
     <>

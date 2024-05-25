@@ -3,16 +3,50 @@ import React, { useState } from 'react';
 import Animation from '../json_animations/CreateAnimation.json';
 import Lottie from 'lottie-react';
 
-export default function Explore() {
+export default function Create() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('First Name:', firstName);
-    console.log('Last Name:', lastName);
-    // You can add code here to store the information wherever you need
+
+    const data = {
+      daoName,
+      daoDescription,
+    };
+
+
+    const authToken=JSON.parse(localStorage.getItem('authToken'))
+    try {
+      const response = await fetch('http://localhost:8000/dao', {
+        method: 'POST',
+      
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+        
+      });
+
+      if (response.ok) {
+        console.log('DAO created successfully!');
+        const result = await response.json();
+        console.log(result)
+        // Handle success, e.g., show a success message to the user
+      } else {
+        console.error('Failed to update user profile');
+        // Handle error, e.g., show an error message to the user
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error, e.g., show an error message to the user
+    }
   };
+
+
+
+ 
+
   const handleClick = () => {
     console.log('Button clicked');
     // You can add additional functionality here
@@ -59,3 +93,39 @@ export default function Explore() {
     </>
   );
 }
+
+
+
+// export default function Create() {  // Updated function name to match your route
+//   const [daoName, setDaoName] = useState('');
+//   const [message, setMessage] = useState('');
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     console.log('DAO Name:', daoName);
+
+//     const data = {
+//       name: daoName,
+//     };
+
+//     try {
+//       const response = await fetch('http://localhost:8000/daos', {  // Adjust the URL to your backend endpoint
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data),
+//       });
+
+//       if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//       }
+
+//       const result = await response.json();
+//       setMessage('DAO created successfully!');
+//       console.log('Success:', result);
+//     } catch (error) {
+//       setMessage(`Error: ${error.message}`);
+//       console.error('Error:', error);
+//     }
+//   };
