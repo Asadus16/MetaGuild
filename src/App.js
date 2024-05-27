@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/create" element={<Create />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/explore/overview" element={<Overview />} />
+          <Route path="/explore/overview/:id" element={<Overview />} />
           <Route path="/explore/settings/profile" element={<DaoSettings />} />
           <Route
             path="/explore/settings/permissions"

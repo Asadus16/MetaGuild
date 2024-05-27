@@ -26,9 +26,9 @@ export default function Sidebar() {
           <Link to="/home">
             <button className="button4">Home</button>
           </Link>
-          <Link to="/explore/overview">
+          {/* <Link to="/explore/overview">
             <button className="button1">Overview</button>
-          </Link>
+          </Link> */}
 
           <Link to="/explore/taskbar">
             <button className="button3">Tasks Board</button>

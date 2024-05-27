@@ -1,11 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const DaoCard = ({ logo, name, description, members }) => {
+const DaoCard = ({ id, logo, name, description, members }) => {
   return (
     <div className="dao-card">
-      <Link to={'/explore/overview'} className="card-link">
-        <img src={logo} alt={' Logo'} className="dao-logo" />
+      <Link to={"/explore/overview/" + id} className="card-link">
+        <img
+          src={logo || "/images/dao.svg"}
+          alt="logo"
+          className="dao-logo"
+          style={{ background: "#fff" }}
+        />
         <div className="dao-info">
           <h3>{name}</h3>
           <p>{description}</p>
