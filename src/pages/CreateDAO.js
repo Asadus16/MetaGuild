@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Animation from '../json_animations/CreateAnimation.json';
 import Lottie from 'lottie-react';
 
-export default function Explore() {
+export default function Create() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
