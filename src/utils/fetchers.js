@@ -67,3 +67,78 @@ export const getDao = async (daoId) => {
     console.error("Error:", error);
   }
 };
+
+export const createDao = async (authToken, daoData) => {
+  try {
+    console.log(process.env.API_URL);
+    const response = await fetch(`http://localhost:8000/daos`, {
+      // const response = await fetch(`${process.env.API_URL}/daos`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(daoData),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      const myResult = { ...result };
+      return myResult;
+    } else {
+      console.error("Failed to create DAO");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const getDaoMembers = async (daoId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8000/daos/${daoId}/members`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const result = await response.json();
+      const myResult = { ...result };
+      return myResult;
+    } else {
+      console.error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const getDaoTasks = async (daoId) => {
+  try {
+    const response = await fetch(`http://localhost:8000/daos/${daoId}/tasks`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      const myResult = { ...result };
+      return myResult;
+    } else {
+      console.error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};

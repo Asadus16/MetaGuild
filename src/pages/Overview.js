@@ -9,18 +9,40 @@ import "./Pages.css";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import Boards from "../Components/BoardContainer/BoardContainer";
 import KanbanBoard from "../Components/BoardContainer/KanbanBoard";
-import { getDao } from "../utils/fetchers";
+import { getDao, getDaoMembers, getDaoTasks } from "../utils/fetchers";
 import { useParams } from "react-router-dom";
+import { capitalizeString } from "../utils/common";
 
 export default function Overview() {
   const [daoData, setDaoData] = useState({});
+  const [daoMembers, setDaoMembers] = useState({});
+  const [daoTasks, setDaoTasks] = useState({});
   const { id } = useParams();
 
   async function fetchDao(id) {
     try {
       const dao = await getDao(id);
-      console.log("daooo : ", dao);
       setDaoData(dao);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchDaoMembers(daoId) {
+    try {
+      const daoMemberList = await getDaoMembers(daoId);
+      setDaoMembers(daoMemberList);
+      // setDaoData(dao);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchDaoTasks(daoId) {
+    try {
+      const daoTaskList = await getDaoTasks(daoId);
+      setDaoMembers(daoTaskList);
+      // setDaoData(dao);
     } catch (error) {
       console.log(error);
     }
@@ -28,6 +50,8 @@ export default function Overview() {
 
   useEffect(() => {
     fetchDao(id);
+    fetchDaoMembers(id);
+    fetchDaoTasks(id);
   }, []);
 
   return (
@@ -60,14 +84,49 @@ export default function Overview() {
                       backgroundColor: "#fde3cf",
                     }}
                   >
-                    <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
-                    <Avatar
-                      style={{
-                        backgroundColor: "#f56a00",
-                      }}
-                    >
-                      K
-                    </Avatar>
+                    {daoMembers &&
+                      Object.keys(daoMembers)?.map((member) => {
+                        console.log(daoMembers[member].User.name);
+                        return (
+                          <Tooltip
+                            title={capitalizeString(
+                              daoMembers[member].User.name
+                            )}
+                            placement="top"
+                            key={daoMembers[member].id}
+                          >
+                            {daoMembers[member].User.name ? (
+                              <Avatar
+                                style={
+                                  daoMembers[member].User.name
+                                    ? { backgroundColor: "#f56a00" }
+                                    : { backgroundColor: "#000" }
+                                }
+                                src={
+                                  daoMembers[member].User.name ||
+                                  "https://api.dicebear.com/7.x/miniavs/svg?seed=2"
+                                }
+                              >
+                                {daoMembers[member].User.name
+                                  .charAt(0)
+                                  .toUpperCase()}
+                              </Avatar>
+                            ) : (
+                              <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
+                            )}
+                          </Tooltip>
+                        );
+                      })}
+                    {/* <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
+                    <Tooltip title="Ant User" placement="top">
+                      <Avatar
+                        style={{
+                          backgroundColor: "#f56a00",
+                        }}
+                      >
+                        K
+                      </Avatar>
+                    </Tooltip>
                     <Tooltip title="Ant User" placement="top">
                       <Avatar
                         style={{
@@ -76,12 +135,14 @@ export default function Overview() {
                         icon={<UserOutlined />}
                       />
                     </Tooltip>
-                    <Avatar
-                      style={{
-                        backgroundColor: "#1677ff",
-                      }}
-                      icon={<AntDesignOutlined />}
-                    />
+                    <Tooltip title="Ant User" placement="top">
+                      <Avatar
+                        style={{
+                          backgroundColor: "#1677ff",
+                        }}
+                        icon={<AntDesignOutlined />}
+                      />
+                    </Tooltip> */}
                   </Avatar.Group>
                 </div>
               </div>

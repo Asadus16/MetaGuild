@@ -83,7 +83,7 @@ export default function Explore() {
 
       <div className="txtContainer">
         <div className="topTxt">
-          <h1>Top DAOs ( {filteredData.length} )</h1>
+          <h1>Top DAOs ( {daoData.length} )</h1>
         </div>
         <p>
           Find hundreds of web3 DAOs, see their roadmap and explore open

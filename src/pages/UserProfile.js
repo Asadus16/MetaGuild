@@ -21,7 +21,7 @@ export default function UserProfile() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/users/${formData.id}`,
+        `${process.env.API_URL}/users/${formData.id}`,
         {
           method: "PUT",
           headers: {
@@ -68,7 +68,6 @@ export default function UserProfile() {
   return (
     <>
       <NavBar />
-
       <div className="Settings_Page">
         <div className="settings_content">
           {alertBar && (
