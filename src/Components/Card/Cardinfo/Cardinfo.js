@@ -1,19 +1,27 @@
 /* eslint-disable no-unused-vars */
-import Button from '@mui/material/Button';
-import React, { useEffect, useState } from 'react';
-import { Calendar, CheckCircle, List, Tag, Trash2, Type } from 'react-feather';
-import Editable from '../../Editable/Editable';
-import Labels from '../../Labels/Labels';
-import Modal from '../../Modal/Modal';
-import './Cardinfo.css';
+import Button from "@mui/material/Button";
+import React, { useEffect, useState } from "react";
+import { Calendar, CheckCircle, List, Tag, Trash2, Type } from "react-feather";
+import Editable from "../../Editable/Editable";
+import Labels from "../../Labels/Labels";
+import Modal from "../../Modal/Modal";
+import "./Cardinfo.css";
 
 export default function Cardinfo({ card, onClose, updateCard, boardId }) {
   const { title, labels, desc, tasks, date } = card;
 
-  const [activeColor, setActiveColor] = useState('');
+  const [activeColor, setActiveColor] = useState("");
   const [values, setValues] = useState({ ...card });
 
-  const colors = ['#a8193d', '#4fcc25', '#1ebffa', '#8da377', '#9975bd', '#cf61a1', '#240959'];
+  const colors = [
+    "#a8193d",
+    "#4fcc25",
+    "#1ebffa",
+    "#8da377",
+    "#9975bd",
+    "#cf61a1",
+    "#240959",
+  ];
 
   // Labels Add Function
   const addLabel = (value, color) => {
@@ -25,7 +33,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
       color: color,
     };
     setValues({ ...values, labels: [...values.labels, label] });
-    setActiveColor('');
+    setActiveColor("");
   };
 
   // Labels Remove Function
@@ -69,9 +77,9 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
 
   // Task Percentage Calculation function
   const calculatePercentage = () => {
-    if (values.tasks?.length === 0) return '0';
+    if (values.tasks?.length === 0) return "0";
     const completed = values.tasks?.filter((item) => item.completed)?.length;
-    return (completed / values.tasks?.length) * 100 + '';
+    return (completed / values.tasks?.length) * 100 + "";
   };
 
   // Card Update
@@ -107,7 +115,9 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
               defaultValue={values.desc}
               placeholder="Enter Description"
               buttonText="Set Description"
-              submitButton={<Button variant="contained">Set Description</Button>}
+              submitButton={
+                <Button variant="contained">Set Description</Button>
+              }
               onSubmit={(value) => setValues({ ...values, desc: value })}
             />
           </div>
@@ -117,7 +127,13 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
             <Calendar /> Date
           </div>
           <div className="cardinfo_box_body">
-            <input type="date" defaultValue={values.date} onChange={(event) => setValues({ ...values, date: event.target.value })} />
+            <input
+              type="date"
+              defaultValue={values.date}
+              onChange={(event) =>
+                setValues({ ...values, date: event.target.value })
+              }
+            />
           </div>
         </div>
         <div className="cardinfo_box">
@@ -125,26 +141,31 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
             <Tag /> Labels
           </div>
           <div className="cardinfo_box_labels">
-            {values.labels.map((item, index) => (
+            {/* {values.labels.map((item, index) => (
               <Labels
                 close
                 key={item.text + index}
                 color={item.color}
                 text={item.text}
                 onClose={() => {
-                  console.log('clicked');
+                  console.log("clicked");
                   removeLabel(item.text);
                 }}
               />
-            ))}
+            ))} */}
           </div>
           <div className="cardinfo_box_colors">
-            {colors.map((item, index) => (
+            {/* {colors.map((item, index) => (
               <li key={index} className={item === activeColor ? 'active' : ''} style={{ backgroundColor: item }} onClick={() => setActiveColor(item)} />
-            ))}
+            ))} */}
           </div>
           <div className="cardinfo_box_body">
-            <Editable text="Add Labels" placeholder="Enter Labels" buttonText="Set Labels" onSubmit={(value) => addLabel(value, activeColor)} />
+            <Editable
+              text="Add Labels"
+              placeholder="Enter Labels"
+              buttonText="Set Labels"
+              onSubmit={(value) => addLabel(value, activeColor)}
+            />
           </div>
         </div>
         <div className="cardinfo_box">
@@ -155,22 +176,32 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
             <div
               className="cardinfo_box_progress"
               style={{
-                width: calculatePercentage() + '%',
-                backgroundColor: calculatePercentage() === '100' ? '#0c9200' : '',
+                width: calculatePercentage() + "%",
+                backgroundColor:
+                  calculatePercentage() === "100" ? "#0c9200" : "",
               }}
             />
           </div>
           <div className="cardinfo_box_tasks">
-            {values.tasks.map((item) => (
+            {/* {values.tasks.map((item) => (
               <div key={item.id} className="cardinfo_task">
-                <input type="checkbox" defaultChecked={item.completed} onChange={(e) => updateTask(item.id, e.target.checked)} />
+                <input
+                  type="checkbox"
+                  defaultChecked={item.completed}
+                  onChange={(e) => updateTask(item.id, e.target.checked)}
+                />
                 <p>{item.text}</p>
                 <Trash2 onClick={() => removeTask(item.id)} />
               </div>
-            ))}
+            ))} */}
           </div>
           <div className="cardinfo_box_body">
-            <Editable text="Add New Task" placeholder="Enter Task" buttonText="Set Task" onSubmit={(value) => addTask(value)} />
+            <Editable
+              text="Add New Task"
+              placeholder="Enter Task"
+              buttonText="Set Task"
+              onSubmit={(value) => addTask(value)}
+            />
           </div>
         </div>
       </div>

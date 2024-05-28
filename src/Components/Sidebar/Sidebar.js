@@ -31,7 +31,7 @@ export default function Sidebar() {
             <button className="button1">Overview</button>
           </Link>
 
-          <Link to="/explore/taskbar">
+          <Link to={`/explore/${id}/tasks`}>
             <button className="button3">Tasks Board</button>
           </Link>
 

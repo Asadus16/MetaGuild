@@ -16,7 +16,6 @@ import { capitalizeString } from "../utils/common";
 export default function Overview() {
   const [daoData, setDaoData] = useState({});
   const [daoMembers, setDaoMembers] = useState({});
-  const [daoTasks, setDaoTasks] = useState({});
   const { id } = useParams();
 
   async function fetchDao(id) {
@@ -38,20 +37,9 @@ export default function Overview() {
     }
   }
 
-  async function fetchDaoTasks(daoId) {
-    try {
-      const daoTaskList = await getDaoTasks(daoId);
-      setDaoMembers(daoTaskList);
-      // setDaoData(dao);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
     fetchDao(id);
     fetchDaoMembers(id);
-    fetchDaoTasks(id);
   }, []);
 
   return (
@@ -86,7 +74,6 @@ export default function Overview() {
                   >
                     {daoMembers &&
                       Object.keys(daoMembers)?.map((member) => {
-                        console.log(daoMembers[member].User.name);
                         return (
                           <Tooltip
                             title={capitalizeString(

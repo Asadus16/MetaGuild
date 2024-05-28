@@ -30,7 +30,8 @@ export default function App() {
           <Route path="/explore/settings/manage" element={<Manage />} />
           <Route path="/userprofile" element={<UserProfile />} />
 
-          <Route path="/explore/taskbar" element={<TaskBoard />} />
+          <Route path="/explore/:id/tasks" element={<TaskBoard />} />
+          {/* <Route path="/explore/taskbar" element={<TaskBoard />} /> */}
 
           <Route path="*" element={<NoPage />} />
         </Routes>

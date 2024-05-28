@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import Board from '../Board/Board';
-import './BoardContainer.css';
+import React, { useEffect, useState } from "react";
+import Board from "../Board/Board";
+import "./BoardContainer.css";
 
-export default function Boards() {
+export default function Boards({ tasks }) {
   const [boards, setBoards] = useState([
-    { id: 1, title: 'To Do', cards: [] },
-    { id: 2, title: 'In Progress', cards: [] },
-    { id: 3, title: 'In Review', cards: [] },
-    { id: 4, title: 'Done', cards: [] },
+    { id: 1, title: "To Do", name: "todo", cards: [] },
+    { id: 2, title: "In Progress", name: "in_progress", cards: [] },
+    { id: 3, title: "In Review", name: "in_review", cards: [] },
+    { id: 4, title: "Done", name: "complete", cards: [] },
   ]);
 
-  const [target, setTarget] = useState({ cId: '', bId: '' });
+  function filterCardsByStatus(boards, status) {
+    const filteredTasks = Object.entries(tasks)
+      .filter(([key, value]) => value.status === status)
+      .map(([key, value]) => ({ ...value, id: key }));
+
+    setBoards((prevBoards) =>
+      prevBoards.map((board) =>
+        board.name === status ? { ...board, cards: filteredTasks } : board
+      )
+    );
+  }
+
+  const [target, setTarget] = useState({ cId: "", bId: "" });
 
   // Card Add Function
   const addCard = (title, bId) => {
     const index = boards.findIndex((item) => item.id === bId);
     if (index < 0) return;
 
-    const lastCardId = boards[index].cards.length > 0 ? boards[index].cards[boards[index].cards.length - 1].id : 0;
+    const lastCardId =
+      boards[index].cards.length > 0
+        ? boards[index].cards[boards[index].cards.length - 1].id
+        : 0;
     const newCardId = lastCardId + 1;
 
     const card = {
@@ -25,8 +40,8 @@ export default function Boards() {
       title: title,
       labels: [],
       tasks: [],
-      date: '',
-      desc: '',
+      date: "",
+      desc: "",
     };
 
     const tempBoards = [...boards];
@@ -39,7 +54,9 @@ export default function Boards() {
     const boardIndex = boards.findIndex((item) => item.id === bId);
     if (boardIndex < 0) return;
 
-    const cardIndex = boards[boardIndex].cards.findIndex((item) => item.id === cId);
+    const cardIndex = boards[boardIndex].cards.findIndex(
+      (item) => item.id === cId
+    );
     if (cardIndex < 0) return;
 
     const tempBoards = [...boards];
@@ -49,7 +66,7 @@ export default function Boards() {
 
   // Card Drag Handler
   const handleDragEnter = (cId, bId) => {
-    console.log('Drag Enter:', cId, bId);
+    console.log("Drag Enter:", cId, bId);
     setTarget((prevTarget) => ({
       ...prevTarget,
       bId: bId,
@@ -67,7 +84,9 @@ export default function Boards() {
 
     const tempBoards = [...boards];
 
-    const cardIndex = tempBoards[sourceBoardIndex].cards.findIndex((item) => item.id === cId);
+    const cardIndex = tempBoards[sourceBoardIndex].cards.findIndex(
+      (item) => item.id === cId
+    );
     console.log(cardIndex);
 
     if (cardIndex < 0) return;
@@ -85,7 +104,9 @@ export default function Boards() {
     const boardIndex = boards.findIndex((item) => item.id === bId);
     if (boardIndex < 0) return;
 
-    const cardIndex = boards[boardIndex].cards.findIndex((item) => item.id === cId);
+    const cardIndex = boards[boardIndex].cards.findIndex(
+      (item) => item.id === cId
+    );
     if (cardIndex < 0) return;
 
     const tempBoards = [...boards];
@@ -95,8 +116,15 @@ export default function Boards() {
 
   // Save to local storage
   useEffect(() => {
-    localStorage.setItem('kanban', JSON.stringify(boards));
+    localStorage.setItem("kanban", JSON.stringify(boards));
   }, [boards]);
+
+  useEffect(() => {
+    filterCardsByStatus(boards, "todo");
+    filterCardsByStatus(boards, "in_progress");
+    filterCardsByStatus(boards, "in_review");
+    filterCardsByStatus(boards, "complete");
+  }, [tasks]);
 
   return (
     <div className="boards">
