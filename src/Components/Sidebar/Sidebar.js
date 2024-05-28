@@ -1,26 +1,34 @@
-import { createTheme } from '@mui/material/styles';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import '../Sidebar/Sidebar.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../Sidebar/Sidebar.css";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
-const drawerWidth = 290;
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
 export default function Sidebar() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <>
-      <div className="overview_page">
+      <div
+        className={`overview_page ${
+          isSidebarOpen ? "sidebar-open" : "sidebar-closed"
+        }`}
+      >
+        {/* Hamburger Menu */}
+        <div className="hamburger-menu" onClick={toggleSidebar}>
+          <MenuRoundedIcon />
+        </div>
+        {/* Sidebar Content */}
         <div className="tabs">
           <Link to="/home">
             <button className="button4">Home</button>
           </Link>
-          <Link to="/explore/overview">
+          {/* <Link to="/explore/overview">
             <button className="button1">Overview</button>
-          </Link>
+          </Link> */}
 
           <Link to="/explore/taskbar">
             <button className="button3">Tasks Board</button>
@@ -29,7 +37,7 @@ export default function Sidebar() {
           <Link to="/explore/settings/profile">
             <button className="button2">Settings</button>
           </Link>
-
+          {/* Footer */}
           <footer className="footer">
             <h1>
               MetaGuild<small>©</small>

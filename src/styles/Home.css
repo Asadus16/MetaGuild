@@ -1,34 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 .main {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 40px;
+  background-color: #000000;
+  padding: 20px 36px 3px 24px;
+  border-bottom: 1px solid rgba(249, 245, 245, 0.3);
   position: fixed;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 100%;
   z-index: 1000;
-  /* background: linear-gradient(
-    to right,
-    rgba(51, 51, 51, 0.9) 0%,
-    rgba(43, 43, 43, 0.7) 25%,
-    rgba(30, 30, 30, 0.5) 50%,
-    rgba(35, 35, 35, 0.3) 75%,
-    rgba(53, 53, 53, 0.1) 100%
-  );
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-top: 2px solid rgba(12, 12, 12, 0.1);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1); */
 }
 
 .meta_logo {
-  width: 300px;
+  width: 200px;
   z-index: 1000;
 }
-.connect {
-  width: 180px;
+.css-szj68g {
+  font-size: 15px;
+  padding: 8px 9px;
 }
 
 .animation {
@@ -38,10 +30,14 @@
 .animationDiv {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 .buttons {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
 }
 .create_button {
   width: 230px;
@@ -50,7 +46,7 @@
   color: white;
   border-radius: 15px;
   cursor: pointer;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   transition: 0.5s;
   font-size: larger;
 }
@@ -65,7 +61,7 @@
   color: white;
   cursor: pointer;
   border-radius: 15px;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   transition: 0.5s;
   font-size: larger;
 }
@@ -76,8 +72,9 @@
 .description {
   margin-top: 250px;
   text-align: center;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   color: white;
+  padding: 22px;
 }
 .description h1 {
   color: #a11dff;
@@ -92,15 +89,12 @@
 }
 .cards {
   display: flex;
-  flex-direction: row;
-  height: 300px;
-  gap: 100px;
-  padding: 70px;
-
-  width: fit-content;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 50px 22px 52px 22px;
 }
 .card1 {
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   padding: 10px;
   background-color: #2c2c2c;
   border-radius: 20px;
@@ -121,7 +115,7 @@
 }
 .card2 {
   border-radius: 20px;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   padding: 20px;
   background-color: #2c2c2c;
   display: flex;
@@ -130,7 +124,7 @@
 
 .card3 {
   border-radius: 20px;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   padding: 20px;
   background-color: #2c2c2c;
   display: flex;
@@ -142,21 +136,24 @@
 }
 .footerText {
   text-align: center;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
 }
 .animation1 {
   width: 400px;
-  /* margin-bottom: 50px; */
+  padding: 20px;
 }
 .animation1Div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 300px;
+  padding: 30px;
   align-items: center;
 }
 .Animation1Txt {
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   /* max-width: 590px; */
+  padding: 20px;
 }
 .Animation1Txt h1 {
   color: white;
@@ -188,7 +185,7 @@
   color: white;
   border-radius: 15px;
   cursor: pointer;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   transition: 0.5s;
   font-size: 15px;
   /* margin-top: 20px; */
@@ -205,12 +202,14 @@
 }
 .animation2Div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 300px;
   align-items: center;
 }
 .Animation2Txt {
   color: white;
+  padding: 20px;
   margin-bottom: 60px;
   text-align: center;
 }
@@ -226,9 +225,10 @@
 }
 .animation2 {
   width: 540px;
+  padding: 40px;
 }
 .Animation2Txt {
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   /* max-width: 590px; */
 }
 .Animation2Txt h1 {
@@ -250,16 +250,20 @@
 
 .animation3 {
   width: 400px;
+  padding: 20px;
   /* margin-bottom: 50px; */
 }
 .animation3Div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 300px;
+  padding: 64px;
   align-items: center;
 }
 .Animation3Txt {
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
+  padding: 20px;
   /* max-width: 590px; */
 }
 .Animation3Txt h1 {
@@ -290,7 +294,7 @@
   color: white;
   border-radius: 15px;
   cursor: pointer;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   transition: 0.5s;
   font-size: 15px;
   /* margin-top: 20px; */
@@ -317,41 +321,40 @@
 
 .txtContainer {
   margin-top: 180px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .topTxt {
   display: flex;
-  margin-left: 10px; 
+  margin-left: 10px;
   align-items: center;
 }
 
 .txtContainer p {
-  margin-top: revert; 
+  margin-top: revert;
 }
 
 .search-container {
-  margin-top: 20px;
-  position: relative;
-  text-align: center;
-  margin-left: 8px;
+  width: 55%;
+  margin: 1rem auto;
 }
 
 .search-container input {
-  width: 52%;
+  width: 100%;
   padding: 10px;
 }
 
 .search-container input:hover {
-  border-color:  #aa80ff; 
+  border-color: #aa80ff;
 }
 
 .search-container input:focus-visible {
-  border-color:  #aa80ff;
+  border-color: #aa80ff;
   outline: #aa80ff;
 }
 
@@ -365,13 +368,16 @@
 .edit-icon:hover {
   color: #a11dff;
 }
-
+.dao-cards {
+  padding: 20px;
+  width: 729px;
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .dao-card {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 52%; /* Set the width to 52% */
-  height: 6rem;
   margin: 0 auto;
   margin-top: 20px;
   padding: 15px;
@@ -397,23 +403,23 @@
 .dao-info {
   flex: 1;
   margin-left: 20px;
-  /* margin-top: 15px; */
   align-content: center;
 }
 
 .dao-info h3 {
   margin-bottom: 5px;
   font-size: 18px;
-  color: white; /* Set the color */
+  color: white;
 }
 
 .dao-info p {
   font-size: 14px;
-  color: rgb(207, 207, 209); /* Set the color */
+  color: rgb(207, 207, 209);
 }
 
 .member-count {
   display: flex;
+  padding: 4px;
 }
 
 .member-count span {
@@ -432,42 +438,174 @@
 html {
   scroll-behavior: smooth;
 }
-.nav_profile {
-  display: flex;
-  align-items: center;
-}
-/* 
-.user_icon {
-  margin: 20px;
-  border: solid 2px white;
-  width: 100px;
-  height: 45px;
-  border-radius: 50px;
-  align-items: center;
-  text-align: center;
-  align-content: center;
-}
-.icon_click {
-  width: 100px;
-  height: 50px;
-} */
-/* .icon {
-  border: solid 2px red;
-  width: 10px;
-} */
-.user_icon {
-  margin: 20px;
-  border: solid 2px white;
-  width: 50px; /* Increase width to expand clickable area */
-  height: 50px; /* Increase height to expand clickable area */
-  border-radius: 50%; /* Ensure the container is circular */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
+@media only screen and (max-width: 1109px) {
+  .animation2Container {
+    order: -1;
+  }
 }
 
-.user_icon svg {
-  width: 50%; /* Adjust size of the SVG icon */
-  height: 50%; /* Adjust size of the SVG icon */
+/* 
+@media only screen and (max-width: 600px) {
+  .main{
+    position: relative;
+    justify-content: space-around;
+    margin-left: auto;
+  }
+  .animation {
+    width: 80%;
+  }
+  .meta_logo{
+    max-width: 150px;
+  }
+  .connect{
+    width: 100px;
+    margin-right: 10px;
+  }
+  .description{
+    margin-top: 100px;
+  }
+  .description h1{
+    font-size: 20px;
+  }
+  .description p{
+    font-size: 13px;
+  }
+  .buttons{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 70px;
+  }
+  .animation1Div {
+    flex-direction: column;
+    margin-top: 300px;
+    align-items: center;
+  }
+  .animation1{
+    width: 400px;
+    padding: 20px;
+  }
+  .Animation1Txt h1 {
+    font-size: 20px;
+  }
+  
+  .animation2Div {
+    flex-direction: column;
+    margin-top: 300px;
+    align-items: center;
+  }
+  .animation2Div h1 {
+    font-size: 20px;
+  }
+  .animation2Container {
+    order: -1; 
+    width: auto;
+  }
+  .animation3Div {
+    flex-direction: column;
+    margin-top: 300px;
+    align-items: center;
+  }
+  .Animation3Txt h1{
+    font-size: 20px;
+  }
+  .animation3{
+    width: auto;
+  }
+  .Panel{
+    flex-direction: column;
+    margin-top: 300px;
+    align-items: center;
+  }
+  .title{
+    text-align: center;
+    font-size: 20px;
+    padding: 30px;
+  }
+  .cards{
+    flex-direction: column;
+    gap: 30px;
+  }
+  .TextCard1 h2{
+    font-size: 20px;
+  }
+  .TextCard1 p{
+    font-size: 13px;
+  }
+  .TextCard2 h2{
+    font-size: 20px;
+  }
+  .TextCard2 p{
+    font-size: 13px;
+  }
+  .TextCard3 h2{
+    font-size: 20px;
+  }
+  .TextCard3 p{
+    font-size: 13px;
+  }
+  .footerText{
+    margin-top: 300px;
+    }
+    .topTxt{
+      flex-wrap: wrap;
+    }
+    .search-container {
+      width: auto;      
+    }
+    .dao-card {
+      justify-content: center;
+      width: auto;
+      height: auto;
+      align-items: center;
+    }    
+    .dao-logo {
+      width: 40px;
+      height: 80px;
+    }
+    .card-link {
+      flex-direction: column;
+      width: auto; 
+    }
+     
 }
+
+
+@media only screen and (max-width: 300px) {
+
+} */
+/* Media Query for min-width: 768px */
+/* @media only screen and (max-width: 768px) {
+  .main{
+    position: relative;
+    justify-content: space-around;
+    margin-left: auto;
+  }
+  .animation {
+    width: 80%;
+  }
+  .meta_logo{
+    max-width: 150px;
+  }
+  .connect{
+    width: 100px;
+    margin-right: 10px;
+  }
+  .description{
+    margin-top: 100px;
+  }
+  .description h1{
+    font-size: 20px;
+  }
+  .description p{
+    font-size: 13px;
+  }
+  .buttons{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 70px;
+  } 
+}
+  */
