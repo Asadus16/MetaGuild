@@ -13,9 +13,13 @@ import Editable from "../../Editable/Editable";
 import Labels from "../../Labels/Labels";
 import Modal from "../../Modal/Modal";
 import "./Cardinfo.css";
+import { useNavigate } from "react-router-dom";
+import { updateDaoTask } from "../../../utils/fetchers";
 
 export default function Cardinfo({ card, onClose, updateCard, boardId }) {
   const { title, labels, desc, tasks, date } = card;
+  const navigate = useNavigate();
+  const authToken = localStorage.getItem("authToken");
 
   const [activeColor, setActiveColor] = useState("");
   const [values, setValues] = useState({ ...card });
@@ -92,9 +96,27 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
   // Card Update
   useEffect(() => {
     updateCard(card.id, boardId, values);
-    console.log(values);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // console.log(values);
   }, [values]);
+
+  async function updateMyTask(authToken, daoId, taskId, taskData) {
+    try {
+      const daoTask = await updateDaoTask(authToken, daoId, taskId, taskData);
+      if (daoTask) {
+        console.log(daoTask);
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const saveTask = (e) => {
+    const { title, description, payment, deadline } = values;
+    const taskData = { title, description, payment, deadline };
+
+    updateMyTask(authToken, values.dao_id, values.id, taskData);
+  };
 
   return (
     <Modal onClose={() => onClose()}>
@@ -226,12 +248,20 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
         </div> */}
 
         <div className="cardinfo_box_body">
-          <Editable
+          <Button
+            variant="contained"
+            style={{ background: "#555" }}
+            onClick={saveTask}
+          >
+            {/* <Button variant="contained" style={{ background: "#949393" }}> */}
+            Update Task
+          </Button>
+          {/* <Editable
             text="Update Task"
             placeholder="Enter Task"
             buttonText="Set Task"
             onSubmit={(value) => addTask(value)}
-          />
+          /> */}
         </div>
       </div>
     </Modal>

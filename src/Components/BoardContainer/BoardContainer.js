@@ -13,7 +13,7 @@ export default function Boards({ tasks }) {
   function filterCardsByStatus(boards, status) {
     const filteredTasks = Object.entries(tasks)
       .filter(([key, value]) => value.status === status)
-      .map(([key, value]) => ({ ...value, id: key }));
+      .map(([key, value]) => ({ ...value }));
 
     setBoards((prevBoards) =>
       prevBoards.map((board) =>
