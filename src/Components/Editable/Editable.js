@@ -8,9 +8,10 @@ export default function Editable({
   onSubmit,
   editClass,
   displayClass,
+  defaultValue,
 }) {
   const [showEdit, setShowEdit] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(defaultValue);
 
   return (
     <div className="editable">

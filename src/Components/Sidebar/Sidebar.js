@@ -35,7 +35,7 @@ export default function Sidebar() {
             <button className="button3">Tasks Board</button>
           </Link>
 
-          <Link to="/explore/settings/profile">
+          <Link to={`/explore/${id}/settings/profile`}>
             <button className="button2">Settings</button>
           </Link>
           {/* Footer */}

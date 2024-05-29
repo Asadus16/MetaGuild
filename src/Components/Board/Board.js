@@ -40,13 +40,16 @@ export default function Board({
             onDropCard={onDropCard}
           />
         ))}
-        <Editable
-          displayClass="boards_cards_add"
-          defaultValue="New Task"
-          text="Add Task"
-          placeholder="Enter Card title"
-          onSubmit={(value) => addCard(value, id)}
-        />
+
+        {id === 1 && (
+          <Editable
+            displayClass="boards_cards_add"
+            defaultValue="New Task"
+            text="Add Task"
+            placeholder="Enter Card title"
+            onSubmit={(value) => addCard(value, id)}
+          />
+        )}
       </div>
     </div>
   );

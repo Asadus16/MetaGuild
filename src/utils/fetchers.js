@@ -142,3 +142,26 @@ export const getDaoTasks = async (daoId) => {
     console.error("Error:", error);
   }
 };
+
+export const createDaoTasks = async (authToken, daoId) => {
+  try {
+    const response = await fetch(`http://localhost:8000/daos/${daoId}/tasks`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      const myResult = { ...result };
+      return myResult;
+    } else {
+      console.error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
