@@ -30,6 +30,7 @@ export default function Overview() {
   async function fetchDaoMembers(daoId) {
     try {
       const daoMemberList = await getDaoMembers(daoId);
+      console.log("members : ", daoMemberList);
       setDaoMembers(daoMemberList);
       // setDaoData(dao);
     } catch (error) {

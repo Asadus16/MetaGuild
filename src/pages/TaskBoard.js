@@ -4,11 +4,24 @@ import Sidebar from "../Components/Sidebar/Sidebar";
 import Boards from "../Components/BoardContainer/BoardContainer";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getDaoTasks } from "../utils/fetchers";
+import { getDaoTasks, getDaoUser } from "../utils/fetchers";
 
 export default function TaskBoard() {
   const { id } = useParams();
   const [daoTasks, setDaoTasks] = useState({});
+  const authToken = localStorage.getItem("authToken");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  async function fetchDaoUser(authToken, daoId) {
+    try {
+      const daoUser = await getDaoUser(authToken, daoId);
+      if (daoUser.role === "admin") {
+        setIsAdmin(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function fetchDaoTasks(daoId) {
     try {
@@ -20,6 +33,7 @@ export default function TaskBoard() {
   }
 
   useEffect(() => {
+    fetchDaoUser(authToken, id);
     fetchDaoTasks(id);
   }, []);
 
@@ -31,7 +45,7 @@ export default function TaskBoard() {
           <Sidebar />
         </div>
         <div className=" Taskpage_content">
-          <Boards tasks={daoTasks} />
+          <Boards isAdmin={isAdmin} tasks={daoTasks} />
         </div>
       </div>
     </>

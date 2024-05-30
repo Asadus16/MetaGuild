@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Board from "../Board/Board";
 import "./BoardContainer.css";
+import { createDaoTask } from "../../utils/fetchers";
+import { useParams } from "react-router-dom";
 
-export default function Boards({ tasks }) {
+export default function Boards({ tasks, isAdmin }) {
   const [boards, setBoards] = useState([
     { id: 1, title: "To Do", name: "todo", cards: [] },
     { id: 2, title: "In Progress", name: "in_progress", cards: [] },
     { id: 3, title: "In Review", name: "in_review", cards: [] },
     { id: 4, title: "Done", name: "complete", cards: [] },
   ]);
+  const [target, setTarget] = useState({ cId: "", bId: "" });
+  const authToken = localStorage.getItem("authToken");
+  const { id } = useParams();
 
   function filterCardsByStatus(boards, status) {
     const filteredTasks = Object.entries(tasks)
@@ -22,10 +27,23 @@ export default function Boards({ tasks }) {
     );
   }
 
-  const [target, setTarget] = useState({ cId: "", bId: "" });
+  async function createNewTask(authToken, daoId, taskData) {
+    try {
+      const daoTask = await createDaoTask(authToken, daoId, taskData);
+      if (daoTask) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   // Card Add Function
   const addCard = (title, bId) => {
+    createNewTask(authToken, id, { title });
+
+    return;
+
     const index = boards.findIndex((item) => item.id === bId);
     if (index < 0) return;
 
@@ -132,6 +150,7 @@ export default function Boards({ tasks }) {
         <Board
           key={item.id}
           board={item}
+          isAdmin={isAdmin}
           addCard={addCard}
           removeCard={removeCard}
           dragEntered={handleDragEnter}

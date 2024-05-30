@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CheckSquare, Clock, X } from "react-feather";
 import Labels from "../Labels/Labels";
 import "./Card.css";

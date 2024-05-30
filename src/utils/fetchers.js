@@ -94,6 +94,31 @@ export const createDao = async (authToken, daoData) => {
   }
 };
 
+export const getDaoUser = async (authToken, daoId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8000/daos/${daoId}/isadmin`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      console.error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 export const getDaoMembers = async (daoId) => {
   try {
     const response = await fetch(
@@ -143,15 +168,16 @@ export const getDaoTasks = async (daoId) => {
   }
 };
 
-export const createDaoTasks = async (authToken, daoId) => {
+export const createDaoTask = async (authToken, daoId, taskData) => {
   try {
-    const response = await fetch(`http://localhost:8000/daos/${daoId}/tasks`, {
+    const response = await fetch(`http://localhost:8000/daos/${daoId}/task`, {
       method: "post",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${authToken}`,
       },
+      body: JSON.stringify(taskData),
     });
 
     if (response.ok) {

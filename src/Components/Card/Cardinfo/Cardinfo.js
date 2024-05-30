@@ -93,7 +93,6 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
     return (completed / values.tasks?.length) * 100 + "";
   };
 
-  // Card Update
   useEffect(() => {
     updateCard(card.id, boardId, values);
     // console.log(values);
@@ -103,7 +102,6 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
     try {
       const daoTask = await updateDaoTask(authToken, daoId, taskId, taskData);
       if (daoTask) {
-        console.log(daoTask);
         window.location.reload();
       }
     } catch (error) {

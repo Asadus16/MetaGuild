@@ -6,6 +6,7 @@ import "./Board.css";
 export default function Board({
   board,
   removeBoard,
+  isAdmin,
   addCard,
   removeCard,
   dragEntered,
@@ -41,7 +42,7 @@ export default function Board({
           />
         ))}
 
-        {id === 1 && (
+        {id === 1 && isAdmin && (
           <Editable
             displayClass="boards_cards_add"
             defaultValue="New Task"
