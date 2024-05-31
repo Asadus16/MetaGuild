@@ -45,7 +45,7 @@ export default function Card({
             </div>
 
             <div className="card_delete">
-              <X onClick={(e) => removeCard(id, boardId)} />
+              <X onClick={(e) => removeCard(e, id, boardId)} />
             </div>
           </div>
 

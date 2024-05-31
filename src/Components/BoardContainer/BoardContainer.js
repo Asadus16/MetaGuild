@@ -68,7 +68,12 @@ export default function Boards({ tasks, isAdmin }) {
   };
 
   // Card Remove Function
-  const removeCard = (cId, bId) => {
+  const removeCard = (event, cId, bId) => {
+    event.stopPropagation();
+    console.log(cId, bId);
+
+    return;
+
     const boardIndex = boards.findIndex((item) => item.id === bId);
     if (boardIndex < 0) return;
 
