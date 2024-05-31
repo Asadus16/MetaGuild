@@ -17,11 +17,12 @@ import { createThirdwebClient } from "thirdweb";
 import { useEffect } from "react";
 import { useAddress, useMetamask, useDisconnect } from "@thirdweb-dev/react";
 import React, { useState } from "react";
+import { client } from "../utils/client";
 
 const Navbar = () => {
   const account = useActiveAccount();
-  const connectWithMetamask = useMetamask();
-  const disconnect = useDisconnect();
+  // const connectWithMetamask = useMetamask();
+  // const disconnect = useDisconnect();
   // const authToken = localStorage.getItem("authToken");
   const [authToken, setAuthToken] = useState(localStorage.getItem("authToken"));
 
@@ -69,43 +70,43 @@ const Navbar = () => {
   // State to manage whether a wallet is connected (optional)
   const [isConnected, setIsConnected] = useState(false);
 
-  const ConnectWallet = () => {
-    const client = createThirdwebClient({
-      clientId: process.env.REACT_APP_TEMPLATE_CLIENT_ID,
-    });
+  // const ConnectWallet = () => {
+  //   const client = createThirdwebClient({
+  //     clientId: process.env.REACT_APP_TEMPLATE_CLIENT_ID,
+  //   });
 
-    const wallets = [
-      walletConnect(),
-      createWallet("io.metamask"),
-      createWallet("com.coinbase.wallet"),
-      createWallet("com.trustwallet.app"),
-      createWallet("app.phantom"),
-    ];
+  //   const wallets = [
+  //     walletConnect(),
+  //     createWallet("io.metamask"),
+  //     createWallet("com.coinbase.wallet"),
+  //     createWallet("com.trustwallet.app"),
+  //     createWallet("app.phantom"),
+  //   ];
 
-    return (
-      <ThirdwebProvider>
-        <ConnectButton
-          client={client}
-          wallets={wallets}
-          theme={"dark"}
-          connectModal={{
-            size: "wide",
-            titleIcon: Logo1,
-            title: "MetaGuild",
-            welcomeScreen: {
-              title: "MetaGuild streamline your DAO's workflow!",
-              subtitle: "Connect a wallet to get started",
-              img: {
-                src: Gif,
-                width: 200,
-                height: 200,
-              },
-            },
-          }}
-        />
-      </ThirdwebProvider>
-    );
-  };
+  //   return (
+  //     <ThirdwebProvider>
+  //       <ConnectButton
+  //         client={client}
+  //         wallets={wallets}
+  //         theme={"dark"}
+  //         connectModal={{
+  //           size: "wide",
+  //           titleIcon: Logo1,
+  //           title: "MetaGuild",
+  //           welcomeScreen: {
+  //             title: "MetaGuild streamline your DAO's workflow!",
+  //             subtitle: "Connect a wallet to get started",
+  //             img: {
+  //               src: Gif,
+  //               width: 200,
+  //               height: 200,
+  //             },
+  //           },
+  //         }}
+  //       />
+  //     </ThirdwebProvider>
+  //   );
+  // };
 
   return (
     <main className="main">
@@ -126,7 +127,14 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faUser} size="5x" color="white" />
         </a>
         <div>
-          {account ? (
+          <ConnectButton
+            client={client}
+            appMetadata={{
+              name: "Example App",
+              url: "https://example.com",
+            }}
+          />
+          {/* {account ? (
             <div>
               <div className="address">
                 {" "}
@@ -140,7 +148,7 @@ const Navbar = () => {
             </div>
           ) : (
             <ConnectWallet className="connect" onClick={connectWithMetamask} />
-          )}
+          )} */}
         </div>
       </div>
     </main>
