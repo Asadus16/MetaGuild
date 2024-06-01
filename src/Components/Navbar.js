@@ -108,10 +108,6 @@ const Navbar = () => {
                 },
               },
             }}
-            appMetadata={{
-              name: "Example App",
-              url: "https://example.com",
-            }}
           />
         </div>
       </div>

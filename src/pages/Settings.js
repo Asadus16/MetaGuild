@@ -1,14 +1,47 @@
-import NavBar from '../Components/Navbar';
-import './Pages.css';
-import Sidebar from '../Components/Sidebar/Sidebar';
-import { Link } from 'react-router-dom';
-import uploadIcon from '../images/user.svg';
-import React, { useState, useRef } from 'react';
-import SettingsTab from '../Components/SettingsTab';
+import NavBar from "../Components/Navbar";
+import "./Pages.css";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import { Link, useParams } from "react-router-dom";
+import uploadIcon from "../images/user.svg";
+import React, { useState, useRef, useEffect } from "react";
+import SettingsTab from "../Components/SettingsTab";
+import { getDao, updateDao } from "../utils/fetchers";
 
 export default function DaoSettings() {
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
+  const { id } = useParams();
+  const authToken = localStorage.getItem("authToken");
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    linkedin: "",
+    website: "",
+  });
+
+  async function fetchDao(id) {
+    try {
+      const dao = await getDao(id);
+      setFormData({ ...dao });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateMyDao(authToken, daoId, daoData) {
+    try {
+      const dao = await updateDao(authToken, daoId, daoData);
+      if (dao) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchDao(id);
+  }, []);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -21,15 +54,6 @@ export default function DaoSettings() {
     fileInputRef.current.click();
   };
 
-  const [formData, setFormData] = useState({
-    Name: '',
-    Description: '',
-    LinkedIn: '',
-    Website: '',
-  });
-
-
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -37,7 +61,8 @@ export default function DaoSettings() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // You can replace this with your storage logic
+
+    updateMyDao(authToken, id, formData);
   };
 
   return (
@@ -55,7 +80,13 @@ export default function DaoSettings() {
             <>
               <div className="profile_icon">
                 {/* Hidden file upload input */}
-                <input type="file" accept="image/*" onChange={handleImageUpload} ref={fileInputRef} style={{ display: 'none' }} />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                />
 
                 {/* Conditional rendering: display uploaded image if available, otherwise display upload icon */}
                 {image ? (
@@ -64,10 +95,25 @@ export default function DaoSettings() {
                       src={URL.createObjectURL(image)}
                       alt="Uploaded Image"
                       className="uploaded_img"
-                      style={{ width: '200px', height: '200px', cursor: 'pointer', marginTop: '50px', borderRadius: '50%' }}
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                        cursor: "pointer",
+                        marginTop: "50px",
+                        borderRadius: "50%",
+                      }}
                       onClick={handleUploadIconClick} // Trigger file input click when image is clicked
                     />
-                    <span style={{ display: 'block', marginTop: '5px', width: '200px', textAlign: 'center' }}>Click to change image</span>
+                    <span
+                      style={{
+                        display: "block",
+                        marginTop: "5px",
+                        width: "200px",
+                        textAlign: "center",
+                      }}
+                    >
+                      Click to change image
+                    </span>
                   </div>
                 ) : (
                   <div className="image_div">
@@ -76,9 +122,22 @@ export default function DaoSettings() {
                       alt="Upload Icon"
                       className="upload_icon"
                       onClick={handleUploadIconClick}
-                      style={{ width: '200px', height: '200px', cursor: 'pointer', borderRadius: '50%' }}
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                        cursor: "pointer",
+                        borderRadius: "50%",
+                      }}
                     />
-                    <span style={{ display: 'block', marginTop: '5px', width: '200px' }}>Upload image</span>
+                    <span
+                      style={{
+                        display: "block",
+                        marginTop: "5px",
+                        width: "200px",
+                      }}
+                    >
+                      Upload image
+                    </span>
                   </div>
                 )}
               </div>
@@ -87,16 +146,23 @@ export default function DaoSettings() {
               <form onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="Name">Name:</label>
-                  <input type="text" id="Name" name="Name" value={formData.field1} onChange={handleChange} className="dao_field" placeholder="Ocean Protocol" />
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="dao_field"
+                  />
                 </div>
                 <br /> <br />
                 <div>
                   <label htmlFor="Description">Description:</label>
                   <input
                     type="text"
-                    id="Description"
-                    name="Description"
-                    value={formData.field2}
+                    id="description"
+                    name="description"
+                    value={formData.description}
                     onChange={handleChange}
                     className="dao_field"
                     placeholder="Built on top of the Ethereum blockchain, the Ocean protocol uses ..."
@@ -104,28 +170,26 @@ export default function DaoSettings() {
                 </div>
                 <br /> <br />
                 <div>
-                  <label htmlFor="LinkedIn">LinkedIn:</label>
+                  <label htmlFor="Linkedin">Linkedin:</label>
                   <input
                     type="text"
-                    id="LinkedIn"
-                    name="LinkedIn"
-                    value={formData.field3}
+                    id="linkedin"
+                    name="linkedin"
+                    value={formData.linkedin}
                     onChange={handleChange}
                     className="dao_field"
-                    placeholder="linkedin.com/company/ocean-protocol"
                   />
                 </div>
                 <br /> <br />
                 <div>
-                  <label htmlFor="Website">Website:</label>
+                  <label htmlFor="website">Website:</label>
                   <input
                     type="text"
-                    id="Website"
-                    name="Website"
-                    value={formData.field4}
+                    id="website"
+                    name="website"
+                    value={formData.website}
                     onChange={handleChange}
                     className="dao_field"
-                    placeholder="https://oceanprotocol.com/"
                   />
                 </div>
                 <br /> <br />

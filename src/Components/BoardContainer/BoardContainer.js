@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Board from "../Board/Board";
 import "./BoardContainer.css";
-import { createDaoTask } from "../../utils/fetchers";
+import { createDaoTask, deleteDaoTask } from "../../utils/fetchers";
 import { useParams } from "react-router-dom";
 
 export default function Boards({ tasks, isAdmin }) {
@@ -30,6 +30,17 @@ export default function Boards({ tasks, isAdmin }) {
   async function createNewTask(authToken, daoId, taskData) {
     try {
       const daoTask = await createDaoTask(authToken, daoId, taskData);
+      if (daoTask) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteTask(authToken, daoId, taskId) {
+    try {
+      const daoTask = await deleteDaoTask(authToken, daoId, taskId);
       if (daoTask) {
         window.location.reload();
       }
@@ -70,7 +81,8 @@ export default function Boards({ tasks, isAdmin }) {
   // Card Remove Function
   const removeCard = (event, cId, bId) => {
     event.stopPropagation();
-    console.log(cId, bId);
+
+    deleteTask(authToken, id, cId);
 
     return;
 
