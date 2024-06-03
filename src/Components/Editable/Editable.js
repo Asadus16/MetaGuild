@@ -8,9 +8,10 @@ export default function Editable({
   onSubmit,
   editClass,
   displayClass,
+  defaultValue,
 }) {
   const [showEdit, setShowEdit] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(defaultValue);
 
   return (
     <div className="editable">
@@ -56,7 +57,7 @@ export default function Editable({
           className={`editable_display ${displayClass || ""}`}
           onClick={() => setShowEdit(true)}
         >
-          {text || "Add item"} <span /> <span /> <span /> <span />
+          {text || "Enter value"} <span /> <span /> <span /> <span />
         </p>
       )}
     </div>

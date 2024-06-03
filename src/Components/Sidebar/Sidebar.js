@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../Sidebar/Sidebar.css";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { id } = useParams();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -26,15 +27,15 @@ export default function Sidebar() {
           <Link to="/home">
             <button className="button4">Home</button>
           </Link>
-          {/* <Link to="/explore/overview">
+          <Link to={`/explore/overview/${id}`}>
             <button className="button1">Overview</button>
-          </Link> */}
+          </Link>
 
-          <Link to="/explore/taskbar">
+          <Link to={`/explore/${id}/tasks`}>
             <button className="button3">Tasks Board</button>
           </Link>
 
-          <Link to="/explore/settings/profile">
+          <Link to={`/explore/${id}/settings/profile`}>
             <button className="button2">Settings</button>
           </Link>
           {/* Footer */}

@@ -1,9 +1,21 @@
-import React from 'react';
-import Card from '../Card/Card';
-import Editable from '../Editable/Editable';
-import './Board.css';
+import React from "react";
+import Card from "../Card/Card";
+import Editable from "../Editable/Editable";
+import "./Board.css";
 
-export default function Board({ board, removeBoard, addCard, removeCard, dragEntered, dragOver, dragEnded, updateCard, isDropTarget, onDropCard }) {
+export default function Board({
+  board,
+  removeBoard,
+  isAdmin,
+  addCard,
+  removeCard,
+  dragEntered,
+  dragOver,
+  dragEnded,
+  updateCard,
+  isDropTarget,
+  onDropCard,
+}) {
   const { id, title, background, cards } = board;
 
   return (
@@ -11,7 +23,7 @@ export default function Board({ board, removeBoard, addCard, removeCard, dragEnt
       <div className="board_top" style={{ background: background }}>
         <p className="board_top_title">
           {title}
-          <span>{`${cards?.length}`}</span>
+          <span>( {`${cards?.length}`} )</span>
         </p>
       </div>
       <div className="board_cards">
@@ -29,13 +41,16 @@ export default function Board({ board, removeBoard, addCard, removeCard, dragEnt
             onDropCard={onDropCard}
           />
         ))}
-        <Editable
-          displayClass="boards_cards_add"
-          defaultValue="New Task"
-          text="Add Task"
-          placeholder="Enter Card title"
-          onSubmit={(value) => addCard(value, id)}
-        />
+
+        {id === 1 && isAdmin && (
+          <Editable
+            displayClass="boards_cards_add"
+            defaultValue="New Task"
+            text="Add Task"
+            placeholder="Enter Card title"
+            onSubmit={(value) => addCard(value, id)}
+          />
+        )}
       </div>
     </div>
   );

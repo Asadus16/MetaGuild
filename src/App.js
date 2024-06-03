@@ -22,15 +22,19 @@ export default function App() {
           <Route path="/create" element={<Create />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/explore/overview/:id" element={<Overview />} />
-          <Route path="/explore/settings/profile" element={<DaoSettings />} />
           <Route
-            path="/explore/settings/permissions"
+            path="/explore/:id/settings/profile"
+            element={<DaoSettings />}
+          />
+          <Route
+            path="/explore/:id/settings/permissions"
             element={<SettingPerm />}
           />
-          <Route path="/explore/settings/manage" element={<Manage />} />
+          <Route path="/explore/:id/settings/manage" element={<Manage />} />
           <Route path="/userprofile" element={<UserProfile />} />
 
-          <Route path="/explore/taskbar" element={<TaskBoard />} />
+          <Route path="/explore/:id/tasks" element={<TaskBoard />} />
+          {/* <Route path="/explore/taskbar" element={<TaskBoard />} /> */}
 
           <Route path="*" element={<NoPage />} />
         </Routes>

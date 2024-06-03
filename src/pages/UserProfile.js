@@ -21,7 +21,7 @@ export default function UserProfile() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/users/${formData.id}`,
+        `${process.env.REACT_APP_API_URL}/users/${formData.id}`,
         {
           method: "PUT",
           headers: {
@@ -40,6 +40,7 @@ export default function UserProfile() {
 
       if (response.ok) {
         const result = await response.json();
+        window.location.reload();
         handleAlert();
       } else {
         console.error("Failed to update user profile");
@@ -68,7 +69,6 @@ export default function UserProfile() {
   return (
     <>
       <NavBar />
-
       <div className="Settings_Page">
         <div className="settings_content">
           {alertBar && (

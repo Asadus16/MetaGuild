@@ -12,7 +12,7 @@ const DaoCard = ({ id, logo, name, description, members }) => {
           style={{ background: "#fff" }}
         />
         <div className="dao-info">
-          <h3>{name}</h3>
+          <h3>{name.charAt(0).toUpperCase() + name.slice(1)}</h3>
           <p>{description}</p>
         </div>
       </Link>
