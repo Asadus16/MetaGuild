@@ -15,6 +15,9 @@ import Modal from "../../Modal/Modal";
 import "./Cardinfo.css";
 import { useNavigate } from "react-router-dom";
 import { updateDaoTask } from "../../../utils/fetchers";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function Cardinfo({ card, onClose, updateCard, boardId }) {
   const { title, labels, desc, tasks, date } = card;
@@ -95,7 +98,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
 
   useEffect(() => {
     updateCard(card.id, boardId, values);
-    // console.log(values);
+    console.log(values);
   }, [values]);
 
   async function updateMyTask(authToken, daoId, taskId, taskData) {
@@ -110,8 +113,8 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
   }
 
   const saveTask = (e) => {
-    const { title, description, payment, deadline } = values;
-    const taskData = { title, description, payment, deadline };
+    const { title, description, payment, deadline, status } = values;
+    const taskData = { title, description, payment, deadline, status };
 
     updateMyTask(authToken, values.dao_id, values.id, taskData);
   };
@@ -177,6 +180,37 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
                 setValues({ ...values, deadline: event.target.value })
               }
             />
+          </div>
+        </div>
+
+        <div className="cardinfo_box">
+          <div className="cardinfo_box_text">
+            <Calendar /> Status
+          </div>
+          <div className="cardinfo_box_body">
+            {/* <input
+              type="date"
+              defaultValue={values.deadline}
+              onChange={(event) =>
+                setValues({ ...values, deadline: event.target.value })
+              }
+            /> */}
+            {/* <InputLabel id="demo-simple-select-label">Status</InputLabel> */}
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={values.status}
+              label="Status"
+              onChange={(event) =>
+                setValues({ ...values, status: event.target.value })
+              }
+              style={{ color: "#fff" }}
+            >
+              <MenuItem value="todo">Todo</MenuItem>
+              <MenuItem value="in_progress">In Progress</MenuItem>
+              <MenuItem value="in_review">In Review</MenuItem>
+              <MenuItem value="complete">Complete</MenuItem>
+            </Select>
           </div>
         </div>
         {/* <div className="cardinfo_box">
