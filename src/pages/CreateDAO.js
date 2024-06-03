@@ -1,16 +1,11 @@
-import Navbar from "../Components/Navbar";
-import React, { useState } from "react";
-import Animation from "../json_animations/CreateAnimation.json";
-import Lottie from "lottie-react";
+import Navbar from '../Components/Navbar';
+import React, { useState } from 'react';
+import Animation from '../json_animations/CreateAnimation.json';
+import Lottie from 'lottie-react';
 
 export default function Create() {
-<<<<<<< HEAD
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-=======
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
->>>>>>> f20e653f0b8560bb93023694cb9876ad03cc31d4
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +15,7 @@ export default function Create() {
     //   description,
     // };
 
-    const authToken = JSON.parse(localStorage.getItem("authToken"));
+    const authToken = JSON.parse(localStorage.getItem('authToken'));
 
     // try {
     //   const response = await fetch('http://localhost:8000/dao', {
@@ -49,7 +44,7 @@ export default function Create() {
   };
 
   const handleClick = () => {
-    console.log("Button clicked");
+    console.log('Button clicked');
     // You can add additional functionality here
   };
   return (
@@ -89,12 +84,7 @@ export default function Create() {
         </form>
       </div>
       <div className="submitBtnContainer">
-        <Lottie
-          animationData={Animation}
-          className="submitBtn"
-          type="submit"
-          onClick={handleClick}
-        />
+        <Lottie animationData={Animation} className="submitBtn" type="submit" onClick={handleClick} />
       </div>
     </>
   );
