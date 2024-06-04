@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import Logo from '../images/uniswap.png';
-import { AntDesignOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Tooltip } from 'antd';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import PublicIcon from '@mui/icons-material/Public';
-import NavBar from '../Components/Navbar';
-import './Pages.css';
-import Sidebar from '../Components/Sidebar/Sidebar';
-import Boards from '../Components/BoardContainer/BoardContainer';
-import KanbanBoard from '../Components/BoardContainer/KanbanBoard';
-import { getDao, getDaoMembers, getDaoTasks } from '../utils/fetchers';
-import { useParams } from 'react-router-dom';
-import { capitalizeString } from '../utils/common';
+import React, { useEffect, useState } from "react";
+import Logo from "../images/uniswap.png";
+import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar, Tooltip } from "antd";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import PublicIcon from "@mui/icons-material/Public";
+import NavBar from "../Components/Navbar";
+import "./Pages.css";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import Boards from "../Components/BoardContainer/BoardContainer";
+import KanbanBoard from "../Components/BoardContainer/KanbanBoard";
+import { getDao, getDaoMembers, getDaoTasks } from "../utils/fetchers";
+import { useParams } from "react-router-dom";
+import { capitalizeString } from "../utils/common";
 
 export default function Overview() {
   const [daoData, setDaoData] = useState({});
@@ -53,33 +53,51 @@ export default function Overview() {
         <div className="overview_content">
           <div className="titleBar">
             <div className="overview_icon">
-              <img src={daoData.image || '/images/dao.svg'} alt="Upload Icon" className="upload_icon" />
+              <img
+                src={daoData.image || "/images/dao.svg"}
+                alt="Upload Icon"
+                className="upload_icon"
+              />
             </div>
             <div className="overview_title">
               <>
                 <h1>{daoData.name}</h1>
               </>
               <div className="members">
-                <h2 style={{ marginRight: '50px' }}>Members</h2>
+                <h2 style={{ marginRight: "50px" }}>Members</h2>
                 <div className="">
                   <Avatar.Group
                     maxCount={2}
                     maxStyle={{
-                      color: '#f56a00',
-                      backgroundColor: '#fde3cf',
+                      color: "#f56a00",
+                      backgroundColor: "#fde3cf",
                     }}
                   >
                     {daoMembers &&
                       Object.keys(daoMembers)?.map((member) => {
-                        console.log(daoMembers[member]);
                         return (
-                          <Tooltip title={capitalizeString(daoMembers[member].User?.name)} placement="top" key={daoMembers[member].id}>
+                          <Tooltip
+                            title={capitalizeString(
+                              daoMembers[member].User?.name
+                            )}
+                            placement="top"
+                            key={daoMembers[member].id}
+                          >
                             {daoMembers[member].User?.name ? (
                               <Avatar
-                                style={daoMembers[member].User.name ? { backgroundColor: '#f56a00' } : { backgroundColor: '#000' }}
-                                src={daoMembers[member].User.name || 'https://api.dicebear.com/7.x/miniavs/svg?seed=2'}
+                                style={
+                                  daoMembers[member].User.name
+                                    ? { backgroundColor: "#f56a00" }
+                                    : { backgroundColor: "#000" }
+                                }
+                                src={
+                                  daoMembers[member].User.name ||
+                                  "https://api.dicebear.com/7.x/miniavs/svg?seed=2"
+                                }
                               >
-                                {daoMembers[member].User.name.charAt(0).toUpperCase()}
+                                {daoMembers[member].User.name
+                                  .charAt(0)
+                                  .toUpperCase()}
                               </Avatar>
                             ) : (
                               <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
@@ -123,13 +141,22 @@ export default function Overview() {
           </div>
           <div className="footer_links">
             <>
-              <a href={daoData.linkedin} target="_blank" rel="noopener noreferrer" className="linkedIcon">
-                <LinkedInIcon sx={{ fontSize: 40, color: 'white' }} />
+              <a
+                href={daoData.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkedIcon"
+              >
+                <LinkedInIcon sx={{ fontSize: 40, color: "white" }} />
               </a>
             </>
             <>
-              <a href={daoData.website} target="_blank" rel="noopener noreferrer">
-                <PublicIcon sx={{ fontSize: 40, color: 'white' }} />
+              <a
+                href={daoData.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PublicIcon sx={{ fontSize: 40, color: "white" }} />
               </a>
             </>
           </div>
