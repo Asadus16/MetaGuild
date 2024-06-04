@@ -12,7 +12,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useParams } from "react-router-dom";
-import { getDao } from "../../utils/fetchers";
+import { getDao, getDaoUser } from "../../utils/fetchers";
 
 export default function Card({
   card,
@@ -31,6 +31,18 @@ export default function Card({
   const params = useParams();
   const [daoData, setDaoData] = useState({});
   const authToken = localStorage.getItem("authToken");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  async function fetchDaoUser(authToken, daoId) {
+    try {
+      const daoUser = await getDaoUser(authToken, daoId);
+      if (daoUser.role === "admin") {
+        setIsAdmin(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function fetchDao(id) {
     try {
@@ -78,6 +90,7 @@ export default function Card({
 
   useEffect(() => {
     fetchDao(params.id);
+    fetchDaoUser(authToken, id);
   }, []);
 
   return (
@@ -174,11 +187,13 @@ export default function Card({
           </DialogActions>
         </Dialog>
 
-        <div className="apply_task">
-          <button className="apply" onClick={handleClickOpen}>
-            Apply
-          </button>
-        </div>
+        {boardId === 1 && (
+          <div className="apply_task">
+            <button className="apply" onClick={handleClickOpen}>
+              Apply
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

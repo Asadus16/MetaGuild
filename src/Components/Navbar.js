@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import { createWallet, walletConnect } from "thirdweb/wallets";
-import { createThirdwebClient } from "thirdweb";
 import { useEffect } from "react";
 // import { useAddress, useMetamask, useDisconnect } from "@thirdweb-dev/react";
 import React, { useState } from "react";
@@ -17,7 +16,7 @@ import { client } from "../utils/client";
 
 const Navbar = () => {
   const account = useActiveAccount();
-  const [authToken, setAuthToken] = useState(localStorage.getItem("authToken"));
+  const authToken = localStorage.getItem("authToken");
 
   async function authenticate(authToken) {
     try {
@@ -54,11 +53,11 @@ const Navbar = () => {
     }
   }, [account]);
 
-  useEffect(() => {
-    if (account) {
-      authenticate(authToken);
-    }
-  }, [authToken]);
+  // useEffect(() => {
+  //   if (account) {
+  //     authenticate(authToken);
+  //   }
+  // }, [authToken]);
 
   // State to manage whether a wallet is connected (optional)
   const [isConnected, setIsConnected] = useState(false);
