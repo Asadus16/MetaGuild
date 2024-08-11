@@ -2,10 +2,7 @@
   display: flex;
   margin-top: 130px;
 }
-.Settings_Page {
-  display: flex;
-  margin-top: 130px;
-}
+
 .permissions_page {
   display: flex;
   margin-top: 130px;
@@ -14,7 +11,6 @@
   display: flex;
 }
 .settings_sidebar {
-  /* position: fixed; */
   width: 200px;
   border-right: 1px solid white;
 }
@@ -29,7 +25,6 @@
   overflow-x: auto;
 }
 .taskBoard_sidebar {
-  /* position: fixed; */
   width: 200px;
   border-right: 1px solid white;
 }
@@ -43,7 +38,6 @@
   margin-top: 40px;
   margin-left: 60px;
   overflow-x: auto;
-  /* background: rgb(55, 55, 55); */
 }
 .overview_sidebar {
   /* position: fixed; */
@@ -70,7 +64,6 @@
 }
 label {
   display: block;
-  /* font-weight: bold; */
 }
 .field1 {
   padding: 10px;
@@ -91,7 +84,6 @@ label {
 .titleBar {
   display: flex;
   align-items: center;
-  /* border-bottom: 1px solid white; */
 }
 .set_titlebar {
   display: flex;
@@ -110,17 +102,13 @@ label {
   height: 100px;
 }
 .upload_icon {
-  /* width: 70px; */
   text-align: center;
 }
 .profile_form {
-  /* flex: 1; */
   flex-direction: row;
-  width: 100%;
   align-items: center;
   align-content: center;
-  text-align: center;
-  /* text-align: center; */
+  padding: 30px;
 }
 .dao_field {
   width: 600px;
@@ -129,19 +117,16 @@ label {
   border: 1px solid #a11dff;
   text-align: center;
 }
+
 .user_field {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   height: 40px;
   border-radius: 20px;
   border: 1px solid #a11dff;
   text-align: center;
+  box-sizing: border-box;
 }
-/* 
-
-.create_button:hover {
-  letter-spacing: 0.1rem;
-  border: solid 2px purple;
-} */
 
 .profile_submit {
   width: 150px;
@@ -187,13 +172,9 @@ label {
   width: 100%;
 }
 
-.settings_content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-left: 60px;
-  overflow-x: auto;
+.forms{
+  width: auto;
+  padding: 30px;
 }
 .permissions_content {
   display: flex;
@@ -203,12 +184,7 @@ label {
   margin-left: 60px;
   overflow-x: auto;
 }
-.Dao_profile {
-  flex: 1;
-  display: flex;
-  margin-top: 50px;
-  gap: 50px;
-}
+
 
 .setting_btn1,
 .setting_btn2,
@@ -226,11 +202,46 @@ label {
 .active {
   border-bottom: 2px solid #a11dff;
 }
+.spanTxt{
+  display: block;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+.Settings_Page {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px; 
+  margin-top: 130px;
+}
 
+.settings_content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 15px; 
+  box-sizing: border-box; 
+}
+
+.Dao_profile {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+  flex-wrap: wrap; 
+}
+
+.profile_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px; 
+}             
 .setting_btn1:hover,
 .setting_btn2:hover,
 .setting_btn3:hover {
-  /* background-color: #a11dff; */
   letter-spacing: 0.1rem;
 }
 .settings_panel {
@@ -248,7 +259,6 @@ label {
   align-items: center;
   align-content: center;
   margin-top: 70px;
-  /* gap: 50px; */
 }
 .perm_card1 {
   width: 800px;
@@ -291,17 +301,12 @@ label {
 }
 
 .footer_links {
-  /* display: flex;
-  justify-content: center;
-  gap: 160px;
-  margin-top: 90px; */
   left: 0;
   bottom: 0;
   width: 100%;
   position: fixed;
-  /* Set background color of the footer */
-  color: white; /* Set text color */
-  padding: 20px; /* Add padding for better spacing */
+  color: white; 
+  padding: 20px; 
   text-align: center;
 }
 .linkedIcon {
@@ -392,3 +397,52 @@ label {
   letter-spacing: 0.1rem;
   border-bottom: 2px solid #a11dff;
 }
+.profIcon{
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-top: 60px;
+}
+.profbtn{
+  display: flex;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+  .spanTxt
+    {
+      margin-right: 33px;
+      font-size: 11px;
+  }
+  .forms h1{
+    font-size: 20px;
+  }
+  .profIcon{
+    width: 110px;
+    height: 110px;
+}
+    .user_field {
+      width: 90%;
+      margin: 0 auto;
+    }
+  
+    .Dao_profile {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+  
+    .profile_form {
+      width: 100%;
+      padding: 0 5%;
+    }
+  
+    .forms {
+      width: 100%;
+      padding: 0 5%;
+    }
+    .profbtn{
+      padding: 0px 20px 40px 20px;
+    }
+  }
