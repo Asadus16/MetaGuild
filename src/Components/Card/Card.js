@@ -78,7 +78,6 @@ export default function Card({
 
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
         return result;
       } else {
         console.error("Failed to create DAO");
@@ -157,7 +156,7 @@ export default function Card({
               const formData = new FormData(event.currentTarget);
               const formJson = Object.fromEntries(formData.entries());
               const email = formJson.email;
-              const mailBody = `Hi, my email is ${email}. I want to apply for task with ID: ${card.id} in DAO "${daoData.name}"`;
+              const mailBody = `Hi, my email is ${email}. I want to apply for task: "${card.title}" in DAO "${daoData.name}"`;
               applyForTask(email, "Application for DAO task", mailBody);
               handleClose();
             },
