@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 import React, { useState, useRef, useEffect } from 'react';
 import NavBar from '../Components/Navbar';
 import './Pages.css';
 import uploadIcon from '../images/user.svg';
 import { fetchMyself } from '../utils/fetchers';
 import Alert from '@mui/material/Alert';
+=======
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import NavBar from "../Components/Navbar";
+import "./Pages.css";
+import uploadIcon from "../images/user.svg";
+import { fetchMyself } from "../utils/fetchers";
+import Alert from "@mui/material/Alert";
+>>>>>>> b3c41396052c9321be46f013d1a79a7ccee5904c
 
 export default function UserProfile() {
   const authToken = localStorage.getItem('authToken');
@@ -13,11 +23,10 @@ export default function UserProfile() {
     linkedin: '',
   });
   const [alertBar, setAlertBar] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const profile = JSON.parse(localStorage.getItem("profile"));
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${formData.id}`, {
@@ -58,9 +67,13 @@ export default function UserProfile() {
 
   const handleAlert = () => {
     setAlertBar(true);
-    const timeoutId = setTimeout(() => setAlertBar(false), 2000); // Set timeout for 3 seconds
+    const timeoutId = setTimeout(() => setAlertBar(false), 2000);
 
-    return () => clearTimeout(timeoutId); // Cleanup function for current timeout
+    return () => clearTimeout(timeoutId);
+  };
+
+  const handleClose = () => {
+    navigate("/"); // Redirect to the homepage
   };
 
   return (
@@ -87,6 +100,7 @@ export default function UserProfile() {
               <img
                 src={uploadIcon}
                 alt="Upload Icon"
+<<<<<<< HEAD
                 style={{
                   width: '200px',
                   height: '200px',
@@ -95,9 +109,16 @@ export default function UserProfile() {
                 }}
               />
               <span style={{ display: 'block', marginTop: '5px', width: '200px', textAlign: 'center' }}>Upload image</span>
+=======
+                className="profIcon"
+              />
+              <span className="spanTxt">
+                Upload image
+              </span>
+>>>>>>> b3c41396052c9321be46f013d1a79a7ccee5904c
             </div>
             <div className="profile_form">
-              <form onSubmit={handleSubmit}>
+              <form className="forms" onSubmit={handleSubmit}>
                 <h1>Please Enter your details</h1>
                 <br />
                 <br />
@@ -110,10 +131,10 @@ export default function UserProfile() {
                     value={formData?.name || ''}
                     onChange={handleChange}
                     className="user_field"
-                    // placeholder="Asad ullah"
                   />
                 </div>
-                <br /> <br />
+                <br />
+                <br />
                 <div>
                   <label htmlFor="ens_address">ENS Address:</label>
                   <input
@@ -123,10 +144,10 @@ export default function UserProfile() {
                     value={formData?.ens_address || ''}
                     onChange={handleChange}
                     className="user_field"
-                    // placeholder="Asadullah.eth"
                   />
                 </div>
-                <br /> <br />
+                <br />
+                <br />
                 <div>
                   <label htmlFor="linkedin">LinkedIn:</label>
                   <input
@@ -136,13 +157,19 @@ export default function UserProfile() {
                     value={formData?.linkedin || ''}
                     onChange={handleChange}
                     className="user_field"
-                    // placeholder="https://www.linkedin.com/in/asad-ullah-/"
                   />
                 </div>
-                <br /> <br />
+                <br />
+                <br />
+                <div className="profbtn">
                 <button type="submit" className="profile_submit">
                   Save
                 </button>
+                <br />
+                <button type="button" className="profile_submit" onClick={handleClose}>
+                  Close
+                </button>
+                </div>
               </form>
             </div>
           </div>

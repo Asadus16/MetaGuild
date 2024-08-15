@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
+
 .main {
   align-items: center;
   display: flex;
   justify-content: space-between;
   background-color: #000000;
-  padding: 20px 36px 3px 24px;
+  padding: 20px 36px 12px 24px;
   border-bottom: 1px solid rgba(249, 245, 245, 0.3);
   position: fixed;
   top: 0;
@@ -18,6 +19,55 @@
   width: 200px;
   z-index: 1000;
 }
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav_profile {
+  display: flex;
+  align-items: center;
+}
+.connectBtn{
+  width: 500px;
+}
+.user_icon {
+  margin-right: 1rem;
+}
+
+@media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+  .meta_logo {
+    width: 150px;
+    z-index: 1000;
+  }
+  .nav_profile {
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    background-color: #000;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    display: none;
+    z-index: 20;
+  }
+
+  .nav_profile.show {
+    display: flex;
+  }
+
+  .nav_profile a,
+  .nav_profile div {
+    padding: 10px;
+    text-align: left;
+  }
+}
+
 .css-szj68g {
   font-size: 15px;
   padding: 8px 9px;
@@ -91,7 +141,7 @@
   display: flex;
   /* flex-wrap: wrap; */
   gap: 28px;
-  padding: 50px 22px 52px 22px;
+  padding: 52px 26px 30px 26px;
 }
 .card1 {
   font-family: 'Chakra Petch', sans-serif;
@@ -133,10 +183,17 @@
 .title {
   text-align: center;
   margin-top: 100px;
+  padding: 24px;
+  font-size: 20px;
 }
 .footerText {
   text-align: center;
+<<<<<<< HEAD
   font-family: 'Chakra Petch', sans-serif;
+=======
+  font-family: "Chakra Petch", sans-serif;
+  padding: 11px 24px 24px 13px;
+>>>>>>> b3c41396052c9321be46f013d1a79a7ccee5904c
 }
 .animation1 {
   width: 400px;
@@ -249,16 +306,15 @@
 }
 
 .animation3 {
-  width: 400px;
-  padding: 20px;
-  /* margin-bottom: 50px; */
+  width: 387px;
+  padding: 10px 20px 5px 8px;
 }
 .animation3Div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 300px;
-  padding: 64px;
+  padding: 14px;
   align-items: center;
 }
 .Animation3Txt {
@@ -388,11 +444,10 @@
 
 .card-link {
   display: flex;
-  width: 100%; /* Ensure the link takes the full width of the card */
+  width: 100%;
   text-decoration: none;
-  color: inherit; /* Inherit text color from parent */
+  color: inherit; 
 }
-
 .dao-logo {
   width: 80px;
   height: 80px;
@@ -439,173 +494,63 @@ html {
   scroll-behavior: smooth;
 }
 
-@media only screen and (max-width: 1109px) {
-  .animation2Container {
-    order: -1;
-  }
-}
 
-/* 
-@media only screen and (max-width: 600px) {
-  .main{
-    position: relative;
-    justify-content: space-around;
-    margin-left: auto;
+  @media only screen and (max-width: 450px) {
+    .main{
+      margin-left: auto;
+    }
+    .animation{
+      padding: 30px;
+    }
+    .animation2Container {
+      order: -1;
+    }
+    .animation1Div {
+      margin-top: 300px;
+      padding: 10px 20px 10px 15px;
+      align-items: center;
+      font-size: 12px;
   }
-  .animation {
-    width: 80%;
-  }
-  .meta_logo{
-    max-width: 150px;
-  }
-  .connect{
-    width: 100px;
-    margin-right: 10px;
-  }
-  .description{
-    margin-top: 100px;
-  }
-  .description h1{
-    font-size: 20px;
-  }
-  .description p{
-    font-size: 13px;
-  }
-  .buttons{
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    height: 70px;
-  }
-  .animation1Div {
-    flex-direction: column;
-    margin-top: 300px;
-    align-items: center;
-  }
-  .animation1{
-    width: 400px;
-    padding: 20px;
-  }
-  .Animation1Txt h1 {
-    font-size: 20px;
-  }
-  
-  .animation2Div {
-    flex-direction: column;
-    margin-top: 300px;
-    align-items: center;
-  }
-  .animation2Div h1 {
-    font-size: 20px;
-  }
-  .animation2Container {
-    order: -1; 
-    width: auto;
-  }
+    .animation2 {
+      width: 400px;
+      padding: 10px 20px 10px 15px;
+    }
+    .Animation2Txt{
+      padding: 25px;
+    }
+    .Animation2Txt h1 {
+      font-size: 22px;
+    }
+    .Animation2Txt li {
+      font-size: 16px;      
+    }
   .animation3Div {
     flex-direction: column;
-    margin-top: 300px;
-    align-items: center;
   }
-  .Animation3Txt h1{
-    font-size: 20px;
-  }
-  .animation3{
-    width: auto;
-  }
-  .Panel{
-    flex-direction: column;
-    margin-top: 300px;
-    align-items: center;
-  }
-  .title{
-    text-align: center;
-    font-size: 20px;
-    padding: 30px;
-  }
-  .cards{
-    flex-direction: column;
-    gap: 30px;
-  }
-  .TextCard1 h2{
-    font-size: 20px;
-  }
-  .TextCard1 p{
+  .Animation3Txt {
     font-size: 13px;
-  }
-  .TextCard2 h2{
-    font-size: 20px;
-  }
-  .TextCard2 p{
-    font-size: 13px;
-  }
-  .TextCard3 h2{
-    font-size: 20px;
-  }
-  .TextCard3 p{
-    font-size: 13px;
-  }
-  .footerText{
-    margin-top: 300px;
-    }
-    .topTxt{
-      flex-wrap: wrap;
-    }
-    .search-container {
-      width: auto;      
-    }
-    .dao-card {
-      justify-content: center;
-      width: auto;
-      height: auto;
-      align-items: center;
-    }    
-    .dao-logo {
-      width: 40px;
-      height: 80px;
-    }
-    .card-link {
-      flex-direction: column;
-      width: auto; 
-    }
-     
+    width: 400px;
 }
-
-
-@media only screen and (max-width: 300px) {
-
-} */
-/* Media Query for min-width: 768px */
-/* @media only screen and (max-width: 768px) {
-  .main{
-    position: relative;
-    justify-content: space-around;
-    margin-left: auto;
-  }
-  .animation {
-    width: 80%;
-  }
-  .meta_logo{
-    max-width: 150px;
-  }
-  .connect{
-    width: 100px;
-    margin-right: 10px;
-  }
-  .description{
-    margin-top: 100px;
-  }
-  .description h1{
-    font-size: 20px;
-  }
-  .description p{
-    font-size: 13px;
-  }
-  .buttons{
+  .cards {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    height: 70px;
-  } 
+    gap: 28px;
+    padding: 37px 31px 30px 40px;
+    font-size: 13px;
 }
-  */
+.description{
+  margin-top: 160px;
+  padding: 30px;
+}
+ .description h1{
+  font-size: 18px;
+}
+.description p{
+  font-size: 12px;
+}
+.buttons{
+  align-items: center;
+  gap: 50px;
+  padding: 30px;
+}
+}
