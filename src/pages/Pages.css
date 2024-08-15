@@ -43,13 +43,20 @@
   margin-top: 40px;
   margin-left: 60px;
   overflow-x: auto;
+  padding: 10px;
   /* background: rgb(55, 55, 55); */
 }
-.overview_sidebar {
-  /* position: fixed; */
+@media only screen and (max-width: 1000px) {
+  .overview_content {
+    margin-left: 0px;
+  }
+}
+
+/* .overview_sidebar {
+
   width: 200px;
   border-right: 1px solid white;
-}
+} */
 
 .topTxt h1 {
   color: #a11dff;
@@ -92,6 +99,12 @@ label {
   display: flex;
   align-items: center;
   /* border-bottom: 1px solid white; */
+}
+
+@media only screen and (max-width: 1000px) {
+  .titleBar {
+    width: 0px;
+  }
 }
 .set_titlebar {
   display: flex;

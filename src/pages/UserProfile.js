@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
-import NavBar from "../Components/Navbar";
-import "./Pages.css";
-import uploadIcon from "../images/user.svg";
-import { fetchMyself } from "../utils/fetchers";
-import Alert from "@mui/material/Alert";
+import React, { useState, useRef, useEffect } from 'react';
+import NavBar from '../Components/Navbar';
+import './Pages.css';
+import uploadIcon from '../images/user.svg';
+import { fetchMyself } from '../utils/fetchers';
+import Alert from '@mui/material/Alert';
 
 export default function UserProfile() {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    linkedin: "",
+    name: '',
+    description: '',
+    linkedin: '',
   });
   const [alertBar, setAlertBar] = useState(false);
 
@@ -20,33 +20,30 @@ export default function UserProfile() {
     // const profile = JSON.parse(localStorage.getItem("profile"));
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/users/${formData.id}`,
-        {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            contract_address: formData.contract_address,
-            ens_address: formData.ens_address,
-            linkedin: formData.linkedin,
-          }),
-        }
-      );
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${formData.id}`, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          contract_address: formData.contract_address,
+          ens_address: formData.ens_address,
+          linkedin: formData.linkedin,
+        }),
+      });
 
       if (response.ok) {
         const result = await response.json();
         window.location.reload();
         handleAlert();
       } else {
-        console.error("Failed to update user profile");
+        console.error('Failed to update user profile');
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   };
 
@@ -76,9 +73,9 @@ export default function UserProfile() {
               variant="filled"
               severity="success"
               style={{
-                width: "fit-content",
-                marginLeft: "auto",
-                marginRight: "1rem",
+                width: 'fit-content',
+                marginLeft: 'auto',
+                marginRight: '1rem',
               }}
             >
               User updated successfully.
@@ -91,17 +88,13 @@ export default function UserProfile() {
                 src={uploadIcon}
                 alt="Upload Icon"
                 style={{
-                  width: "200px",
-                  height: "200px",
-                  cursor: "pointer",
-                  borderRadius: "50%",
+                  width: '200px',
+                  height: '200px',
+                  cursor: 'pointer',
+                  borderRadius: '50%',
                 }}
               />
-              <span
-                style={{ display: "block", marginTop: "5px", width: "200px" }}
-              >
-                Upload image
-              </span>
+              <span style={{ display: 'block', marginTop: '5px', width: '200px', textAlign: 'center' }}>Upload image</span>
             </div>
             <div className="profile_form">
               <form onSubmit={handleSubmit}>
@@ -114,7 +107,7 @@ export default function UserProfile() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData?.name || ""}
+                    value={formData?.name || ''}
                     onChange={handleChange}
                     className="user_field"
                     // placeholder="Asad ullah"
@@ -127,7 +120,7 @@ export default function UserProfile() {
                     type="text"
                     id="ens_address"
                     name="ens_address"
-                    value={formData?.ens_address || ""}
+                    value={formData?.ens_address || ''}
                     onChange={handleChange}
                     className="user_field"
                     // placeholder="Asadullah.eth"
@@ -140,7 +133,7 @@ export default function UserProfile() {
                     type="text"
                     id="linkedin"
                     name="linkedin"
-                    value={formData?.linkedin || ""}
+                    value={formData?.linkedin || ''}
                     onChange={handleChange}
                     className="user_field"
                     // placeholder="https://www.linkedin.com/in/asad-ullah-/"

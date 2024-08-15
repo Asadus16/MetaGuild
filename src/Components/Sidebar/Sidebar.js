@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "../Sidebar/Sidebar.css";
-import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import '../Sidebar/Sidebar.css';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -13,11 +13,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div
-        className={`overview_page ${
-          isSidebarOpen ? "sidebar-open" : "sidebar-closed"
-        }`}
-      >
+      <div className={`overview_page ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* Hamburger Menu */}
         <div className="hamburger-menu" onClick={toggleSidebar}>
           <MenuRoundedIcon />

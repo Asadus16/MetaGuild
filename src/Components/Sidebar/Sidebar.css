@@ -59,6 +59,12 @@
 
 @media only screen and (max-width: 1000px) {
   .tabs {
+    width: 0px;
+  }
+  .tabs a {
+    /* display: none; */
+  }
+  .tabs footer {
     display: none;
   }
 
@@ -75,14 +81,19 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-left: 20px;
   }
 
   .sidebar-open .tabs {
     display: flex; /* Show sidebar content when open */
+    width: 100px;
   }
 
   .sidebar-closed .overview_page {
     padding-left: 0; /* Remove padding when sidebar is closed */
     justify-content: center; /* Center content */
+  }
+  .sidebar-closed .tabs a {
+    display: none;
   }
 }
