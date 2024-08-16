@@ -1,19 +1,10 @@
-<<<<<<< HEAD
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import NavBar from '../Components/Navbar';
 import './Pages.css';
 import uploadIcon from '../images/user.svg';
 import { fetchMyself } from '../utils/fetchers';
 import Alert from '@mui/material/Alert';
-=======
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import NavBar from "../Components/Navbar";
-import "./Pages.css";
-import uploadIcon from "../images/user.svg";
-import { fetchMyself } from "../utils/fetchers";
-import Alert from "@mui/material/Alert";
->>>>>>> b3c41396052c9321be46f013d1a79a7ccee5904c
 
 export default function UserProfile() {
   const authToken = localStorage.getItem('authToken');
@@ -73,7 +64,7 @@ export default function UserProfile() {
   };
 
   const handleClose = () => {
-    navigate("/"); // Redirect to the homepage
+    navigate('/'); // Redirect to the homepage
   };
 
   return (
@@ -97,25 +88,8 @@ export default function UserProfile() {
 
           <div className="Dao_profile">
             <div className="profile_icon">
-              <img
-                src={uploadIcon}
-                alt="Upload Icon"
-<<<<<<< HEAD
-                style={{
-                  width: '200px',
-                  height: '200px',
-                  cursor: 'pointer',
-                  borderRadius: '50%',
-                }}
-              />
-              <span style={{ display: 'block', marginTop: '5px', width: '200px', textAlign: 'center' }}>Upload image</span>
-=======
-                className="profIcon"
-              />
-              <span className="spanTxt">
-                Upload image
-              </span>
->>>>>>> b3c41396052c9321be46f013d1a79a7ccee5904c
+              <img src={uploadIcon} alt="Upload Icon" className="profIcon" />
+              <span className="spanTxt">Upload image</span>
             </div>
             <div className="profile_form">
               <form className="forms" onSubmit={handleSubmit}>
@@ -124,51 +98,30 @@ export default function UserProfile() {
                 <br />
                 <div>
                   <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData?.name || ''}
-                    onChange={handleChange}
-                    className="user_field"
-                  />
+                  <input type="text" id="name" name="name" value={formData?.name || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
                 <div>
                   <label htmlFor="ens_address">ENS Address:</label>
-                  <input
-                    type="text"
-                    id="ens_address"
-                    name="ens_address"
-                    value={formData?.ens_address || ''}
-                    onChange={handleChange}
-                    className="user_field"
-                  />
+                  <input type="text" id="ens_address" name="ens_address" value={formData?.ens_address || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
                 <div>
                   <label htmlFor="linkedin">LinkedIn:</label>
-                  <input
-                    type="text"
-                    id="linkedin"
-                    name="linkedin"
-                    value={formData?.linkedin || ''}
-                    onChange={handleChange}
-                    className="user_field"
-                  />
+                  <input type="text" id="linkedin" name="linkedin" value={formData?.linkedin || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
                 <div className="profbtn">
-                <button type="submit" className="profile_submit">
-                  Save
-                </button>
-                <br />
-                <button type="button" className="profile_submit" onClick={handleClose}>
-                  Close
-                </button>
+                  <button type="submit" className="profile_submit">
+                    Save
+                  </button>
+                  <br />
+                  <button type="button" className="profile_submit" onClick={handleClose}>
+                    Close
+                  </button>
                 </div>
               </form>
             </div>

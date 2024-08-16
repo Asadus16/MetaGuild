@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import '../Sidebar/Sidebar.css';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const { id } = useParams();
+  const location = useLocation(); // Hook to get the current URL path
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -13,7 +14,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className={`overview_page ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+      <div className={`page ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* Hamburger Menu */}
         <div className="hamburger-menu" onClick={toggleSidebar}>
           <MenuRoundedIcon />
@@ -21,18 +22,16 @@ export default function Sidebar() {
         {/* Sidebar Content */}
         <div className="tabs">
           <Link to="/home">
-            <button className="button4">Home</button>
+            <button className={`button4 ${location.pathname === '/home' ? 'sidebar-active' : ''}`}>Home</button>
           </Link>
           <Link to={`/explore/overview/${id}`}>
-            <button className="button1">Overview</button>
+            <button className={`button1 ${location.pathname === `/explore/overview/${id}` ? 'sidebar-active' : ''}`}>Overview</button>
           </Link>
-
           <Link to={`/explore/${id}/tasks`}>
-            <button className="button3">Tasks Board</button>
+            <button className={`button3 ${location.pathname === `/explore/${id}/tasks` ? 'sidebar-active' : ''}`}>Tasks Board</button>
           </Link>
-
           <Link to={`/explore/${id}/settings/profile`}>
-            <button className="button2">Settings</button>
+            <button className={`button2 ${location.pathname.startsWith(`/explore/${id}/settings`) ? 'sidebar-active' : ''}`}>Settings</button>
           </Link>
           {/* Footer */}
           <footer className="footer">

@@ -114,22 +114,22 @@
 // };
 
 // export default Navbar;
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import logo from "../images/logo.png";
-import "../styles/Home.css";
-import { ConnectButton, useActiveAccount } from "thirdweb/react";
-import { createWallet, walletConnect } from "thirdweb/wallets";
-import { client } from "../utils/client";
-import Gif from "../images/90449.jpg";
-import Logo1 from "../images/Logo1.png";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import logo from '../images/logo.png';
+import '../styles/Home.css';
+import { ConnectButton, useActiveAccount } from 'thirdweb/react';
+import { createWallet, walletConnect } from 'thirdweb/wallets';
+import { client } from '../utils/client';
+import Gif from '../images/90449.jpg';
+import Logo1 from '../images/Logo1.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const account = useActiveAccount();
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
 
   useEffect(() => {
     if (account) {
@@ -139,25 +139,25 @@ const Navbar = () => {
 
   async function authenticate(authToken) {
     try {
-      const response = await fetch("http://localhost:8000/auth/authenticate", {
-        method: "POST",
+      const response = await fetch('http://localhost:8000/auth/authenticate', {
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ contract_address: account.address }),
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
 
       const result = await response.json();
       if (!authToken) {
-        localStorage.setItem("authToken", result);
+        localStorage.setItem('authToken', result);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   }
 
@@ -179,31 +179,33 @@ const Navbar = () => {
       <div className="hamburger" onClick={toggleMenu}>
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="2x" color="white" />
       </div>
-      <div className={`nav_profile ${isMenuOpen ? "show" : ""}`}>
+      <div className={`nav_profile ${isMenuOpen ? 'show' : ''}`}>
         <a href="/userprofile" className="user_icon" onClick={closeMenu}>
           <FontAwesomeIcon icon={faUser} size="2x" color="white" />
         </a>
         <div onClick={closeMenu}>
-          <ConnectButton 
-            style={{
-              with: "500px"
+          <ConnectButton
+            connectButton={{
+              label: 'Connect Wallet',
+              width: '400px',
+              height: '100px',
             }}
             client={client}
             wallets={[
               walletConnect(),
-              createWallet("io.metamask"),
-              createWallet("com.coinbase.wallet"),
-              createWallet("com.trustwallet.app"),
-              createWallet("app.phantom"),
+              createWallet('io.metamask'),
+              createWallet('com.coinbase.wallet'),
+              createWallet('com.trustwallet.app'),
+              createWallet('app.phantom'),
             ]}
-            theme={"dark"}
+            theme={'dark'}
             connectModal={{
-              size: "wide",
+              size: 'wide',
               titleIcon: Logo1,
-              title: "MetaGuild",
+              title: 'MetaGuild',
               welcomeScreen: {
                 title: "MetaGuild streamline your DAO's workflow!",
-                subtitle: "Connect a wallet to get started",
+                subtitle: 'Connect a wallet to get started',
                 img: {
                   src: Gif,
                   width: 250,

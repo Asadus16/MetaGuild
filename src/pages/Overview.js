@@ -7,7 +7,6 @@ import PublicIcon from '@mui/icons-material/Public';
 import NavBar from '../Components/Navbar';
 import './Pages.css';
 import Sidebar from '../Components/Sidebar/Sidebar';
-import NewSide from '../Components/Sidebar/NewSide';
 import Boards from '../Components/BoardContainer/BoardContainer';
 import KanbanBoard from '../Components/BoardContainer/KanbanBoard';
 import { getDao, getDaoMembers, getDaoTasks } from '../utils/fetchers';
@@ -47,7 +46,7 @@ export default function Overview() {
   return (
     <>
       <NavBar />
-      <div className="Overview_page">
+      <div className="Overview_page page">
         <div className="overview_sidebar">
           <Sidebar />
           {/* <NewSide /> */}
@@ -61,34 +60,35 @@ export default function Overview() {
               <>
                 <h1>{daoData.name}</h1>
               </>
-              <div className="members">
-                <h2 style={{ marginRight: '50px' }}>Members</h2>
-                <div className="">
-                  <Avatar.Group
-                    maxCount={2}
-                    maxStyle={{
-                      color: '#f56a00',
-                      backgroundColor: '#fde3cf',
-                    }}
-                  >
-                    {daoMembers &&
-                      Object.keys(daoMembers)?.map((member) => {
-                        return (
-                          <Tooltip title={capitalizeString(daoMembers[member].User?.name)} placement="top" key={daoMembers[member].id}>
-                            {daoMembers[member].User?.name ? (
-                              <Avatar
-                                style={daoMembers[member].User.name ? { backgroundColor: '#f56a00' } : { backgroundColor: '#000' }}
-                                src={daoMembers[member].User.name || 'https://api.dicebear.com/7.x/miniavs/svg?seed=2'}
-                              >
-                                {daoMembers[member].User.name.charAt(0).toUpperCase()}
-                              </Avatar>
-                            ) : (
-                              <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
-                            )}
-                          </Tooltip>
-                        );
-                      })}
-                    {/* <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
+            </div>
+            <div className="members">
+              <h2 style={{ marginRight: '50px' }}>Members</h2>
+              <div className="">
+                <Avatar.Group
+                  maxCount={2}
+                  maxStyle={{
+                    color: '#f56a00',
+                    backgroundColor: '#fde3cf',
+                  }}
+                >
+                  {daoMembers &&
+                    Object.keys(daoMembers)?.map((member) => {
+                      return (
+                        <Tooltip title={capitalizeString(daoMembers[member].User?.name)} placement="top" key={daoMembers[member].id}>
+                          {daoMembers[member].User?.name ? (
+                            <Avatar
+                              style={daoMembers[member].User.name ? { backgroundColor: '#f56a00' } : { backgroundColor: '#000' }}
+                              src={daoMembers[member].User.name || 'https://api.dicebear.com/7.x/miniavs/svg?seed=2'}
+                            >
+                              {daoMembers[member].User.name.charAt(0).toUpperCase()}
+                            </Avatar>
+                          ) : (
+                            <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
+                          )}
+                        </Tooltip>
+                      );
+                    })}
+                  {/* <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
                     <Tooltip title="Ant User" placement="top">
                       <Avatar
                         style={{
@@ -114,8 +114,7 @@ export default function Overview() {
                         icon={<AntDesignOutlined />}
                       />
                     </Tooltip> */}
-                  </Avatar.Group>
-                </div>
+                </Avatar.Group>
               </div>
             </div>
           </div>

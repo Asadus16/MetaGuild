@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-
 .main {
   align-items: center;
   display: flex;
@@ -30,7 +29,7 @@
   display: flex;
   align-items: center;
 }
-.connectBtn{
+.connectBtn {
   width: 500px;
 }
 .user_icon {
@@ -47,7 +46,7 @@
   }
   .nav_profile {
     position: absolute;
-    top: 100%; 
+    top: 100%;
     right: 0;
     background-color: #000;
     flex-direction: column;
@@ -188,12 +187,8 @@
 }
 .footerText {
   text-align: center;
-<<<<<<< HEAD
   font-family: 'Chakra Petch', sans-serif;
-=======
-  font-family: "Chakra Petch", sans-serif;
   padding: 11px 24px 24px 13px;
->>>>>>> b3c41396052c9321be46f013d1a79a7ccee5904c
 }
 .animation1 {
   width: 400px;
@@ -446,7 +441,7 @@
   display: flex;
   width: 100%;
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
 }
 .dao-logo {
   width: 80px;
@@ -494,63 +489,62 @@ html {
   scroll-behavior: smooth;
 }
 
-
-  @media only screen and (max-width: 450px) {
-    .main{
-      margin-left: auto;
-    }
-    .animation{
-      padding: 30px;
-    }
-    .animation2Container {
-      order: -1;
-    }
-    .animation1Div {
-      margin-top: 300px;
-      padding: 10px 20px 10px 15px;
-      align-items: center;
-      font-size: 12px;
+@media only screen and (max-width: 450px) {
+  .main {
+    margin-left: auto;
   }
-    .animation2 {
-      width: 400px;
-      padding: 10px 20px 10px 15px;
-    }
-    .Animation2Txt{
-      padding: 25px;
-    }
-    .Animation2Txt h1 {
-      font-size: 22px;
-    }
-    .Animation2Txt li {
-      font-size: 16px;      
-    }
+  .animation {
+    padding: 30px;
+  }
+  .animation2Container {
+    order: -1;
+  }
+  .animation1Div {
+    margin-top: 300px;
+    padding: 10px 20px 10px 15px;
+    align-items: center;
+    font-size: 12px;
+  }
+  .animation2 {
+    width: 400px;
+    padding: 10px 20px 10px 15px;
+  }
+  .Animation2Txt {
+    padding: 25px;
+  }
+  .Animation2Txt h1 {
+    font-size: 22px;
+  }
+  .Animation2Txt li {
+    font-size: 16px;
+  }
   .animation3Div {
     flex-direction: column;
   }
   .Animation3Txt {
     font-size: 13px;
     width: 400px;
-}
+  }
   .cards {
     display: flex;
     flex-direction: column;
     gap: 28px;
     padding: 37px 31px 30px 40px;
     font-size: 13px;
-}
-.description{
-  margin-top: 160px;
-  padding: 30px;
-}
- .description h1{
-  font-size: 18px;
-}
-.description p{
-  font-size: 12px;
-}
-.buttons{
-  align-items: center;
-  gap: 50px;
-  padding: 30px;
-}
+  }
+  .description {
+    margin-top: 160px;
+    padding: 30px;
+  }
+  .description h1 {
+    font-size: 18px;
+  }
+  .description p {
+    font-size: 12px;
+  }
+  .buttons {
+    align-items: center;
+    gap: 50px;
+    padding: 30px;
+  }
 }

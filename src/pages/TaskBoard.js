@@ -1,21 +1,21 @@
-import NavBar from "../Components/Navbar";
-import "./Pages.css";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import Boards from "../Components/BoardContainer/BoardContainer";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getDaoTasks, getDaoUser } from "../utils/fetchers";
+import NavBar from '../Components/Navbar';
+import './Pages.css';
+import Sidebar from '../Components/Sidebar/Sidebar';
+import Boards from '../Components/BoardContainer/BoardContainer';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getDaoTasks, getDaoUser } from '../utils/fetchers';
 
 export default function TaskBoard() {
   const { id } = useParams();
   const [daoTasks, setDaoTasks] = useState({});
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
   const [isAdmin, setIsAdmin] = useState(false);
 
   async function fetchDaoUser(authToken, daoId) {
     try {
       const daoUser = await getDaoUser(authToken, daoId);
-      if (daoUser.role === "admin") {
+      if (daoUser.role === 'admin') {
         setIsAdmin(true);
       }
     } catch (error) {
@@ -40,7 +40,7 @@ export default function TaskBoard() {
   return (
     <>
       <NavBar />
-      <div className=" Taskboard_page">
+      <div className=" Taskboard_page page">
         <div className=" taskBoard_sidebar">
           <Sidebar />
         </div>
