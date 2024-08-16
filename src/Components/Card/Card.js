@@ -12,7 +12,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useParams } from "react-router-dom";
-import { getDao, getDaoUser } from "../../utils/fetchers";
+import { getDao, getDaoAdmin, getDaoUser } from "../../utils/fetchers";
 
 export default function Card({
   card,
@@ -30,6 +30,7 @@ export default function Card({
   const [open, setOpen] = React.useState(false);
   const params = useParams();
   const [daoData, setDaoData] = useState({});
+  const [daoAdmin, setDaoAdmin] = useState({});
   const authToken = localStorage.getItem("authToken");
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -40,7 +41,17 @@ export default function Card({
         setIsAdmin(true);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    }
+  }
+
+  async function fetchDaoAdmin(daoId) {
+    try {
+      const daoAdmin = await getDaoAdmin(daoId);
+
+      setDaoAdmin(daoAdmin);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -49,7 +60,7 @@ export default function Card({
       const dao = await getDao(id);
       setDaoData(dao);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -90,6 +101,7 @@ export default function Card({
   useEffect(() => {
     fetchDao(params.id);
     fetchDaoUser(authToken, id);
+    fetchDaoAdmin(params.id);
   }, []);
 
   return (

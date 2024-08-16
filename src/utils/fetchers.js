@@ -183,6 +183,32 @@ export const getDaoMembers = async (daoId) => {
   }
 };
 
+export const getDaoAdmin = async (daoId) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/daos/${daoId}/admin`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const result = await response.json();
+      const myResult = { ...result };
+      return myResult;
+    } else {
+      console.error("Failed to fetch dao admin");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 export const getDaoTasks = async (daoId) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/daos/${daoId}/tasks`, {
