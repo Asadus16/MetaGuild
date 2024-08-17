@@ -2,7 +2,10 @@
   display: flex;
   margin-top: 130px;
 }
-
+.Settings_Page {
+  display: flex;
+  margin-top: 130px;
+}
 .permissions_page {
   display: flex;
   margin-top: 130px;
@@ -11,9 +14,21 @@
   display: flex;
 }
 .settings_sidebar {
-  width: 200px;
+  /* position: fixed; */
+  /* width: 200px; */
   border-right: 1px solid white;
 }
+
+.settings_sidebar {
+  /* Default background when sidebar is closed */
+  background-color: transparent;
+}
+
+.settings_sidebar.sidebar-open {
+  /* Background when sidebar is open */
+  background-color: #060606;
+}
+
 .permissions_sidebar {
   width: 200px;
   border-right: 1px solid white;
@@ -25,8 +40,21 @@
   overflow-x: auto;
 }
 .taskBoard_sidebar {
-  width: 200px;
+  /* position: fixed; */
+  padding: 0 16px;
   border-right: 1px solid white;
+}
+
+.profile_icon {
+  width: 150px;
+}
+
+.spanTxt {
+  text-align: center;
+}
+
+.pr-20 {
+  padding-right: 20px;
 }
 
 .Overview_page {
@@ -38,10 +66,12 @@
   margin-top: 40px;
   margin-left: 60px;
   overflow-x: auto;
+  /* padding: 10px; */
+  /* background: rgb(55, 55, 55); */
 }
+
 .overview_sidebar {
-  /* position: fixed; */
-  width: 200px;
+  /* width: 200px; */
   border-right: 1px solid white;
 }
 
@@ -64,6 +94,7 @@
 }
 label {
   display: block;
+  /* font-weight: bold; */
 }
 .field1 {
   padding: 10px;
@@ -84,7 +115,11 @@ label {
 .titleBar {
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  /* border-bottom: 1px solid white; */
 }
+
 .set_titlebar {
   display: flex;
   justify-content: space-around;
@@ -102,22 +137,31 @@ label {
   height: 100px;
 }
 .upload_icon {
+  /* width: 70px; */
   text-align: center;
 }
 .profile_form {
+  flex: 1;
   flex-direction: row;
+  width: 100%;
   align-items: center;
   align-content: center;
-  padding: 30px;
+  text-align: center;
+  padding: 0 16px;
+}
+.profbtn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 .dao_field {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   height: 40px;
   border-radius: 20px;
   border: 1px solid #a11dff;
   text-align: center;
 }
-
 .user_field {
   width: 100%;
   max-width: 600px;
@@ -125,8 +169,13 @@ label {
   border-radius: 20px;
   border: 1px solid #a11dff;
   text-align: center;
-  box-sizing: border-box;
 }
+/* 
+
+.create_button:hover {
+  letter-spacing: 0.1rem;
+  border: solid 2px purple;
+} */
 
 .profile_submit {
   width: 150px;
@@ -159,6 +208,7 @@ label {
   display: flex;
   justify-content: space-between;
 }
+
 .overview_title h1 {
   color: white;
   border-bottom: #a11dff 3px solid;
@@ -170,11 +220,21 @@ label {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  overflow-x: scroll;
+  /* overflow-x: hidden; */
 }
 
-.forms{
-  width: auto;
-  padding: 30px;
+.settings_tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.settings_content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 60px;
+  overflow-x: auto;
 }
 .permissions_content {
   display: flex;
@@ -184,7 +244,13 @@ label {
   margin-left: 60px;
   overflow-x: auto;
 }
-
+.Dao_profile {
+  flex: 1;
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+  padding-left: 60px;
+}
 
 .setting_btn1,
 .setting_btn2,
@@ -198,50 +264,19 @@ label {
   transition: 0.5s;
   cursor: pointer;
 }
-
+.setting_btn1.active,
+.setting_btn2.active,
+.setting_btn3.active {
+  color: white;
+}
 .active {
   border-bottom: 2px solid #a11dff;
 }
-.spanTxt{
-  display: block;
-  margin-top: 5px;
-  align-items: center;
-  justify-content: center;
-  margin-left: 30px;
-}
-.Settings_Page {
-  display: flex;
-  justify-content: center;
-  padding: 0 15px; 
-  margin-top: 130px;
-}
 
-.settings_content {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 15px; 
-  box-sizing: border-box; 
-}
-
-.Dao_profile {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin-top: 50px;
-  flex-wrap: wrap; 
-}
-
-.profile_form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  width: 100%;
-  max-width: 600px; 
-}             
 .setting_btn1:hover,
 .setting_btn2:hover,
 .setting_btn3:hover {
+  /* background-color: #a11dff; */
   letter-spacing: 0.1rem;
 }
 .settings_panel {
@@ -259,10 +294,12 @@ label {
   align-items: center;
   align-content: center;
   margin-top: 70px;
+  padding: 0 20px;
+  /* gap: 50px; */
 }
 .perm_card1 {
-  width: 800px;
-  height: 190px;
+  max-width: 800px;
+  width: 100%;
   background: #444444;
   border-radius: 20px;
   padding: 10px;
@@ -273,8 +310,8 @@ label {
   margin-bottom: 50px;
 }
 .perm_card2 {
-  width: 800px;
-  height: 190px;
+  max-width: 800px;
+  width: 100%;
   background: #444444;
   border-radius: 20px;
   padding: 10px;
@@ -286,7 +323,6 @@ label {
 }
 
 .perm_card1margin {
-  margin-left: 100px;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -301,12 +337,17 @@ label {
 }
 
 .footer_links {
+  /* display: flex;
+  justify-content: center;
+  gap: 160px;
+  margin-top: 90px; */
   left: 0;
   bottom: 0;
   width: 100%;
   position: fixed;
-  color: white; 
-  padding: 20px; 
+  /* Set background color of the footer */
+  color: white; /* Set text color */
+  padding: 20px; /* Add padding for better spacing */
   text-align: center;
 }
 .linkedIcon {
@@ -314,24 +355,31 @@ label {
 }
 .perm_card11 {
   display: flex;
+  flex-direction: column;
 }
 .perm_card22 {
   display: flex;
 }
 .perm_card22 {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .perm_card1111 {
   flex: 1;
 }
 .perm_card11111 {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
 }
+
 .perm_card22222 {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
 }
+
 .perm_card111111 {
   flex: 1;
 }
@@ -380,8 +428,12 @@ label {
   height: 80%;
   align-items: center;
   gap: 30px;
-  /* width: 20%; */
+  height: auto;
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
 }
+
 .dao_kill {
   width: 210px;
   height: 40px;
@@ -397,52 +449,120 @@ label {
   letter-spacing: 0.1rem;
   border-bottom: 2px solid #a11dff;
 }
-.profIcon{
-  width: 160px;
-  height: 160px;
-  cursor: pointer;
-  border-radius: 50%;
-  margin-top: 60px;
-}
-.profbtn{
+
+.overview-title-member-container {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 450px) {
-  .spanTxt
-    {
-      margin-right: 33px;
-      font-size: 11px;
+  .titleBar {
+    flex-direction: column;
+    align-items: start;
   }
-  .forms h1{
-    font-size: 20px;
+
+  .members {
+    margin-left: 120px;
+    font-size: 12px;
   }
-  .profIcon{
-    width: 110px;
-    height: 110px;
+  /* .overview_content {
+    margin-left: 0px;
+  } */
+  .taskBoard_sidebar {
+    /* position: fixed; */
+    padding: 0 20px;
+    border-right: 1px solid white;
+  }
+  .titleBar {
+    width: 0px;
+  }
+  .title_mob {
+    background-color: red;
+  }
+  .overview_title {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .overview_icon {
+    width: 90px;
+  }
+  .settings_content {
+    margin-left: 0;
+  }
+  .settings_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    height: 100%;
+  }
+
+  .container {
+    margin-top: 170px;
+    padding: 0 50px;
+  }
+
+  .container h1 {
+    font-size: 35px;
+    margin: 20px 0;
+  }
+
+  .firstfield,
+  .secondfield {
+    margin: 20px 0;
+  }
+
+  .field1,
+  .field2 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .submitBtn {
+    width: 50px;
+  }
+
+  .submitBtnContainer {
+    margin-top: 20px;
+  }
+  .container {
+    margin-top: 170px;
+    padding: 0 50px;
+  }
+
+  .container h1 {
+    font-size: 35px;
+    margin: 20px 0;
+  }
+
+  .firstfield,
+  .secondfield {
+    margin: 20px 0;
+  }
+
+  .field1,
+  .field2 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .submitBtn {
+    width: 50px;
+  }
+
+  .submitBtnContainer {
+    margin-top: 20px;
+  }
 }
-    .user_field {
-      width: 90%;
-      margin: 0 auto;
-    }
-  
-    .Dao_profile {
-      flex-direction: column;
-      text-align: center;
-      gap: 15px;
-    }
-  
-    .profile_form {
-      width: 100%;
-      padding: 0 5%;
-    }
-  
-    .forms {
-      width: 100%;
-      padding: 0 5%;
-    }
-    .profbtn{
-      padding: 0px 20px 40px 20px;
-    }
+
+@media only screen and (max-width: 840px) {
+  .Dao_profile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
   }
+}

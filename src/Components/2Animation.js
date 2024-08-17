@@ -24,7 +24,7 @@ export default function Animation2() {
           <div>
             <FontAwesomeIcon icon={faDatabase} size="2x" />
           </div>
-          <li>Tasks you complete are stored on-chain.</li>
+          <li>Payments you receive are recorded on-chain.</li>
         </div>
         <div className="Animation1Btn1">
           <Link to="/explore">

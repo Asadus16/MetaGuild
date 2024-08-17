@@ -4,7 +4,8 @@
   flex-direction: column;
   gap: 50px;
   width: 180px;
-  /* align-items: center; */
+  align-items: center;
+  /* background-color: red; */
 }
 
 .button1,
@@ -21,6 +22,12 @@
   color: white;
   font-size: 19px;
   transition: 0.6s;
+}
+
+/* Sidebar Active button styling */
+.sidebar-active {
+  background-color: #a11dff;
+  letter-spacing: 0.1rem;
 }
 
 .button1:hover,
@@ -59,17 +66,39 @@
 
 @media only screen and (max-width: 1000px) {
   .tabs {
+    width: 0px;
+  }
+
+  .tabs footer {
     display: none;
+  }
+
+  .taskBoard_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 999;
+    background: black;
+    height: 80%;
+  }
+
+  .hamburger-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .hamburger-menu {
     top: 20px;
     left: 20px;
     z-index: 999;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     background-color: #333; /* Add background color */
-    color: white;
+    color: #a11dff;
     font-size: 20px;
     display: flex;
     justify-content: center;
@@ -79,10 +108,71 @@
 
   .sidebar-open .tabs {
     display: flex; /* Show sidebar content when open */
+    width: 100px;
   }
 
-  .sidebar-closed .overview_page {
-    padding-left: 0; /* Remove padding when sidebar is closed */
+  .sidebar-closed .page {
+    padding-left: 30px; /* Remove padding when sidebar is closed */
     justify-content: center; /* Center content */
+  }
+
+  .sidebar-closed {
+    background: transparent;
+  }
+
+  .sidebar-closed .tabs a {
+    display: none;
+  }
+
+  .Taskpage_content {
+    margin-left: 0;
+  }
+
+  .taskBoard_sidebar {
+    /* Default background when sidebar is closed */
+    background-color: transparent;
+  }
+
+  .taskBoard_sidebar.sidebar-open {
+    /* Background when sidebar is open */
+    background-color: #060606;
+  }
+
+  .settings_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    padding: 0 16px;
+    height: 80%;
+  }
+
+  .settings_sidebar {
+    /* Default background when sidebar is closed */
+    background-color: transparent;
+  }
+
+  .settings_sidebar.sidebar-open {
+    /* Background when sidebar is open */
+    background-color: #060606;
+  }
+
+  .overview_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    padding: 0 16px;
+    height: 80%;
+  }
+
+  .overview_sidebar {
+    /* Default background when sidebar is closed */
+    background-color: transparent;
+  }
+
+  .overview_sidebar.sidebar-open {
+    /* Background when sidebar is open */
+    background-color: #060606;
   }
 }

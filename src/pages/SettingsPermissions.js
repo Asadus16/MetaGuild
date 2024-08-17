@@ -14,6 +14,11 @@ export default function SettingPerm() {
   const [manageDAOMember, setManageDAOMember] = useState("");
   const [daoMembers, setDaoMembers] = useState({});
   const { id } = useParams();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const handleUpdateCreateTask = () => {
     console.log("Create Task Role:", createTaskRole);
@@ -60,8 +65,15 @@ export default function SettingPerm() {
     <>
       <NavBar />
       <div className="permissions_page">
-        <div className="settings_sidebar">
-          <Sidebar />
+        <div
+          className={`settings_sidebar ${
+            isSidebarOpen ? "sidebar-open" : "sidebar-closed"
+          }`}
+        >
+          <Sidebar
+            isSidebarOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+          />
         </div>
         <div className="settings_content">
           <SettingsTab />
@@ -71,13 +83,15 @@ export default function SettingPerm() {
             <div className="perm_card1">
               <div className="perm_card1margin">
                 <div className="perm_card11">
-                  <h2 style={{ width: "300px" }}>Select Task</h2>
+                  <h2 style={{ width: "300px", textAlign: "start" }}>
+                    Select Task
+                  </h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
                       mode="multiple"
                       allowClear
                       style={{
-                        width: "70%",
+                        width: "100%",
                         border: "2px solid #757575",
                         borderRadius: "7px",
                       }}
@@ -91,13 +105,15 @@ export default function SettingPerm() {
                   </Space>
                 </div>
                 <div className="perm_card11111">
-                  <h2 style={{ width: "300px" }}>Choose Member</h2>
+                  <h2 style={{ width: "300px", textAlign: "start" }}>
+                    Choose Member
+                  </h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
                       mode="multiple"
                       allowClear
                       style={{
-                        width: "70%",
+                        width: "100%",
                         border: "2px solid #757575",
                         borderRadius: "7px",
                       }}
@@ -124,13 +140,15 @@ export default function SettingPerm() {
             <div className="perm_card2">
               <div className="perm_card2margin">
                 <div className="perm_card22">
-                  <h2 style={{ width: "300px" }}>Select Role</h2>
+                  <h2 style={{ width: "300px", textAlign: "start" }}>
+                    Select Role
+                  </h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
                       mode="multiple"
                       allowClear
                       style={{
-                        width: "70%",
+                        width: "100%",
                         border: "2px solid #757575",
                         borderRadius: "7px",
                       }}
@@ -144,13 +162,15 @@ export default function SettingPerm() {
                   </Space>
                 </div>
                 <div className="perm_card22222">
-                  <h2 style={{ width: "300px" }}>Choose Member</h2>
+                  <h2 style={{ width: "300px", textAlign: "start" }}>
+                    Choose Member
+                  </h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
                       mode="multiple"
                       allowClear
                       style={{
-                        width: "70%",
+                        width: "100%",
                         border: "2px solid #757575",
                         borderRadius: "7px",
                       }}

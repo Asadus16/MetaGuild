@@ -1,23 +1,28 @@
-import NavBar from "../Components/Navbar";
-import "./Pages.css";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import { Link, useParams } from "react-router-dom";
-import uploadIcon from "../images/user.svg";
-import React, { useState, useRef, useEffect } from "react";
-import SettingsTab from "../Components/SettingsTab";
-import { getDao, updateDao } from "../utils/fetchers";
+import NavBar from '../Components/Navbar';
+import './Pages.css';
+import Sidebar from '../Components/Sidebar/Sidebar';
+import { Link, useParams } from 'react-router-dom';
+import uploadIcon from '../images/user.svg';
+import React, { useState, useRef, useEffect } from 'react';
+import SettingsTab from '../Components/SettingsTab';
+import { getDao, updateDao } from '../utils/fetchers';
 
 export default function DaoSettings() {
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
   const { id } = useParams();
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    linkedin: "",
-    website: "",
+    name: '',
+    description: '',
+    linkedin: '',
+    website: '',
   });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   async function fetchDao(id) {
     try {
@@ -69,8 +74,8 @@ export default function DaoSettings() {
     <>
       <NavBar />
       <div className="Settings_Page">
-        <div className="settings_sidebar">
-          <Sidebar />
+        <div className={`settings_sidebar ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </div>
         <div className="settings_content">
           <div className="">
@@ -80,13 +85,7 @@ export default function DaoSettings() {
             <>
               <div className="profile_icon">
                 {/* Hidden file upload input */}
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                />
+                <input type="file" accept="image/*" onChange={handleImageUpload} ref={fileInputRef} style={{ display: 'none' }} />
 
                 {/* Conditional rendering: display uploaded image if available, otherwise display upload icon */}
                 {image ? (
@@ -96,20 +95,20 @@ export default function DaoSettings() {
                       alt="Uploaded Image"
                       className="uploaded_img"
                       style={{
-                        width: "200px",
-                        height: "200px",
-                        cursor: "pointer",
-                        marginTop: "50px",
-                        borderRadius: "50%",
+                        width: '200px',
+                        height: '200px',
+                        cursor: 'pointer',
+                        marginTop: '50px',
+                        borderRadius: '50%',
                       }}
                       onClick={handleUploadIconClick} // Trigger file input click when image is clicked
                     />
                     <span
                       style={{
-                        display: "block",
-                        marginTop: "5px",
-                        width: "200px",
-                        textAlign: "center",
+                        display: 'block',
+                        marginTop: '5px',
+                        width: '200px',
+                        textAlign: 'center',
                       }}
                     >
                       Click to change image
@@ -123,17 +122,17 @@ export default function DaoSettings() {
                       className="upload_icon"
                       onClick={handleUploadIconClick}
                       style={{
-                        width: "200px",
-                        height: "200px",
-                        cursor: "pointer",
-                        borderRadius: "50%",
+                        width: '200px',
+                        height: '200px',
+                        cursor: 'pointer',
+                        borderRadius: '50%',
                       }}
                     />
                     <span
                       style={{
-                        display: "block",
-                        marginTop: "5px",
-                        width: "200px",
+                        display: 'block',
+                        marginTop: '5px',
+                        width: '200px',
                       }}
                     >
                       Upload image
@@ -146,14 +145,7 @@ export default function DaoSettings() {
               <form onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="Name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="dao_field"
-                  />
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="dao_field" />
                 </div>
                 <br /> <br />
                 <div>
@@ -171,26 +163,12 @@ export default function DaoSettings() {
                 <br /> <br />
                 <div>
                   <label htmlFor="Linkedin">Linkedin:</label>
-                  <input
-                    type="text"
-                    id="linkedin"
-                    name="linkedin"
-                    value={formData.linkedin}
-                    onChange={handleChange}
-                    className="dao_field"
-                  />
+                  <input type="text" id="linkedin" name="linkedin" value={formData.linkedin} onChange={handleChange} className="dao_field" />
                 </div>
                 <br /> <br />
                 <div>
                   <label htmlFor="website">Website:</label>
-                  <input
-                    type="text"
-                    id="website"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleChange}
-                    className="dao_field"
-                  />
+                  <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} className="dao_field" />
                 </div>
                 <br /> <br />
                 <button type="submit" className="profile_submit">

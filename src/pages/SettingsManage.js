@@ -1,24 +1,29 @@
-import React, { useState } from "react";
-import NavBar from "../Components/Navbar";
-import "./Pages.css";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import SettingsTab from "../Components/SettingsTab";
-import { useNavigate, useParams } from "react-router-dom";
-import { deleteDao } from "../utils/fetchers";
-import { Alert } from "@mui/material";
+import React, { useState } from 'react';
+import NavBar from '../Components/Navbar';
+import './Pages.css';
+import Sidebar from '../Components/Sidebar/Sidebar';
+import SettingsTab from '../Components/SettingsTab';
+import { useNavigate, useParams } from 'react-router-dom';
+import { deleteDao } from '../utils/fetchers';
+import { Alert } from '@mui/material';
 
 export default function Manage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
   const [alertBar, setAlertBar] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   async function deleteMyDao(authToken, daoId) {
     try {
       const dao = await deleteDao(authToken, daoId);
       handleAlert();
       if (dao) {
-        navigate("/explore");
+        navigate('/explore');
       }
     } catch (error) {
       handleAlert();
@@ -41,8 +46,9 @@ export default function Manage() {
     <>
       <NavBar />
       <div className="Overview_page">
-        <div className="overview_sidebar">
-          <Sidebar />
+        <div className={`overview_sidebar ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+          {/* <NewSide /> */}
         </div>
         <div className="overview_content">
           <SettingsTab />
@@ -51,9 +57,9 @@ export default function Manage() {
               variant="filled"
               severity="error"
               style={{
-                width: "fit-content",
-                marginLeft: "auto",
-                marginRight: "1rem",
+                width: 'fit-content',
+                marginLeft: 'auto',
+                marginRight: '1rem',
               }}
             >
               Unauthorized to delete DAO
@@ -61,9 +67,7 @@ export default function Manage() {
           )}
           <div className="delete_org">
             <>
-              <h1 style={{ color: "white" }}>
-                Do you really want to Delete your DAO?
-              </h1>
+              <h1 style={{ color: 'white' }}>Do you really want to Delete your DAO?</h1>
             </>
             <>
               <button className="dao_kill" onClick={daoDeleter}>

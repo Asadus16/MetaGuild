@@ -66,25 +66,16 @@ const Navbar = () => {
           <img src={logo} className="meta_logo" alt="Logo" />
         </Link>
       </div>
-      <div className="hamburger" onClick={toggleMenu}>
-        <FontAwesomeIcon
-          icon={isMenuOpen ? faTimes : faBars}
-          size="2x"
-          color="white"
-        />
-      </div>
-      <div className={`nav_profile ${isMenuOpen ? "show" : ""}`}>
-        {account ? (
-          <a href="/userprofile" className="user_icon" onClick={closeMenu}>
-            <FontAwesomeIcon icon={faUser} size="2x" color="white" />
-          </a>
-        ) : (
-          ""
-        )}
-        <div onClick={closeMenu}>
+      <div className={`nav_profile`}>
+        <a href="/userprofile" className="user_icon">
+          <FontAwesomeIcon icon={faUser} size="2x" color="white" />
+        </a>
+        <div>
           <ConnectButton
-            style={{
-              with: "500px",
+            connectButton={{
+              label: "Connect Wallet",
+              width: "400px",
+              height: "100px",
             }}
             client={client}
             wallets={[

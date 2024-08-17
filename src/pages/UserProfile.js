@@ -94,14 +94,14 @@ export default function UserProfile() {
           <div className="Dao_profile">
             <div className="profile_icon">
               <img src={uploadIcon} alt="Upload Icon" className="profIcon" />
-              <span className="spanTxt">Upload image</span>
+              <p className="spanTxt">Upload image</p>
             </div>
             <div className="profile_form">
               <form className="forms" onSubmit={handleSubmit}>
                 <h1>Please Enter your details</h1>
                 <br />
                 <br />
-                <div>
+                <div className="pr-20">
                   <label htmlFor="name">Name:</label>
                   <input
                     type="text"
@@ -114,7 +114,7 @@ export default function UserProfile() {
                 </div>
                 <br />
                 <br />
-                <div>
+                <div className="pr-20">
                   <label htmlFor="ens_address">ENS Address:</label>
                   <input
                     type="text"
@@ -140,7 +140,8 @@ export default function UserProfile() {
                 </div>
                 <br />
                 <br />
-                <div>
+                {/* <div> */}
+                <div className="pr-20">
                   <label htmlFor="linkedin">LinkedIn:</label>
                   <input
                     type="text"

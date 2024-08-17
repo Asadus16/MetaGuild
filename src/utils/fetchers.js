@@ -83,10 +83,11 @@ export const createDao = async (authToken, daoData) => {
       body: JSON.stringify(daoData),
     });
 
+    console.log(response);
+
     if (response.ok) {
       const result = await response.json();
-      const myResult = { ...result };
-      return myResult;
+      return result;
     } else {
       console.error("Failed to create DAO");
     }
