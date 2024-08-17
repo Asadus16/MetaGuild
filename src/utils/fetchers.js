@@ -148,8 +148,39 @@ export const deleteDao = async (authToken, daoId) => {
 
 export const getDaoUser = async (authToken, daoId) => {
   try {
+    console.log("dao id : ", daoId);
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/daos/${daoId}/isadmin`,
+      `${process.env.REACT_APP_API_URL}/daos/${daoId}/ismember`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    console.log(response);
+
+    if (response.ok) {
+      const result = await response.json();
+
+      console.log(result);
+
+      return result;
+    } else {
+      console.error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const joinDao = async (authToken, daoId) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/daos/${daoId}/join`,
       {
         method: "get",
         headers: {
@@ -162,9 +193,10 @@ export const getDaoUser = async (authToken, daoId) => {
 
     if (response.ok) {
       const result = await response.json();
+
       return result;
     } else {
-      console.error("Failed to fetch user profile");
+      console.error("Failed to join dao");
     }
   } catch (error) {
     console.error("Error:", error);
@@ -322,6 +354,29 @@ export const deleteDaoTask = async (authToken, daoId, taskId) => {
       return result;
     } else {
       console.error("Failed to delete task");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const emailSender = async (authToken, email, subject, mailBody) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/sendmail`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({ recipient: email, subject, body: mailBody }),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      console.error("Failed to create DAO");
     }
   } catch (error) {
     console.error("Error:", error);

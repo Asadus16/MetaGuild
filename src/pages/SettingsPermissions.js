@@ -66,12 +66,12 @@ export default function SettingPerm() {
         <div className="settings_content">
           <SettingsTab />
           <div className="perm_cards">
-            <h1 style={{ color: "white" }}>Who can Create the tasks</h1>
+            <h1 style={{ color: "white" }}>Who can Work on the task</h1>
 
             <div className="perm_card1">
               <div className="perm_card1margin">
                 <div className="perm_card11">
-                  <h2 style={{ width: "300px" }}>Select Role</h2>
+                  <h2 style={{ width: "300px" }}>Select Task</h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
                       mode="multiple"

@@ -15,6 +15,7 @@ export default function TaskBoard() {
   async function fetchDaoUser(authToken, daoId) {
     try {
       const daoUser = await getDaoUser(authToken, daoId);
+
       if (daoUser.role === "admin") {
         setIsAdmin(true);
       }

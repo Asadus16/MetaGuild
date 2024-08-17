@@ -1,15 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../Sidebar/Sidebar.css";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import { getDaoUser } from "../../utils/fetchers";
 
 export default function Sidebar() {
+  const params = useParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const { id } = useParams();
+  const authToken = localStorage.getItem("authToken");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  async function fetchDaoUser(authToken, daoId) {
+    try {
+      const daoUser = await getDaoUser(authToken, daoId);
+
+      if (!daoUser) {
+        setIsAdmin(false);
+      }
+
+      if (daoUser?.role === "admin") {
+        setIsAdmin(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchDaoUser(authToken, params.id);
+  }, []);
 
   return (
     <>
@@ -35,9 +59,14 @@ export default function Sidebar() {
             <button className="button3">Tasks Board</button>
           </Link>
 
-          <Link to={`/explore/${id}/settings/profile`}>
-            <button className="button2">Settings</button>
-          </Link>
+          {isAdmin ? (
+            <Link to={`/explore/${id}/settings/profile`}>
+              <button className="button2">Settings</button>
+            </Link>
+          ) : (
+            ""
+          )}
+
           {/* Footer */}
           <footer className="footer">
             <h1>

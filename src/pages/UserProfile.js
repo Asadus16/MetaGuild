@@ -11,6 +11,7 @@ export default function UserProfile() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
+    email_address: "",
     linkedin: "",
   });
   const [alertBar, setAlertBar] = useState(false);
@@ -33,6 +34,7 @@ export default function UserProfile() {
             name: formData.name,
             contract_address: formData.contract_address,
             ens_address: formData.ens_address,
+            email_address: formData.email_address,
             linkedin: formData.linkedin,
           }),
         }
@@ -40,7 +42,7 @@ export default function UserProfile() {
 
       if (response.ok) {
         const result = await response.json();
-        window.location.reload();
+        // window.location.reload();
         handleAlert();
       } else {
         console.error("Failed to update user profile");
@@ -91,14 +93,8 @@ export default function UserProfile() {
 
           <div className="Dao_profile">
             <div className="profile_icon">
-              <img
-                src={uploadIcon}
-                alt="Upload Icon"
-                className="profIcon"
-              />
-              <span className="spanTxt">
-                Upload image
-              </span>
+              <img src={uploadIcon} alt="Upload Icon" className="profIcon" />
+              <span className="spanTxt">Upload image</span>
             </div>
             <div className="profile_form">
               <form className="forms" onSubmit={handleSubmit}>
@@ -132,6 +128,19 @@ export default function UserProfile() {
                 <br />
                 <br />
                 <div>
+                  <label htmlFor="email_address">Email Address:</label>
+                  <input
+                    type="text"
+                    id="email_address"
+                    name="email_address"
+                    value={formData?.email_address || ""}
+                    onChange={handleChange}
+                    className="user_field"
+                  />
+                </div>
+                <br />
+                <br />
+                <div>
                   <label htmlFor="linkedin">LinkedIn:</label>
                   <input
                     type="text"
@@ -145,13 +154,17 @@ export default function UserProfile() {
                 <br />
                 <br />
                 <div className="profbtn">
-                <button type="submit" className="profile_submit">
-                  Save
-                </button>
-                <br />
-                <button type="button" className="profile_submit" onClick={handleClose}>
-                  Close
-                </button>
+                  <button type="submit" className="profile_submit">
+                    Save
+                  </button>
+                  <br />
+                  <button
+                    type="button"
+                    className="profile_submit"
+                    onClick={handleClose}
+                  >
+                    Close
+                  </button>
                 </div>
               </form>
             </div>

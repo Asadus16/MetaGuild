@@ -19,7 +19,14 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 
-export default function Cardinfo({ card, onClose, updateCard, boardId }) {
+export default function Cardinfo({
+  card,
+  onClose,
+  updateCard,
+  boardId,
+  daoAdmin,
+}) {
+  console.log(daoAdmin);
   const { title, labels, desc, tasks, date } = card;
   const navigate = useNavigate();
   const authToken = localStorage.getItem("authToken");
@@ -98,7 +105,6 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
 
   useEffect(() => {
     updateCard(card.id, boardId, values);
-    console.log(values);
   }, [values]);
 
   async function updateMyTask(authToken, daoId, taskId, taskData) {
@@ -280,14 +286,18 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
         </div> */}
 
         <div className="cardinfo_box_body">
-          <Button
-            variant="contained"
-            style={{ background: "#555" }}
-            onClick={saveTask}
-          >
-            {/* <Button variant="contained" style={{ background: "#949393" }}> */}
-            Update Task
-          </Button>
+          {daoAdmin && daoAdmin?.role === "admin" ? (
+            <Button
+              variant="contained"
+              style={{ background: "#555" }}
+              onClick={saveTask}
+            >
+              {/* <Button variant="contained" style={{ background: "#949393" }}> */}
+              Update Task
+            </Button>
+          ) : (
+            ""
+          )}
           {/* <Editable
             text="Update Task"
             placeholder="Enter Task"
