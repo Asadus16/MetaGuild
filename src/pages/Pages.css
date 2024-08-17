@@ -18,6 +18,17 @@
   /* width: 200px; */
   border-right: 1px solid white;
 }
+
+.settings_sidebar {
+  /* Default background when sidebar is closed */
+  background-color: transparent;
+}
+
+.settings_sidebar.sidebar-open {
+  /* Background when sidebar is open */
+  background-color: #060606;
+}
+
 .permissions_sidebar {
   width: 200px;
   border-right: 1px solid white;
@@ -30,8 +41,20 @@
 }
 .taskBoard_sidebar {
   /* position: fixed; */
-  /* width: 200px; */
+  padding: 0 16px;
   border-right: 1px solid white;
+}
+
+.profile_icon {
+  width: 150px;
+}
+
+.spanTxt {
+  text-align: center;
+}
+
+.pr-20 {
+  padding-right: 20px;
 }
 
 .Overview_page {
@@ -116,13 +139,18 @@ label {
   text-align: center;
 }
 .profile_form {
-  /* flex: 1; */
+  flex: 1;
   flex-direction: row;
   width: 100%;
   align-items: center;
   align-content: center;
   text-align: center;
   /* text-align: center; */
+}
+.profbtn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 .dao_field {
   width: 600px;
@@ -132,7 +160,8 @@ label {
   text-align: center;
 }
 .user_field {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   height: 40px;
   border-radius: 20px;
   border: 1px solid #a11dff;
@@ -211,6 +240,7 @@ label {
   display: flex;
   margin-top: 50px;
   gap: 50px;
+  padding-left: 60px;
 }
 
 .setting_btn1,
@@ -406,7 +436,7 @@ label {
   }
   .taskBoard_sidebar {
     /* position: fixed; */
-    width: 200px;
+    padding: 0 20px;
     border-right: 1px solid white;
   }
   .titleBar {
@@ -427,5 +457,77 @@ label {
   }
   .settings_sidebar {
     border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    height: 100%;
+  }
+
+  .container {
+    margin-top: 170px;
+    padding: 0 50px;
+  }
+
+  .container h1 {
+    font-size: 35px;
+    margin: 20px 0;
+  }
+
+  .firstfield,
+  .secondfield {
+    margin: 20px 0;
+  }
+
+  .field1,
+  .field2 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .submitBtn {
+    width: 50px;
+  }
+
+  .submitBtnContainer {
+    margin-top: 20px;
+  }
+  .container {
+    margin-top: 170px;
+    padding: 0 50px;
+  }
+
+  .container h1 {
+    font-size: 35px;
+    margin: 20px 0;
+  }
+
+  .firstfield,
+  .secondfield {
+    margin: 20px 0;
+  }
+
+  .field1,
+  .field2 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .submitBtn {
+    width: 50px;
+  }
+
+  .submitBtnContainer {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .Dao_profile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
   }
 }

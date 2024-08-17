@@ -73,6 +73,24 @@
     display: none;
   }
 
+  .taskBoard_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    height: 100%;
+  }
+
+  .hamburger-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   .hamburger-menu {
     top: 20px;
     left: 20px;
@@ -86,7 +104,6 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-left: 20px;
   }
 
   .sidebar-open .tabs {
@@ -99,11 +116,63 @@
     justify-content: center; /* Center content */
   }
 
+  .sidebar-closed {
+    background: transparent;
+  }
+
   .sidebar-closed .tabs a {
     display: none;
   }
 
+  .Taskpage_content {
+    margin-left: 0;
+  }
+
   .taskBoard_sidebar {
-    width: 0px;
+    /* Default background when sidebar is closed */
+    background-color: transparent;
+  }
+
+  .taskBoard_sidebar.sidebar-open {
+    /* Background when sidebar is open */
+    background-color: #060606;
+  }
+
+  .settings_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    padding: 0 16px;
+    height: 100%;
+  }
+
+  .settings_sidebar {
+    /* Default background when sidebar is closed */
+    background-color: transparent;
+  }
+
+  .settings_sidebar.sidebar-open {
+    /* Background when sidebar is open */
+    background-color: #060606;
+  }
+
+  .overview_sidebar {
+    border-right: none;
+    position: absolute;
+    z-index: 1;
+    background: black;
+    padding: 0 16px;
+    height: 100%;
+  }
+
+  .overview_sidebar {
+    /* Default background when sidebar is closed */
+    background-color: transparent;
+  }
+
+  .overview_sidebar.sidebar-open {
+    /* Background when sidebar is open */
+    background-color: #060606;
   }
 }

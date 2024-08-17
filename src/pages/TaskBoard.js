@@ -11,6 +11,11 @@ export default function TaskBoard() {
   const [daoTasks, setDaoTasks] = useState({});
   const authToken = localStorage.getItem('authToken');
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   async function fetchDaoUser(authToken, daoId) {
     try {
@@ -41,8 +46,8 @@ export default function TaskBoard() {
     <>
       <NavBar />
       <div className=" Taskboard_page page">
-        <div className=" taskBoard_sidebar">
-          <Sidebar />
+        <div className={`taskBoard_sidebar ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </div>
         <div className=" Taskpage_content">
           <Boards isAdmin={isAdmin} tasks={daoTasks} />

@@ -17,6 +17,11 @@ export default function Overview() {
   const [daoData, setDaoData] = useState({});
   const [daoMembers, setDaoMembers] = useState({});
   const { id } = useParams();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   async function fetchDao(id) {
     try {
@@ -47,8 +52,8 @@ export default function Overview() {
     <>
       <NavBar />
       <div className="Overview_page page">
-        <div className="overview_sidebar">
-          <Sidebar />
+        <div className={`overview_sidebar ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
           {/* <NewSide /> */}
         </div>
         <div className="overview_content">

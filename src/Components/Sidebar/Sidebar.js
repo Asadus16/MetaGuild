@@ -3,21 +3,18 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import '../Sidebar/Sidebar.css';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
-export default function Sidebar() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
   const { id } = useParams();
   const location = useLocation(); // Hook to get the current URL path
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   return (
     <>
       <div className={`page ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* Hamburger Menu */}
-        <div className="hamburger-menu" onClick={toggleSidebar}>
-          <MenuRoundedIcon />
+        <div className="hamburger-container">
+          <div className="hamburger-menu" onClick={toggleSidebar}>
+            <MenuRoundedIcon />
+          </div>
         </div>
         {/* Sidebar Content */}
         <div className="tabs">

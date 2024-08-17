@@ -89,26 +89,26 @@ export default function UserProfile() {
           <div className="Dao_profile">
             <div className="profile_icon">
               <img src={uploadIcon} alt="Upload Icon" className="profIcon" />
-              <span className="spanTxt">Upload image</span>
+              <p className="spanTxt">Upload image</p>
             </div>
             <div className="profile_form">
               <form className="forms" onSubmit={handleSubmit}>
                 <h1>Please Enter your details</h1>
                 <br />
                 <br />
-                <div>
+                <div className="pr-20">
                   <label htmlFor="name">Name:</label>
                   <input type="text" id="name" name="name" value={formData?.name || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
-                <div>
+                <div className="pr-20">
                   <label htmlFor="ens_address">ENS Address:</label>
                   <input type="text" id="ens_address" name="ens_address" value={formData?.ens_address || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
-                <div>
+                <div className="pr-20">
                   <label htmlFor="linkedin">LinkedIn:</label>
                   <input type="text" id="linkedin" name="linkedin" value={formData?.linkedin || ''} onChange={handleChange} className="user_field" />
                 </div>
