@@ -115,6 +115,8 @@ label {
 .titleBar {
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
   /* border-bottom: 1px solid white; */
 }
 
@@ -145,7 +147,7 @@ label {
   align-items: center;
   align-content: center;
   text-align: center;
-  /* text-align: center; */
+  padding: 0 16px;
 }
 .profbtn {
   display: flex;
@@ -153,7 +155,8 @@ label {
   gap: 20px;
 }
 .dao_field {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   height: 40px;
   border-radius: 20px;
   border: 1px solid #a11dff;
@@ -217,6 +220,12 @@ label {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  overflow-x: scroll;
+  /* overflow-x: hidden; */
+}
+
+.settings_tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .settings_content {
@@ -285,11 +294,12 @@ label {
   align-items: center;
   align-content: center;
   margin-top: 70px;
+  padding: 0 20px;
   /* gap: 50px; */
 }
 .perm_card1 {
-  width: 800px;
-  height: 190px;
+  max-width: 800px;
+  width: 100%;
   background: #444444;
   border-radius: 20px;
   padding: 10px;
@@ -300,8 +310,8 @@ label {
   margin-bottom: 50px;
 }
 .perm_card2 {
-  width: 800px;
-  height: 190px;
+  max-width: 800px;
+  width: 100%;
   background: #444444;
   border-radius: 20px;
   padding: 10px;
@@ -313,7 +323,6 @@ label {
 }
 
 .perm_card1margin {
-  margin-left: 100px;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -346,24 +355,31 @@ label {
 }
 .perm_card11 {
   display: flex;
+  flex-direction: column;
 }
 .perm_card22 {
   display: flex;
 }
 .perm_card22 {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .perm_card1111 {
   flex: 1;
 }
 .perm_card11111 {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
 }
+
 .perm_card22222 {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
 }
+
 .perm_card111111 {
   flex: 1;
 }
@@ -412,8 +428,12 @@ label {
   height: 80%;
   align-items: center;
   gap: 30px;
-  /* width: 20%; */
+  height: auto;
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
 }
+
 .dao_kill {
   width: 210px;
   height: 40px;
@@ -430,10 +450,25 @@ label {
   border-bottom: 2px solid #a11dff;
 }
 
+.overview-title-member-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 450px) {
-  .overview_content {
-    margin-left: 0px;
+  .titleBar {
+    flex-direction: column;
+    align-items: start;
   }
+
+  .members {
+    margin-left: 120px;
+    font-size: 12px;
+  }
+  /* .overview_content {
+    margin-left: 0px;
+  } */
   .taskBoard_sidebar {
     /* position: fixed; */
     padding: 0 20px;

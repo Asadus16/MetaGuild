@@ -176,14 +176,11 @@ const Navbar = () => {
           <img src={logo} className="meta_logo" alt="Logo" />
         </Link>
       </div>
-      <div className="hamburger" onClick={toggleMenu}>
-        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="2x" color="white" />
-      </div>
-      <div className={`nav_profile ${isMenuOpen ? 'show' : ''}`}>
-        <a href="/userprofile" className="user_icon" onClick={closeMenu}>
+      <div className={`nav_profile`}>
+        <a href="/userprofile" className="user_icon">
           <FontAwesomeIcon icon={faUser} size="2x" color="white" />
         </a>
-        <div onClick={closeMenu}>
+        <div>
           <ConnectButton
             connectButton={{
               label: 'Connect Wallet',

@@ -58,13 +58,15 @@ export default function Overview() {
         </div>
         <div className="overview_content">
           <div className="titleBar">
-            <div className="overview_icon">
-              <img src={daoData.image || '/images/dao.svg'} alt="Upload Icon" className="upload_icon" />
-            </div>
-            <div className="overview_title">
-              <>
-                <h1>{daoData.name}</h1>
-              </>
+            <div className="overview-title-member-container">
+              <div className="overview_icon">
+                <img src={daoData.image || '/images/dao.svg'} alt="Upload Icon" className="upload_icon" />
+              </div>
+              <div className="overview_title">
+                <>
+                  <h1>{daoData.name}</h1>
+                </>
+              </div>
             </div>
             <div className="members">
               <h2 style={{ marginRight: '50px' }}>Members</h2>
