@@ -24,55 +24,57 @@ const Navbar = () => {
     fetchMyself(authToken).then((response) => setFormData({ ...response }));
   }, []);
 
-  useEffect(() => {
-    // Function to fetch user data
-    const fetchData = async () => {
-      try {
-        const response = await fetchMyself(authToken);
-        setFormData({ ...response });
-        setLoading(false); // Mark as not loading after fetch is complete
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setLoading(false); // Mark as not loading in case of error
-      }
-    };
+  // useEffect(() => {
+  //   // Function to fetch user data
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetchMyself(authToken);
+  //       setFormData({ ...response });
+  //       setLoading(false); // Mark as not loading after fetch is complete
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setLoading(false); // Mark as not loading in case of error
+  //     }
+  //   };
 
-    if (authToken) {
-      fetchData();
-    } else {
-      setLoading(false);
-    }
-  }, [authToken]);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (!account && !loading) {
-        setTimeoutReached(true);
-      }
-    }, 1500); // 5000 ms = 5 seconds timeout
-
-    // Clean up the timeout if the component unmounts or if loading changes
-    return () => clearTimeout(timeoutId);
-  }, [account, loading]);
-
-  useEffect(() => {
-    if (!loading) {
-      if (account) {
-        authenticate(authToken);
-      } else if (timeoutReached) {
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("profile");
-      }
-    }
-  }, [account, loading, timeoutReached, authToken]);
+  //   if (authToken) {
+  //     fetchData();
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, [authToken]);
 
   // useEffect(() => {
-  //   console.log(account);
-  //   if (account) {
-  //     authenticate(authToken);
-  //     // fetchMyself(authToken).then((response) => setFormData({ ...response }));
+  //   const timeoutId = setTimeout(() => {
+  //     if (!account && !loading) {
+  //       setTimeoutReached(true);
+  //     }
+  //   }, 1500); // 5000 ms = 5 seconds timeout
+
+  //   // Clean up the timeout if the component unmounts or if loading changes
+  //   return () => clearTimeout(timeoutId);
+  // }, [account, loading]);
+
+  // useEffect(() => {
+  //   if (!loading) {
+  //     if (account) {
+  //       authenticate(authToken);
+  //     } else if (timeoutReached) {
+  //       localStorage.removeItem("authToken");
+  //       localStorage.removeItem("profile");
+  //     }
   //   }
-  // }, [account]);
+  // }, [account, loading, timeoutReached, authToken]);
+
+  useEffect(() => {
+    if (account) {
+      authenticate(authToken);
+      // fetchMyself(authToken).then((response) => setFormData({ ...response }));
+    } else {
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("profile");
+    }
+  }, [account]);
 
   async function authenticate(authToken) {
     try {
