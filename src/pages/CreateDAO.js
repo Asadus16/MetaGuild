@@ -7,16 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 
 export default function Create() {
-<<<<<<< HEAD
   const authToken = localStorage.getItem('authToken');
-=======
-  const authToken = localStorage.getItem("authToken");
-  const userProfile = JSON.parse(localStorage.getItem("profile"));
->>>>>>> 36528bb494c0bf86d8454bb9b18e4a30a29b0a7a
+  const userProfile = JSON.parse(localStorage.getItem('profile'));
   const navigate = useNavigate();
   const [newDao, setNewDao] = useState({ name: '', description: '' });
   const [alertBar, setAlertBar] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("false");
+  const [alertMessage, setAlertMessage] = useState('false');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,13 +25,8 @@ export default function Create() {
       if (dao) {
         navigate('/explore');
       } else {
-<<<<<<< HEAD
-        handleAlert();
+        handleAlert('Unauthorized to create DAO');
         setNewDao({ name: '', description: '' });
-=======
-        handleAlert("Unauthorized to create DAO");
-        setNewDao({ name: "", description: "" });
->>>>>>> 36528bb494c0bf86d8454bb9b18e4a30a29b0a7a
       }
     } catch (error) {
       console.log('error');
@@ -47,8 +38,8 @@ export default function Create() {
     e.preventDefault();
 
     if (!userProfile || !userProfile.email_address) {
-      console.log("no email addr");
-      handleAlert("Please update Email Address in your profile");
+      console.log('no email addr');
+      handleAlert('Please update Email Address in your profile');
     } else {
       createNewDao(authToken, newDao);
     }

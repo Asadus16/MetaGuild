@@ -11,13 +11,7 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 
-export default function Cardinfo({
-  card,
-  onClose,
-  updateCard,
-  boardId,
-  daoUser,
-}) {
+export default function Cardinfo({ card, onClose, updateCard, boardId, daoUser }) {
   const { title, labels, desc, tasks, date } = card;
   const navigate = useNavigate();
   const authToken = localStorage.getItem('authToken');
@@ -259,25 +253,14 @@ export default function Cardinfo({
         </div> */}
 
         <div className="cardinfo_box_body">
-<<<<<<< HEAD
-          <Button variant="contained" style={{ background: '#555' }} onClick={saveTask}>
-            {/* <Button variant="contained" style={{ background: "#949393" }}> */}
-            Update Task
-          </Button>
-=======
-          {daoUser && daoUser?.role === "admin" ? (
-            <Button
-              variant="contained"
-              style={{ background: "#555" }}
-              onClick={saveTask}
-            >
+          {daoUser && daoUser?.role === 'admin' ? (
+            <Button variant="contained" style={{ background: '#555' }} onClick={saveTask}>
               {/* <Button variant="contained" style={{ background: "#949393" }}> */}
               Update Task
             </Button>
           ) : (
-            ""
+            ''
           )}
->>>>>>> 36528bb494c0bf86d8454bb9b18e4a30a29b0a7a
           {/* <Editable
             text="Update Task"
             placeholder="Enter Task"
