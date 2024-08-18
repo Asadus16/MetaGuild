@@ -4,7 +4,7 @@ import './BoardContainer.css';
 import { createDaoTask, deleteDaoTask } from '../../utils/fetchers';
 import { useParams } from 'react-router-dom';
 
-export default function Boards({ tasks, isAdmin }) {
+export default function Boards({ tasks, isAdmin, userTasks }) {
   const [boards, setBoards] = useState([
     { id: 1, title: 'To Do', name: 'todo', cards: [] },
     { id: 2, title: 'In Progress', name: 'in_progress', cards: [] },
@@ -154,6 +154,7 @@ export default function Boards({ tasks, isAdmin }) {
           dragEntered={handleDragEnter}
           dragEnded={handleDragEnd}
           updateCard={updateCard}
+          userTasks={userTasks}
         />
       ))}
     </div>

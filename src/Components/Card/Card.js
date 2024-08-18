@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { CheckSquare, Clock, X } from "react-feather";
 import Labels from "../Labels/Labels";
 import "./Card.css";
@@ -12,7 +12,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useParams } from "react-router-dom";
-import { getDao, getDaoAdmin, getDaoUser } from "../../utils/fetchers";
+import {
+  emailSender,
+  getDao,
+  getDaoAdmin,
+  getDaoUser,
+  joinDao,
+} from "../../utils/fetchers";
 
 export default function Card({
   card,
@@ -24,36 +30,50 @@ export default function Card({
   updateCard,
   isDropTarget,
   onDropCard,
+  userTasks,
 }) {
-  const { id, title, labels, date } = card;
+  const { id, title, labels, date, payment } = card;
   const [showModal, setShowModal] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const params = useParams();
   const [daoData, setDaoData] = useState({});
   const [daoAdmin, setDaoAdmin] = useState({});
+  const [daoUser, setDaoUser] = useState({});
+  const [isDaoUser, setIsDaoUser] = useState(false);
   const authToken = localStorage.getItem("authToken");
   const [isAdmin, setIsAdmin] = useState(false);
+  const userProfile = JSON.parse(localStorage.getItem("profile"));
 
   async function fetchDaoUser(authToken, daoId) {
     try {
       const daoUser = await getDaoUser(authToken, daoId);
-      if (daoUser.role === "admin") {
+
+      setDaoUser(daoUser);
+
+      // if (!daoUser) {
+      //   setIsDaoUser(false);
+      // } else {
+      //   setIsDaoUser(true);
+      // }
+
+      if (daoUser?.role === "admin") {
         setIsAdmin(true);
       }
     } catch (error) {
+      console.log("err");
       console.error(error);
     }
   }
 
-  async function fetchDaoAdmin(daoId) {
-    try {
-      const daoAdmin = await getDaoAdmin(daoId);
+  // async function fetchDaoAdmin(daoId) {
+  //   try {
+  //     const daoAdmin = await getDaoAdmin(daoId);
 
-      setDaoAdmin(daoAdmin);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  //     setDaoAdmin(daoAdmin);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   async function fetchDao(id) {
     try {
@@ -64,8 +84,47 @@ export default function Card({
     }
   }
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  async function fetchDaoAdmin(id) {
+    try {
+      const daoAdmin = await getDaoAdmin(id);
+      setDaoAdmin(daoAdmin);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleTaskApply = async () => {
+    try {
+      if (!daoUser) {
+        await joinDao(authToken, params.id);
+      }
+
+      const mailBody = `Hi, my email is ${userProfile.email_address}. I want to apply for task: "${card.title}" in DAO "${daoData.name}"`;
+      applyForTask(
+        daoAdmin.User.email_address,
+        "Application for DAO task",
+        mailBody
+      );
+    } catch (err) {
+      console.error(err);
+    }
+
+    // setOpen(true);
+  };
+
+  const handleTaskNotify = async () => {
+    try {
+      const mailBody = `Hi, my email is ${userProfile.email_address}. I have completed task: "${card.title}" in DAO "${daoData.name}". My Ethereum contract address for rewards: ${userProfile.contract_address}`;
+      applyForTask(
+        daoAdmin.User.email_address,
+        "Notification for Task completion",
+        mailBody
+      );
+    } catch (err) {
+      console.error(err);
+    }
+
+    // setOpen(true);
   };
 
   const handleClose = () => {
@@ -74,45 +133,30 @@ export default function Card({
 
   const applyForTask = async (email, subject, mailBody) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/sendmail`,
-        {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-          body: JSON.stringify({ recipient: email, subject, body: mailBody }),
-        }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        return result;
-      } else {
-        console.error("Failed to create DAO");
-      }
+      await emailSender(authToken, email, subject, mailBody);
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
     }
   };
 
   useEffect(() => {
     fetchDao(params.id);
-    fetchDaoUser(authToken, id);
+    fetchDaoUser(authToken, params.id);
     fetchDaoAdmin(params.id);
   }, []);
 
   return (
     <>
-      {showModal && (
+      {showModal ? (
         <Cardinfo
           updateCard={updateCard}
           boardId={boardId}
           card={card}
+          daoUser={daoUser}
           onClose={() => setShowModal(false)}
         />
+      ) : (
+        ""
       )}
       <div className="apply_flex">
         <div
@@ -136,7 +180,8 @@ export default function Card({
           </div>
 
           <div className="card_title">
-            <h3>{title}</h3>
+            <h2>{title}</h2>
+            <h5 style={{ marginTop: "5px" }}>Price: ${payment}</h5>
           </div>
 
           <div className="card_footer">
@@ -198,9 +243,17 @@ export default function Card({
           </DialogActions>
         </Dialog>
 
+        {userTasks && userTasks.includes(id) && (
+          <div className="apply_task">
+            <button className="apply" onClick={handleTaskNotify}>
+              Notify
+            </button>
+          </div>
+        )}
+
         {boardId === 1 && (
           <div className="apply_task">
-            <button className="apply" onClick={handleClickOpen}>
+            <button className="apply" onClick={handleTaskApply}>
               Apply
             </button>
           </div>

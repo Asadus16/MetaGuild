@@ -7,10 +7,16 @@ import { useNavigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 
 export default function Create() {
+<<<<<<< HEAD
   const authToken = localStorage.getItem('authToken');
+=======
+  const authToken = localStorage.getItem("authToken");
+  const userProfile = JSON.parse(localStorage.getItem("profile"));
+>>>>>>> 36528bb494c0bf86d8454bb9b18e4a30a29b0a7a
   const navigate = useNavigate();
   const [newDao, setNewDao] = useState({ name: '', description: '' });
   const [alertBar, setAlertBar] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("false");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,8 +29,13 @@ export default function Create() {
       if (dao) {
         navigate('/explore');
       } else {
+<<<<<<< HEAD
         handleAlert();
         setNewDao({ name: '', description: '' });
+=======
+        handleAlert("Unauthorized to create DAO");
+        setNewDao({ name: "", description: "" });
+>>>>>>> 36528bb494c0bf86d8454bb9b18e4a30a29b0a7a
       }
     } catch (error) {
       console.log('error');
@@ -35,11 +46,17 @@ export default function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createNewDao(authToken, newDao);
+    if (!userProfile || !userProfile.email_address) {
+      console.log("no email addr");
+      handleAlert("Please update Email Address in your profile");
+    } else {
+      createNewDao(authToken, newDao);
+    }
   };
 
-  const handleAlert = () => {
+  const handleAlert = (message) => {
     setAlertBar(true);
+    setAlertMessage(message);
     const timeoutId = setTimeout(() => setAlertBar(false), 2000); // Set timeout for 3 seconds
 
     return () => clearTimeout(timeoutId); // Cleanup function for current timeout
@@ -60,9 +77,10 @@ export default function Create() {
               marginRight: '1rem',
             }}
           >
-            Unauthorized to create DAO
+            {alertMessage}
           </Alert>
         )}
+
         <h1>Create DAO</h1>
         <form onSubmit={handleSubmit}>
           <div className="firstfield">

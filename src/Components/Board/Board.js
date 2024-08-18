@@ -15,6 +15,7 @@ export default function Board({
   updateCard,
   isDropTarget,
   onDropCard,
+  userTasks,
 }) {
   const { id, title, background, cards } = board;
 
@@ -39,6 +40,7 @@ export default function Board({
             updateCard={updateCard}
             isDropTarget={isDropTarget}
             onDropCard={onDropCard}
+            userTasks={userTasks}
           />
         ))}
 
