@@ -110,7 +110,8 @@ export default function Cardinfo({
     try {
       const daoTask = await updateDaoTask(authToken, daoId, taskId, taskData);
       if (daoTask) {
-        window.location.reload();
+        navigate("/explore/8/tasks");
+        // window.location.reload();
       }
     } catch (error) {
       console.log(error);

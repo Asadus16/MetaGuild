@@ -8,6 +8,7 @@ import {
   assignTaskToUser,
   getDaoMembers,
   getDaoTasks,
+  updateDaoUserRole,
 } from "../utils/fetchers";
 import { useParams } from "react-router-dom";
 import { Alert } from "@mui/material";
@@ -48,25 +49,34 @@ export default function SettingPerm() {
       if (response && response.error) {
         handleAlert();
       }
-      console.log(response);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleUpdateManageDAO = () => {
-    console.log("Manage DAO Role:", manageDAORole);
-    console.log("Manage DAO Member:", manageDAOMember);
+  const handleUpdateManageDAO = async () => {
+    try {
+      const response = await updateDaoUserRole(
+        authToken,
+        id,
+        manageDAORole,
+        manageDAOMember
+      );
+
+      if (response && response.error) {
+        handleAlert();
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleChangeTaskTitle = (value) => {
     setTaskTitle(value);
-    console.log(value);
   };
 
   const handleChangeTaskMembers = (value) => {
     setTaskMembers(value);
-    console.log(value);
   };
 
   const handleChangeManageDAORole = (value) => {
@@ -200,7 +210,7 @@ export default function SettingPerm() {
                   </h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
-                      mode="multiple"
+                      mode="single"
                       allowClear
                       style={{
                         width: "100%",
@@ -211,7 +221,7 @@ export default function SettingPerm() {
                       onChange={handleChangeManageDAORole}
                       options={[
                         { label: "DAO Admin", value: "admin" },
-                        { label: "Contributor", value: "contributor" },
+                        { label: "Member", value: "member" },
                       ]}
                     />
                   </Space>
@@ -222,7 +232,7 @@ export default function SettingPerm() {
                   </h2>
                   <Space style={{ width: "100%" }} direction="vertical">
                     <Select
-                      mode="multiple"
+                      mode="single"
                       allowClear
                       style={{
                         width: "100%",
@@ -231,9 +241,9 @@ export default function SettingPerm() {
                       }}
                       placeholder="Please select the Contributor"
                       onChange={handleChangeManageDAOMember}
-                      options={Object.values(daoMembers).map((member) => ({
-                        label: member.name,
-                        value: member.User.contract_address,
+                      options={Object.keys(daoMembers).map((key) => ({
+                        label: daoMembers[key].User.email_address,
+                        value: daoMembers[key].User.id,
                       }))}
                     />
 

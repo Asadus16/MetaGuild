@@ -407,6 +407,33 @@ export const assignTaskToUser = async (authToken, taskId, userId) => {
   }
 };
 
+export const updateDaoUserRole = async (authToken, daoId, role, userId) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/daos/${daoId}/user/${userId}`,
+      {
+        method: "put",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ role }),
+      }
+    );
+
+    if (response) {
+      const result = await response.json();
+
+      return result;
+    } else {
+      console.error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 export const emailSender = async (authToken, email, subject, mailBody) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/sendmail`, {
@@ -423,7 +450,7 @@ export const emailSender = async (authToken, email, subject, mailBody) => {
       const result = await response.json();
       return result;
     } else {
-      console.error("Failed to create DAO");
+      console.error("Failed to send email");
     }
   } catch (error) {
     console.error("Error:", error);
