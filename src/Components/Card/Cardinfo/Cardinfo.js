@@ -24,9 +24,8 @@ export default function Cardinfo({
   onClose,
   updateCard,
   boardId,
-  daoAdmin,
+  daoUser,
 }) {
-  console.log(daoAdmin);
   const { title, labels, desc, tasks, date } = card;
   const navigate = useNavigate();
   const authToken = localStorage.getItem("authToken");
@@ -286,7 +285,7 @@ export default function Cardinfo({
         </div> */}
 
         <div className="cardinfo_box_body">
-          {daoAdmin && daoAdmin?.role === "admin" ? (
+          {daoUser && daoUser?.role === "admin" ? (
             <Button
               variant="contained"
               style={{ background: "#555" }}

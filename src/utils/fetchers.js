@@ -83,8 +83,6 @@ export const createDao = async (authToken, daoData) => {
       body: JSON.stringify(daoData),
     });
 
-    console.log(response);
-
     if (response.ok) {
       const result = await response.json();
       return result;
@@ -149,7 +147,6 @@ export const deleteDao = async (authToken, daoId) => {
 
 export const getDaoUser = async (authToken, daoId) => {
   try {
-    console.log("dao id : ", daoId);
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}/daos/${daoId}/ismember`,
       {
@@ -162,12 +159,8 @@ export const getDaoUser = async (authToken, daoId) => {
       }
     );
 
-    console.log(response);
-
     if (response.ok) {
       const result = await response.json();
-
-      console.log(result);
 
       return result;
     } else {
@@ -282,6 +275,32 @@ export const getDaoTasks = async (daoId) => {
   }
 };
 
+export const getUserTasks = async (authToken) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/tasks/user`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const result = await response.json();
+      // const myResult = { ...result };
+      return result;
+    } else {
+      console.error("Failed to fetch user tasks");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 export const createDaoTask = async (authToken, daoId, taskData) => {
   try {
     const response = await fetch(
@@ -355,6 +374,33 @@ export const deleteDaoTask = async (authToken, daoId, taskId) => {
       return result;
     } else {
       console.error("Failed to delete task");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const assignTaskToUser = async (authToken, taskId, userId) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/tasks/${taskId}/assign`,
+      {
+        method: "put",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ userId }),
+      }
+    );
+
+    if (response) {
+      const result = await response.json();
+      const myResult = { ...result };
+      return myResult;
+    } else {
+      console.error("Failed to fetch user profile");
     }
   } catch (error) {
     console.error("Error:", error);

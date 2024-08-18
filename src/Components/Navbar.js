@@ -10,17 +10,25 @@ import { createWallet, walletConnect } from "thirdweb/wallets";
 import { client } from "../utils/client";
 import Gif from "../images/90449.jpg";
 import Logo1 from "../images/Logo1.png";
+import { fetchMyself } from "../utils/fetchers";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const account = useActiveAccount();
   const authToken = localStorage.getItem("authToken");
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    fetchMyself(authToken).then((response) => setFormData({ ...response }));
+  }, []);
 
   useEffect(() => {
     if (account) {
       authenticate(authToken);
+      fetchMyself(authToken).then((response) => setFormData({ ...response }));
     } else {
       localStorage.removeItem("authToken");
+      localStorage.removeItem("profile");
     }
   }, [account]);
 
