@@ -10,11 +10,13 @@ import { updateDaoTask } from '../../../utils/fetchers';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import { useParams } from 'react-router-dom';
 
 export default function Cardinfo({ card, onClose, updateCard, boardId, daoUser }) {
   const { title, labels, desc, tasks, date } = card;
   const navigate = useNavigate();
   const authToken = localStorage.getItem('authToken');
+  const { id } = useParams();
 
   const [activeColor, setActiveColor] = useState('');
   const [values, setValues] = useState({ ...card });
@@ -88,8 +90,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId, daoUser }
     try {
       const daoTask = await updateDaoTask(authToken, daoId, taskId, taskData);
       if (daoTask) {
-        navigate("/explore/8/tasks");
-        // window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -100,7 +101,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId, daoUser }
     const { title, description, payment, deadline, status } = values;
     const taskData = { title, description, payment, deadline, status };
 
-    updateMyTask(authToken, values.dao_id, values.id, taskData);
+    updateMyTask(authToken, id, values.id, taskData);
   };
 
   return (

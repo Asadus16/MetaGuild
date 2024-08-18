@@ -78,7 +78,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faUser} size="2x" color="white" />
           </a>
         ) : (
-          ""
+          ''
         )}
         <div>
           <ConnectButton
