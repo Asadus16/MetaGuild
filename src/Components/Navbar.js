@@ -71,10 +71,15 @@ const Navbar = () => {
           <img src={logo} className="meta_logo" alt="Logo" />
         </Link>
       </div>
+
       <div className={`nav_profile`}>
-        <a href="/userprofile" className="user_icon">
-          <FontAwesomeIcon icon={faUser} size="2x" color="white" />
-        </a>
+        {account ? (
+          <a href="/userprofile" className="user_icon">
+            <FontAwesomeIcon icon={faUser} size="2x" color="white" />
+          </a>
+        ) : (
+          ""
+        )}
         <div>
           <ConnectButton
             connectButton={{

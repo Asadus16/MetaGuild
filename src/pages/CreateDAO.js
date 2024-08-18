@@ -29,7 +29,6 @@ export default function Create() {
         setNewDao({ name: '', description: '' });
       }
     } catch (error) {
-      console.log('error');
       console.log(error);
     }
   }
@@ -37,8 +36,9 @@ export default function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!userProfile || !userProfile.email_address) {
-      console.log('no email addr');
+    if (!userProfile) {
+      handleAlert('Unauthorized to create DAO');
+    } else if (!userProfile.email_address) {
       handleAlert('Please update Email Address in your profile');
     } else {
       createNewDao(authToken, newDao);
