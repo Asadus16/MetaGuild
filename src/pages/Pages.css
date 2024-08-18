@@ -209,12 +209,14 @@ label {
   justify-content: space-between;
 }
 
-.overview_title h1 {
+.overview_title h2 {
   color: white;
   border-bottom: #a11dff 3px solid;
 }
 .project_desc {
   margin-top: 150px;
+  text-align: center;
+  padding: 20px;
 }
 .settings_tabs {
   display: flex;
@@ -432,6 +434,7 @@ label {
   text-align: center;
   margin-top: 60px;
   padding: 20px;
+  margin-right: 20px;
 }
 
 .dao_kill {
@@ -558,7 +561,7 @@ label {
   }
 }
 
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 412px) {
   .Dao_profile {
     flex-direction: column;
     justify-content: center;

@@ -1,41 +1,25 @@
-/* eslint-disable no-unused-vars */
-import Button from "@mui/material/Button";
-import React, { useEffect, useState } from "react";
-import {
-  Calendar,
-  CheckCircle,
-  List,
-  DollarSign,
-  Trash2,
-  Type,
-} from "react-feather";
-import Editable from "../../Editable/Editable";
-import Labels from "../../Labels/Labels";
-import Modal from "../../Modal/Modal";
-import "./Cardinfo.css";
-import { useNavigate } from "react-router-dom";
-import { updateDaoTask } from "../../../utils/fetchers";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
+import Button from '@mui/material/Button';
+import React, { useEffect, useState } from 'react';
+import { Calendar, CheckCircle, List, DollarSign, Trash2, Type } from 'react-feather';
+import Editable from '../../Editable/Editable';
+import Labels from '../../Labels/Labels';
+import Modal from '../../Modal/Modal';
+import './Cardinfo.css';
+import { useNavigate } from 'react-router-dom';
+import { updateDaoTask } from '../../../utils/fetchers';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function Cardinfo({ card, onClose, updateCard, boardId }) {
   const { title, labels, desc, tasks, date } = card;
   const navigate = useNavigate();
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
 
-  const [activeColor, setActiveColor] = useState("");
+  const [activeColor, setActiveColor] = useState('');
   const [values, setValues] = useState({ ...card });
 
-  const colors = [
-    "#a8193d",
-    "#4fcc25",
-    "#1ebffa",
-    "#8da377",
-    "#9975bd",
-    "#cf61a1",
-    "#240959",
-  ];
+  const colors = ['#a8193d', '#4fcc25', '#1ebffa', '#8da377', '#9975bd', '#cf61a1', '#240959'];
 
   // Labels Add Function
   const addLabel = (value, color) => {
@@ -47,7 +31,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
       color: color,
     };
     setValues({ ...values, labels: [...values.labels, label] });
-    setActiveColor("");
+    setActiveColor('');
   };
 
   // Labels Remove Function
@@ -91,9 +75,9 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
 
   // Task Percentage Calculation function
   const calculatePercentage = () => {
-    if (values.tasks?.length === 0) return "0";
+    if (values.tasks?.length === 0) return '0';
     const completed = values.tasks?.filter((item) => item.completed)?.length;
-    return (completed / values.tasks?.length) * 100 + "";
+    return (completed / values.tasks?.length) * 100 + '';
   };
 
   useEffect(() => {
@@ -146,9 +130,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
               defaultValue={values.description}
               placeholder="Enter Description"
               buttonText="Set Description"
-              submitButton={
-                <Button variant="contained">Set Description</Button>
-              }
+              submitButton={<Button variant="contained">Set Description</Button>}
               onSubmit={(value) => setValues({ ...values, description: value })}
             />
           </div>
@@ -173,13 +155,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
             <Calendar /> Date
           </div>
           <div className="cardinfo_box_body">
-            <input
-              type="date"
-              defaultValue={values.deadline}
-              onChange={(event) =>
-                setValues({ ...values, deadline: event.target.value })
-              }
-            />
+            <input type="date" defaultValue={values.deadline} onChange={(event) => setValues({ ...values, deadline: event.target.value })} />
           </div>
         </div>
 
@@ -201,10 +177,8 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
               id="demo-simple-select"
               value={values.status}
               label="Status"
-              onChange={(event) =>
-                setValues({ ...values, status: event.target.value })
-              }
-              style={{ color: "#fff" }}
+              onChange={(event) => setValues({ ...values, status: event.target.value })}
+              style={{ color: '#fff' }}
             >
               <MenuItem value="todo">Todo</MenuItem>
               <MenuItem value="in_progress">In Progress</MenuItem>
@@ -280,11 +254,7 @@ export default function Cardinfo({ card, onClose, updateCard, boardId }) {
         </div> */}
 
         <div className="cardinfo_box_body">
-          <Button
-            variant="contained"
-            style={{ background: "#555" }}
-            onClick={saveTask}
-          >
+          <Button variant="contained" style={{ background: '#555' }} onClick={saveTask}>
             {/* <Button variant="contained" style={{ background: "#949393" }}> */}
             Update Task
           </Button>

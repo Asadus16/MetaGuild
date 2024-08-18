@@ -64,7 +64,7 @@ export default function Overview() {
               </div>
               <div className="overview_title">
                 <>
-                  <h1>{daoData.name}</h1>
+                  <h2>{daoData.name}</h2>
                 </>
               </div>
             </div>

@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Board from "../Board/Board";
-import "./BoardContainer.css";
-import { createDaoTask, deleteDaoTask } from "../../utils/fetchers";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import Board from '../Board/Board';
+import './BoardContainer.css';
+import { createDaoTask, deleteDaoTask } from '../../utils/fetchers';
+import { useParams } from 'react-router-dom';
 
 export default function Boards({ tasks, isAdmin }) {
   const [boards, setBoards] = useState([
-    { id: 1, title: "To Do", name: "todo", cards: [] },
-    { id: 2, title: "In Progress", name: "in_progress", cards: [] },
-    { id: 3, title: "In Review", name: "in_review", cards: [] },
-    { id: 4, title: "Done", name: "complete", cards: [] },
+    { id: 1, title: 'To Do', name: 'todo', cards: [] },
+    { id: 2, title: 'In Progress', name: 'in_progress', cards: [] },
+    { id: 3, title: 'In Review', name: 'in_review', cards: [] },
+    { id: 4, title: 'Done', name: 'complete', cards: [] },
   ]);
-  const [target, setTarget] = useState({ cId: "", bId: "" });
-  const authToken = localStorage.getItem("authToken");
+  const [target, setTarget] = useState({ cId: '', bId: '' });
+  const authToken = localStorage.getItem('authToken');
   const { id } = useParams();
 
   function filterCardsByStatus(boards, status) {
@@ -20,19 +20,13 @@ export default function Boards({ tasks, isAdmin }) {
       .filter(([key, value]) => value.status === status)
       .map(([key, value]) => ({ ...value }));
 
-    setBoards((prevBoards) =>
-      prevBoards.map((board) =>
-        board.name === status ? { ...board, cards: filteredTasks } : board
-      )
-    );
+    setBoards((prevBoards) => prevBoards.map((board) => (board.name === status ? { ...board, cards: filteredTasks } : board)));
   }
 
   async function createNewTask(authToken, daoId, taskData) {
     try {
       const daoTask = await createDaoTask(authToken, daoId, taskData);
-      if (daoTask) {
-        window.location.reload();
-      }
+      return daoTask;
     } catch (error) {
       console.log(error);
     }
@@ -41,72 +35,63 @@ export default function Boards({ tasks, isAdmin }) {
   async function deleteTask(authToken, daoId, taskId) {
     try {
       const daoTask = await deleteDaoTask(authToken, daoId, taskId);
-      if (daoTask) {
-        window.location.reload();
-      }
+      return daoTask;
     } catch (error) {
       console.log(error);
     }
   }
 
   // Card Add Function
-  const addCard = (title, bId) => {
-    createNewTask(authToken, id, { title });
+  const addCard = async (title, bId) => {
+    const newTask = await createNewTask(authToken, id, { title });
 
-    return;
+    if (newTask) {
+      const index = boards.findIndex((item) => item.id === bId);
+      if (index < 0) return;
 
-    const index = boards.findIndex((item) => item.id === bId);
-    if (index < 0) return;
+      const card = {
+        id: newTask.id, // Assuming the new task has an `id` property returned from the API
+        title: newTask.title,
+        labels: [],
+        tasks: [],
+        date: '',
+        desc: '',
+      };
 
-    const lastCardId =
-      boards[index].cards.length > 0
-        ? boards[index].cards[boards[index].cards.length - 1].id
-        : 0;
-    const newCardId = lastCardId + 1;
-
-    const card = {
-      id: newCardId,
-      title: title,
-      labels: [],
-      tasks: [],
-      date: "",
-      desc: "",
-    };
-
-    const tempBoards = [...boards];
-    tempBoards[index].cards.push(card);
-    setBoards(tempBoards);
+      const tempBoards = [...boards];
+      tempBoards[index].cards.push(card);
+      setBoards(tempBoards);
+    }
   };
 
   // Card Remove Function
-  const removeCard = (event, cId, bId) => {
+  const removeCard = async (event, cId, bId) => {
     event.stopPropagation();
 
-    deleteTask(authToken, id, cId);
+    const deletedTask = await deleteTask(authToken, id, cId);
 
-    return;
+    if (deletedTask) {
+      const boardIndex = boards.findIndex((item) => item.id === bId);
+      if (boardIndex < 0) return;
 
-    const boardIndex = boards.findIndex((item) => item.id === bId);
-    if (boardIndex < 0) return;
+      const cardIndex = boards[boardIndex].cards.findIndex((item) => item.id === cId);
+      if (cardIndex < 0) return;
 
-    const cardIndex = boards[boardIndex].cards.findIndex(
-      (item) => item.id === cId
-    );
-    if (cardIndex < 0) return;
-
-    const tempBoards = [...boards];
-    tempBoards[boardIndex].cards.splice(cardIndex, 1);
-    setBoards(tempBoards);
+      const tempBoards = [...boards];
+      tempBoards[boardIndex].cards.splice(cardIndex, 1);
+      setBoards(tempBoards);
+    }
   };
 
   // Card Drag Handler
   const handleDragEnter = (cId, bId) => {
-    console.log("Drag Enter:", cId, bId);
+    console.log('Drag Enter:', cId, bId);
     setTarget((prevTarget) => ({
       ...prevTarget,
       bId: bId,
     }));
   };
+
   const handleDragEnd = (cId, bId) => {
     const sourceBoardIndex = boards.findIndex((item) => item.id === bId);
 
@@ -119,9 +104,7 @@ export default function Boards({ tasks, isAdmin }) {
 
     const tempBoards = [...boards];
 
-    const cardIndex = tempBoards[sourceBoardIndex].cards.findIndex(
-      (item) => item.id === cId
-    );
+    const cardIndex = tempBoards[sourceBoardIndex].cards.findIndex((item) => item.id === cId);
     console.log(cardIndex);
 
     if (cardIndex < 0) return;
@@ -139,9 +122,7 @@ export default function Boards({ tasks, isAdmin }) {
     const boardIndex = boards.findIndex((item) => item.id === bId);
     if (boardIndex < 0) return;
 
-    const cardIndex = boards[boardIndex].cards.findIndex(
-      (item) => item.id === cId
-    );
+    const cardIndex = boards[boardIndex].cards.findIndex((item) => item.id === cId);
     if (cardIndex < 0) return;
 
     const tempBoards = [...boards];
@@ -151,14 +132,14 @@ export default function Boards({ tasks, isAdmin }) {
 
   // Save to local storage
   useEffect(() => {
-    localStorage.setItem("kanban", JSON.stringify(boards));
+    localStorage.setItem('kanban', JSON.stringify(boards));
   }, [boards]);
 
   useEffect(() => {
-    filterCardsByStatus(boards, "todo");
-    filterCardsByStatus(boards, "in_progress");
-    filterCardsByStatus(boards, "in_review");
-    filterCardsByStatus(boards, "complete");
+    filterCardsByStatus(boards, 'todo');
+    filterCardsByStatus(boards, 'in_progress');
+    filterCardsByStatus(boards, 'in_review');
+    filterCardsByStatus(boards, 'complete');
   }, [tasks]);
 
   return (

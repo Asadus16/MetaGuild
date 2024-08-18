@@ -198,7 +198,7 @@ const Navbar = () => {
             theme={'dark'}
             connectModal={{
               size: 'wide',
-              titleIcon: Logo1,
+
               title: 'MetaGuild',
               welcomeScreen: {
                 title: "MetaGuild streamline your DAO's workflow!",
