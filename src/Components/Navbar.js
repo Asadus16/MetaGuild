@@ -17,20 +17,62 @@ const Navbar = () => {
   const account = useActiveAccount();
   const authToken = localStorage.getItem("authToken");
   const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [timeoutReached, setTimeoutReached] = useState(false);
 
   useEffect(() => {
     fetchMyself(authToken).then((response) => setFormData({ ...response }));
   }, []);
 
   useEffect(() => {
-    if (account) {
-      authenticate(authToken);
-      fetchMyself(authToken).then((response) => setFormData({ ...response }));
+    // Function to fetch user data
+    const fetchData = async () => {
+      try {
+        const response = await fetchMyself(authToken);
+        setFormData({ ...response });
+        setLoading(false); // Mark as not loading after fetch is complete
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setLoading(false); // Mark as not loading in case of error
+      }
+    };
+
+    if (authToken) {
+      fetchData();
     } else {
-      localStorage.removeItem("authToken");
-      localStorage.removeItem("profile");
+      setLoading(false);
     }
-  }, [account]);
+  }, [authToken]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (!account && !loading) {
+        setTimeoutReached(true);
+      }
+    }, 1500); // 5000 ms = 5 seconds timeout
+
+    // Clean up the timeout if the component unmounts or if loading changes
+    return () => clearTimeout(timeoutId);
+  }, [account, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      if (account) {
+        authenticate(authToken);
+      } else if (timeoutReached) {
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("profile");
+      }
+    }
+  }, [account, loading, timeoutReached, authToken]);
+
+  // useEffect(() => {
+  //   console.log(account);
+  //   if (account) {
+  //     authenticate(authToken);
+  //     // fetchMyself(authToken).then((response) => setFormData({ ...response }));
+  //   }
+  // }, [account]);
 
   async function authenticate(authToken) {
     try {

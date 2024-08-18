@@ -13,7 +13,7 @@ import Editable from "../../Editable/Editable";
 import Labels from "../../Labels/Labels";
 import Modal from "../../Modal/Modal";
 import "./Cardinfo.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { updateDaoTask } from "../../../utils/fetchers";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
@@ -29,6 +29,7 @@ export default function Cardinfo({
   const { title, labels, desc, tasks, date } = card;
   const navigate = useNavigate();
   const authToken = localStorage.getItem("authToken");
+  const { id } = useParams();
 
   const [activeColor, setActiveColor] = useState("");
   const [values, setValues] = useState({ ...card });
@@ -110,8 +111,7 @@ export default function Cardinfo({
     try {
       const daoTask = await updateDaoTask(authToken, daoId, taskId, taskData);
       if (daoTask) {
-        navigate("/explore/8/tasks");
-        // window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -122,7 +122,7 @@ export default function Cardinfo({
     const { title, description, payment, deadline, status } = values;
     const taskData = { title, description, payment, deadline, status };
 
-    updateMyTask(authToken, values.dao_id, values.id, taskData);
+    updateMyTask(authToken, id, values.id, taskData);
   };
 
   return (
