@@ -60,11 +60,11 @@ export default function Overview() {
           <div className="titleBar">
             <div className="overview-title-member-container">
               <div className="overview_icon">
-                <img src={daoData.image || '/images/dao.svg'} alt="Upload Icon" className="upload_icon" />
+                <img src={daoData?.image || '/images/dao.svg'} alt="Upload Icon" className="upload_icon" />
               </div>
               <div className="overview_title">
                 <>
-                  <h1>{daoData.name}</h1>
+                  <h2>{daoData?.name}</h2>
                 </>
               </div>
             </div>
@@ -126,16 +126,16 @@ export default function Overview() {
             </div>
           </div>
           <div className="project_desc">
-            <h3>{daoData.description}</h3>
+            <h3>{daoData?.description}</h3>
           </div>
           <div className="footer_links">
             <>
-              <a href={daoData.linkedin} target="_blank" rel="noopener noreferrer" className="linkedIcon">
+              <a href={daoData?.linkedin} target="_blank" rel="noopener noreferrer" className="linkedIcon">
                 <LinkedInIcon sx={{ fontSize: 40, color: 'white' }} />
               </a>
             </>
             <>
-              <a href={daoData.website} target="_blank" rel="noopener noreferrer">
+              <a href={daoData?.website} target="_blank" rel="noopener noreferrer">
                 <PublicIcon sx={{ fontSize: 40, color: 'white' }} />
               </a>
             </>

@@ -1,18 +1,18 @@
-import Navbar from "../Components/Navbar";
-import React, { useState } from "react";
-import Animation from "../json_animations/CreateAnimation.json";
-import Lottie from "lottie-react";
-import { createDao } from "../utils/fetchers";
-import { useNavigate } from "react-router-dom";
-import { Alert } from "@mui/material";
+import Navbar from '../Components/Navbar';
+import React, { useState } from 'react';
+import Animation from '../json_animations/CreateAnimation.json';
+import Lottie from 'lottie-react';
+import { createDao } from '../utils/fetchers';
+import { useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
 
 export default function Create() {
-  const authToken = localStorage.getItem("authToken");
-  const userProfile = JSON.parse(localStorage.getItem("profile"));
+  const authToken = localStorage.getItem('authToken');
+  const userProfile = JSON.parse(localStorage.getItem('profile'));
   const navigate = useNavigate();
-  const [newDao, setNewDao] = useState({ name: "", description: "" });
+  const [newDao, setNewDao] = useState({ name: '', description: '' });
   const [alertBar, setAlertBar] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("false");
+  const [alertMessage, setAlertMessage] = useState('false');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,10 +23,10 @@ export default function Create() {
     try {
       const dao = await createDao(authToken, daoData);
       if (dao) {
-        navigate("/explore");
+        navigate('/explore');
       } else {
-        handleAlert("Unauthorized to create DAO");
-        setNewDao({ name: "", description: "" });
+        handleAlert('Unauthorized to create DAO');
+        setNewDao({ name: '', description: '' });
       }
     } catch (error) {
       console.log(error);
@@ -37,9 +37,9 @@ export default function Create() {
     e.preventDefault();
 
     if (!userProfile) {
-      handleAlert("Unauthorized to create DAO");
+      handleAlert('Unauthorized to create DAO');
     } else if (!userProfile.email_address) {
-      handleAlert("Please update Email Address in your profile");
+      handleAlert('Please update Email Address in your profile');
     } else {
       createNewDao(authToken, newDao);
     }
@@ -63,9 +63,9 @@ export default function Create() {
             variant="filled"
             severity="error"
             style={{
-              width: "fit-content",
-              marginLeft: "auto",
-              marginRight: "1rem",
+              width: 'fit-content',
+              marginLeft: 'auto',
+              marginRight: '1rem',
             }}
           >
             {alertMessage}
@@ -77,20 +77,10 @@ export default function Create() {
           <div className="firstfield">
             <label htmlFor="name">Enter the name for your DAO</label>
             <br />
-            <input
-              className="field1"
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your DAO name"
-              value={newDao.name}
-              onChange={handleChange}
-            />
+            <input className="field1" type="text" id="name" name="name" placeholder="Enter your DAO name" value={newDao.name} onChange={handleChange} />
           </div>
           <div className="secondfield">
-            <label htmlFor="description">
-              Enter a description for your DAO
-            </label>
+            <label htmlFor="description">Enter a description for your DAO</label>
             <br />
 
             <input
@@ -105,10 +95,7 @@ export default function Create() {
           </div>
 
           <div className="submitBtnContainer">
-            <button
-              type="submit"
-              style={{ background: "transparent", border: "none" }}
-            >
+            <button type="submit" style={{ background: 'transparent', border: 'none' }}>
               <Lottie animationData={Animation} className="submitBtn" />
             </button>
           </div>

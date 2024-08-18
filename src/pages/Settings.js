@@ -1,7 +1,7 @@
 import NavBar from '../Components/Navbar';
 import './Pages.css';
 import Sidebar from '../Components/Sidebar/Sidebar';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import uploadIcon from '../images/user.svg';
 import React, { useState, useRef, useEffect } from 'react';
 import SettingsTab from '../Components/SettingsTab';
@@ -19,6 +19,7 @@ export default function DaoSettings() {
     website: '',
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -37,7 +38,9 @@ export default function DaoSettings() {
     try {
       const dao = await updateDao(authToken, daoId, daoData);
       if (dao) {
-        window.location.reload();
+        setFormData(dao); // Update the state with the new DAO data
+        setAlertMessage('DAO has been updated'); // Show success message
+        setTimeout(() => setAlertMessage(''), 3000); // Hide after 3 seconds
       }
     } catch (error) {
       console.log(error);
@@ -46,16 +49,14 @@ export default function DaoSettings() {
 
   useEffect(() => {
     fetchDao(id);
-  }, []);
+  }, [id]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    // Do something with the uploaded image file, such as displaying it or saving it to state
     setImage(file);
   };
 
   const handleUploadIconClick = () => {
-    // Trigger the file upload input
     fileInputRef.current.click();
   };
 
@@ -66,7 +67,6 @@ export default function DaoSettings() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     updateMyDao(authToken, id, formData);
   };
 
@@ -78,69 +78,68 @@ export default function DaoSettings() {
           <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </div>
         <div className="settings_content">
-          <div className="">
+          <div>
             <SettingsTab />
           </div>
           <div className="Dao_profile">
-            <>
-              <div className="profile_icon">
-                {/* Hidden file upload input */}
-                <input type="file" accept="image/*" onChange={handleImageUpload} ref={fileInputRef} style={{ display: 'none' }} />
+            {alertMessage && <div style={{ color: 'green', marginBottom: '20px', textAlign: 'center' }}>{alertMessage}</div>}
+            <div className="profile_icon">
+              {/* Hidden file upload input */}
+              <input type="file" accept="image/*" onChange={handleImageUpload} ref={fileInputRef} style={{ display: 'none' }} />
 
-                {/* Conditional rendering: display uploaded image if available, otherwise display upload icon */}
-                {image ? (
-                  <div className="img_center">
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt="Uploaded Image"
-                      className="uploaded_img"
-                      style={{
-                        width: '200px',
-                        height: '200px',
-                        cursor: 'pointer',
-                        marginTop: '50px',
-                        borderRadius: '50%',
-                      }}
-                      onClick={handleUploadIconClick} // Trigger file input click when image is clicked
-                    />
-                    <span
-                      style={{
-                        display: 'block',
-                        marginTop: '5px',
-                        width: '200px',
-                        textAlign: 'center',
-                      }}
-                    >
-                      Click to change image
-                    </span>
-                  </div>
-                ) : (
-                  <div className="image_div">
-                    <img
-                      src={uploadIcon}
-                      alt="Upload Icon"
-                      className="upload_icon"
-                      onClick={handleUploadIconClick}
-                      style={{
-                        width: '200px',
-                        height: '200px',
-                        cursor: 'pointer',
-                        borderRadius: '50%',
-                      }}
-                    />
-                    <span
-                      style={{
-                        display: 'block',
-                        marginTop: '5px',
-                        width: '200px',
-                      }}
-                    >
-                      Upload image
-                    </span>
-                  </div>
-                )}
-              </div>
-            </>
+              {/* Conditional rendering: display uploaded image if available, otherwise display upload icon */}
+              {image ? (
+                <div className="img_center">
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="Uploaded Image"
+                    className="uploaded_img"
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      cursor: 'pointer',
+                      marginTop: '50px',
+                      borderRadius: '50%',
+                    }}
+                    onClick={handleUploadIconClick} // Trigger file input click when image is clicked
+                  />
+                  <span
+                    style={{
+                      display: 'block',
+                      marginTop: '5px',
+                      width: '200px',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Click to change image
+                  </span>
+                </div>
+              ) : (
+                <div className="image_div">
+                  <img
+                    src={uploadIcon}
+                    alt="Upload Icon"
+                    className="upload_icon"
+                    onClick={handleUploadIconClick}
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      cursor: 'pointer',
+                      borderRadius: '50%',
+                    }}
+                  />
+                  <span
+                    style={{
+                      display: 'block',
+                      marginTop: '5px',
+                      width: '200px',
+                    }}
+                  >
+                    Upload image
+                  </span>
+                </div>
+              )}
+            </div>
             <div className="profile_form">
               <form onSubmit={handleSubmit}>
                 <div>

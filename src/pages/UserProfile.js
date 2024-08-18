@@ -1,54 +1,51 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import NavBar from "../Components/Navbar";
-import "./Pages.css";
-import uploadIcon from "../images/user.svg";
-import { fetchMyself } from "../utils/fetchers";
-import Alert from "@mui/material/Alert";
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import NavBar from '../Components/Navbar';
+import './Pages.css';
+import uploadIcon from '../images/user.svg';
+import { fetchMyself } from '../utils/fetchers';
+import Alert from '@mui/material/Alert';
 
 export default function UserProfile() {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem('authToken');
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    email_address: "",
-    linkedin: "",
+    name: '',
+    description: '',
+    email_address: '',
+    linkedin: '',
   });
   const [alertBar, setAlertBar] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/users/${formData.id}`,
-        {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            contract_address: formData.contract_address,
-            ens_address: formData.ens_address,
-            email_address: formData.email_address,
-            linkedin: formData.linkedin,
-          }),
-        }
-      );
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${formData.id}`, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          contract_address: formData.contract_address,
+          ens_address: formData.ens_address,
+          email_address: formData.email_address,
+          linkedin: formData.linkedin,
+        }),
+      });
 
       if (response.ok) {
         const result = await response.json();
         // window.location.reload();
         handleAlert();
       } else {
-        console.error("Failed to update user profile");
+        console.error('Failed to update user profile');
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   };
 
@@ -59,17 +56,15 @@ export default function UserProfile() {
 
   useEffect(() => {
     fetchMyself(authToken).then((response) => setFormData({ ...response }));
-  }, []);
+  }, [authToken]);
 
   const handleAlert = () => {
     setAlertBar(true);
-    const timeoutId = setTimeout(() => setAlertBar(false), 2000);
-
-    return () => clearTimeout(timeoutId);
+    setTimeout(() => setAlertBar(false), 3000); // Hide alert after 3 seconds
   };
 
   const handleClose = () => {
-    navigate("/"); // Redirect to the homepage
+    navigate('/'); // Redirect to the homepage
   };
 
   return (
@@ -82,9 +77,9 @@ export default function UserProfile() {
               variant="filled"
               severity="success"
               style={{
-                width: "fit-content",
-                marginLeft: "auto",
-                marginRight: "1rem",
+                width: 'fit-content',
+                marginLeft: 'auto',
+                marginRight: '1rem',
               }}
             >
               User updated successfully.
@@ -103,27 +98,13 @@ export default function UserProfile() {
                 <br />
                 <div className="pr-20">
                   <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData?.name || ""}
-                    onChange={handleChange}
-                    className="user_field"
-                  />
+                  <input type="text" id="name" name="name" value={formData?.name || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
                 <div className="pr-20">
                   <label htmlFor="ens_address">ENS Address:</label>
-                  <input
-                    type="text"
-                    id="ens_address"
-                    name="ens_address"
-                    value={formData?.ens_address || ""}
-                    onChange={handleChange}
-                    className="user_field"
-                  />
+                  <input type="text" id="ens_address" name="ens_address" value={formData?.ens_address || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
@@ -133,7 +114,7 @@ export default function UserProfile() {
                     type="text"
                     id="email_address"
                     name="email_address"
-                    value={formData?.email_address || ""}
+                    value={formData?.email_address || ''}
                     onChange={handleChange}
                     className="user_field"
                   />
@@ -143,14 +124,7 @@ export default function UserProfile() {
                 {/* <div> */}
                 <div className="pr-20">
                   <label htmlFor="linkedin">LinkedIn:</label>
-                  <input
-                    type="text"
-                    id="linkedin"
-                    name="linkedin"
-                    value={formData?.linkedin || ""}
-                    onChange={handleChange}
-                    className="user_field"
-                  />
+                  <input type="text" id="linkedin" name="linkedin" value={formData?.linkedin || ''} onChange={handleChange} className="user_field" />
                 </div>
                 <br />
                 <br />
@@ -159,11 +133,7 @@ export default function UserProfile() {
                     Save
                   </button>
                   <br />
-                  <button
-                    type="button"
-                    className="profile_submit"
-                    onClick={handleClose}
-                  >
+                  <button type="button" className="profile_submit" onClick={handleClose}>
                     Close
                   </button>
                 </div>

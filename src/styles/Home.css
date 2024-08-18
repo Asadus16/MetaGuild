@@ -76,7 +76,7 @@
 }
 
 .animation {
-  width: 440px;
+  width: 400px;
   margin-bottom: 50px;
 }
 .animationDiv {
@@ -201,7 +201,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 300px;
+  margin-top: 205px;
   padding: 30px;
   align-items: center;
 }
@@ -259,7 +259,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 300px;
+  margin-top: 245px;
   align-items: center;
 }
 .Animation2Txt {
@@ -311,7 +311,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 300px;
+  margin-top: 245px;
   padding: 14px;
   align-items: center;
 }
